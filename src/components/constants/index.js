@@ -3,6 +3,10 @@ import { FiMail } from "react-icons/fi";
 import { FaRegEye } from "react-icons/fa";
 import { FaCompass } from "react-icons/fa";
 import { HiPaperAirplane } from "react-icons/hi2";
+import { IoPerson } from "react-icons/io5";
+import { BiSolidBuildingHouse } from "react-icons/bi";
+import { GrUserWorker } from "react-icons/gr";
+import { FaMoneyBillTrendUp } from "react-icons/fa6";
 import img1 from "@/components/assets/Images/img1.jpg";
 import img2 from "@/components/assets/Images/img15.jpg";
 import img3 from "@/components/assets/Images/img2.jpg";
@@ -60,10 +64,25 @@ export const property = [
 ];
 
 export const achievementsList2 = [
-  { prefix: "", value: "150", postfix: "+", metric: "Clients" },
-  { prefix: "", value: "100", postfix: "+", metric: "Workers" },
-  { prefix: "", value: "250", postfix: "+", metric: "Properties" },
-  { prefix: "", value: "200", postfix: "M", metric: "Revenue" },
+  { prefix: <IoPerson />, value: "150", postfix: "+", metric: "Clients" },
+  {
+    prefix: <GrUserWorker />,
+    value: "100",
+    postfix: "+",
+    metric: "Workers",
+  },
+  {
+    prefix: <BiSolidBuildingHouse />,
+    value: "250",
+    postfix: "+",
+    metric: "Properties",
+  },
+  {
+    prefix: <FaMoneyBillTrendUp />,
+    value: "200",
+    postfix: "M",
+    metric: "Revenue",
+  },
 ];
 
 export const Recommended = [

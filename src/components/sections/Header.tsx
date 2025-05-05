@@ -91,7 +91,7 @@ const Header = ({ color }: { color: boolean }) => {
         </div>
 
         <div className="flex gap-7 items-center">
-          <button className="bg-secondary w-[100px] p-[8px] rounded-lg flex flex-row gap-1 justify-center items-center max-sm:hidden max-md:flex max-[690px]:flex hover:bg-primary hover:text-white transition-colors duration-300 border border-secondary">
+          <button className="bg-secondary w-fit p-[8px] rounded-lg flex flex-row gap-1 justify-center items-center max-sm:hidden max-md:flex max-[690px]:flex hover:bg-primary hover:text-white transition-colors duration-300 ">
             {" "}
             <Link href="/contact" className="text-[10px]">
               Contact An Agent{" "}

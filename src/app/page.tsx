@@ -8,7 +8,6 @@ import Image from "next/image";
 import Link from "next/link";
 import useLenis from "@/hooks/useLenis";
 import {
-  achievementsList,
   achievementsList2,
   Btns,
   FaQs,
@@ -24,6 +23,7 @@ import img1 from "@/components/assets/Images/img23.jpg";
 import img2 from "@/components/assets/Images/profile.png";
 import img3 from "@/components/assets/Images/img24.jpg";
 import img4 from "@/components/assets/Images/img888.png";
+import img5 from "@/components/assets/Images/Logo.png";
 import { motion } from "framer-motion";
 import AnimatedNumbers from "react-animated-numbers";
 import { BsQuote } from "react-icons/bs";
@@ -94,7 +94,7 @@ export default function Home() {
             </Swiper>
 
             {/* Overlay for readability */}
-            <div className="absolute inset-0 bg-foreground opacity-30 z-10" />
+            <div className="absolute inset-0 bg-black opacity-30 z-10" />
 
             {/* Text Content */}
             <div className="relative -mt-[100vh] flex flex-col w-full h-full items-center justify-center z-20 text-center text-white px-4">
@@ -150,7 +150,7 @@ export default function Home() {
 
       {/* About */}
       <section
-        className="w-full bg-accent2 flex justify-between items-start p-8 px-[70px] gap-[50px] all:flex-col lg:flex-row
+        className="w-full bg-accent2 flex justify-between items-start p-8 md:px-[70px] gap-[50px] all:flex-col lg:flex-row
       "
       >
         <motion.div
@@ -161,7 +161,7 @@ export default function Home() {
           className="relative lg:w-1/2 h-full overflow-hidden  rounded-[10px] all:w-full"
         >
           <Image src={img1} alt="/" className="object-cover w-full h-full" />
-          <div className="absolute w-full h-full inset-[0] bg-foreground opacity-30"></div>
+          <div className="absolute w-full h-full inset-[0] bg-black opacity-30"></div>
         </motion.div>
 
         <motion.div
@@ -177,7 +177,7 @@ export default function Home() {
           <h1 className="font-sans text-4xl text-primary font-bold">
             Our Story
           </h1>
-          <p className="font-mono text-[12px] font-extralight text-foreground">
+          <p className="font-mono text-sm text-foreground">
             Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nesciunt
             doloremque, magnam possimus omnis, repellendus dolore ducimus velit
             similique alias natus quis vitae nobis, ipsum aliquam aspernatur et
@@ -185,14 +185,15 @@ export default function Home() {
             ipsum eum aliquid ad veniam dicta cum dolor natus aperiam, assumenda
             molestias voluptate! Impedit!
           </p>
-          <div className="grid grid-cols-4 place-content-center items-center w-full my-[20px] max-sm:gap-[70px] ">
-            {achievementsList.map((achievement, index) => {
+
+          <div className="grid md:grid-cols-4 max-sm:grid-cols-2 place-content-center items-center w-full my-[20px]  ">
+            {achievementsList2.map((achievement, index) => {
               return (
                 <div
                   key={index}
-                  className="w-full flex flex-col items-center justify-center mx-1 my-4 "
+                  className="w-full flex flex-col items-center justify-center mx-1 my-4 gap-1"
                 >
-                  <h2 className="text-3xl text-primary font-bold flex items-center">
+                  <h2 className="text-3xl text-primary font-bold flex items-center gap-1">
                     {achievement.prefix}
                     <AnimatedNumbers
                       includeComma
@@ -215,11 +216,11 @@ export default function Home() {
 
       {/* Our Properties */}
       <section className="w-full grid-rows-2 items-center my-[50px]">
-        <div className="w-full text-center space-y-[5px]">
-          <h1 className="text-xl text-secondary font-sans font-bold">
+        <div className="w-full text-center space-y-[2px]">
+          <h1 className="text-[10px] text-secondary font-sans font-bold">
             Our Properties
           </h1>
-          <p className="text-3xl font-[100]">
+          <p className="text-3xl font-bold text-primary">
             Dive Into The Diffrent Options We Have
           </p>
         </div>
@@ -262,7 +263,7 @@ export default function Home() {
                 </motion.div>
 
                 {/* Gradient overlay always visible */}
-                <div className="absolute inset-0 bg-gradient-to-t from-foreground to-transparent z-10" />
+                <div className="absolute inset-0 bg-gradient-to-t from-[#171717] to-transparent z-10" />
 
                 {/* Sliding colored overlay */}
                 <Link href={"/"}>
@@ -294,10 +295,10 @@ export default function Home() {
 
       {/* Services */}
       <section
-        className="w-full flex justify-between items-center p-8 px-[70px] gap-[50px] all:flex-col lg:flex-row-reverse scale-[0.9] max-sm:px-[30px]
+        className="w-full flex justify-between items-center p-8 px-[70px] gap-[50px] all:flex-col-reverse lg:flex-row-reverse scale-[0.9] max-sm:px-[30px]
       "
       >
-        <div className="relative lg:w-1/2 h-full overflow-hidden rounded-b-[20px] all:w-full ">
+        <div className="relative lg:w-1/2 h-full overflow-hidden rounded-b-[20px] all:w-full max-sm:hidden">
           <Image src={img4} alt="/" className="object-cover w-full h-full " />
         </div>
 
@@ -306,7 +307,7 @@ export default function Home() {
           whileInView={{ y: 0, opacity: 1 }}
           viewport={{ once: true }}
           transition={{ duration: 1, ease: "easeInOut" }}
-          className="grid lg:w-[70%] gap-[5px] all:w-full pt-6 "
+          className="grid lg:w-full  all:w-full pt-6 "
         >
           <h1 className="uppercase text-[10px] text-secondary font-bold">
             Services
@@ -315,7 +316,7 @@ export default function Home() {
             What We Offer
           </h1>
           <div>
-            <p className="font-mono text-sm font-extralight text-foreground">
+            <p className="font-mono text-sm  text-foreground">
               Step into a world where your needs shape our services. Offering
               bespoke consultations, innovative design & automation, meticulous
               construction, and strategic project management, we make your
@@ -323,11 +324,11 @@ export default function Home() {
               unparalleled ROI. With Mshel Homes, it&apos;s more than a home
               it&apos;s a lifetime investment.
             </p>
-            <div className="grid all:grid-cols-1 md:grid-cols-2 items-center place-content-center space-y-[10px] ">
+            <div className="flex items-center justify-center flex-wrap ">
               {services.map((id, item) => (
                 <div
                   key={item}
-                  className="w-[300px] h-[200px] rounded-[10px] overflow-hidden p-4 relative"
+                  className="w-[300px] h-[200px] rounded-[10px] overflow-hidden p-4 m-1 relative"
                 >
                   <div className="text-secondary p-2 w-[35px] rounded-[5px] text-xl">
                     <GiStarsStack />
@@ -341,6 +342,15 @@ export default function Home() {
                   <div className="w-full h-full absolute inset-0 bg-gradient-to-t from-[#a3a3a3] to-transparent opacity-10"></div>
                 </div>
               ))}
+            </div>
+            <div className="w-full flex items-center justify-center">
+              {" "}
+              <button className="bg-secondary w-fit p-[8px] rounded-lg flex gap-1 justify-center items-center hover:bg-primary hover:text-white transition-colors duration-300 my-4">
+                {" "}
+                <Link href="/services" className="text-[12px]">
+                  Learn More{" "}
+                </Link>
+              </button>
             </div>
           </div>
         </motion.div>
@@ -358,19 +368,20 @@ export default function Home() {
           }}
           className="w-full text-center text-white"
         >
-          <p className="uppercase text-[10px] text-neutral-100 text-secondary font-bold">
+          <p className="uppercase text-[10px]  text-secondary font-bold">
             Top Features
           </p>
           <div className="text-4xl font-sans text-primary font-bold max-sm:text-3xl">
             Recommended For You
           </div>
         </motion.div>
+
         <div className="absolute top-1/2 left-10 z-50 max-sm:left-0">
           <button className="button-prev text-foreground text-5xl">
             <TbSquareRoundedArrowLeftFilled />
           </button>
         </div>
-        <div className="absolute top-1/2 right-15 z-50 max-sm:right-5">
+        <div className="absolute top-1/2 right-15 z-50 max-sm:right-0">
           <button className="button-next text-5xl text-foreground">
             <TbSquareRoundedArrowRightFilled />
           </button>
@@ -427,10 +438,10 @@ export default function Home() {
                     ease: "easeInOut",
                     delay: 0.05 * item,
                   }}
-                  className="w-[300px] rounded-[10px] overflow-hidden mt-8 ml-[6px]"
+                  className="w-[300px] rounded-[10px] overflow-hidden mt-8 ml-[7px]"
                 >
                   {/* Image */}
-                  <div className="h-[250px] w-full overflow-hidden rounded-b-[10px]">
+                  <div className="h-[250px] w-full overflow-hidden rounded-b-[10px] max-sm:ml-[20px]">
                     <Image
                       src={id.img}
                       alt="/"
@@ -478,19 +489,19 @@ export default function Home() {
       </section>
 
       {/* Banner */}
-      <section className="w-full flex gap-[20px] bg-[#f9f0e0] py-12 items-center justify-around px-[70px] my-12 all:flex-col md:flex-row">
-        <div className="w-full items-center text-4xl font-sans font-black text-foreground">
+      <section className="w-full flex gap-[20px] bg-[#fdf0d8] py-12 items-center justify-around px-[70px] my-12 all:flex-col md:flex-row">
+        <div className="w-full  text-4xl font-sans font-black text-foreground max-sm:text-center">
           <h1>
             Take A Look <br />
             At The Numbers
           </h1>
         </div>
-        <div className="grid grid-cols-4 place-content-center items-center w-full my-[20px] max-sm:gap-[50px] ">
+        <div className="flex items-center justify-center w-full my-[20px] ">
           {achievementsList2.map((achievement, index) => {
             return (
               <div
                 key={index}
-                className="w-full flex flex-col items-center justify-center mx-1 my-4 "
+                className="w-full flex flex-col items-center justify-center mx-1 my-4 px-2"
               >
                 <h2 className="text-3xl text-primary font-bold flex items-center">
                   {achievement.prefix}
@@ -514,7 +525,7 @@ export default function Home() {
 
       {/* Why You Should Work With Us */}
       <section
-        className="w-full flex justify-between items-start p-8 px-[70px] gap-[50px] all:flex-col lg:flex-row
+        className="w-full flex justify-between items-start my-12 px-[40px] gap-[20px] all:flex-col lg:flex-row
       "
       >
         <motion.div
@@ -545,7 +556,7 @@ export default function Home() {
           <h1 className="font-sans text-4xl text-primary font-bold md:w-[80%] all:w-full">
             Why You Should Work With Us
           </h1>
-          <p className="font-mono text-[12px] font-extralight text-foreground md:w-[80%] all:w-full">
+          <p className="font-mono text-[12px]  text-foreground md:w-[80%] all:w-full">
             Choosing the right real estate partner can make all the difference.
             At HillsApartment, we combine industry expertise with a commitment
             to client satisfaction, guiding you through every step of the
@@ -573,7 +584,7 @@ export default function Home() {
               </li>
             </ul>
           </div>
-          <div className="w-[80%] text-center flex items-center justify-start my-2">
+          <div className="w-[80%] text-center flex items-center justify-start my-2 max-sm:w-full max-sm:justify-center">
             <div className="bg-secondary px-3 py-3 flex items-center justify-center text-accent2 text-sm">
               <Link href={"/"}>Contact an Agent</Link>
             </div>
@@ -593,6 +604,9 @@ export default function Home() {
           }}
           className="w-full text-center text-white"
         >
+          <div className="text-[10px] font-sans text-secondary font-bold pb-1">
+            What our customers say
+          </div>
           <div className="text-4xl font-sans text-background pb-6 font-bold">
             Testimonials
           </div>
@@ -637,7 +651,7 @@ export default function Home() {
           loop={true}
           className="w-[80%]"
         >
-          <div className="flex items-center justify-center gap-[20px] py-12 px-8 ">
+          <div className="w-full flex items-center justify-center gap-[20px] py-12 px-5 ">
             {Recommended.map((id, item) => (
               <SwiperSlide key={item}>
                 <motion.div
@@ -649,9 +663,9 @@ export default function Home() {
                     ease: "easeInOut",
                     delay: 0.05 * item,
                   }}
-                  className="w-[300px] h-[250px] rounded-[10px]  ml-5 mt-[50px] bg-accent2 p-3 relative"
+                  className="w-[300px] h-[250px] rounded-[10px] ml-[5px] mt-[50px] bg-accent2 p-3 relative"
                 >
-                  <div className="w-full flex  h-full items-center justify-center text-sm text-foreground text-center flex-col ">
+                  <div className="w-full h-full flex items-center justify-center text-sm text-foreground text-center flex-col ">
                     <div>
                       <BsQuote />
                     </div>
@@ -776,10 +790,10 @@ export default function Home() {
             ease: "easeInOut",
             delay: 0.1,
           }}
-          className="grid grid-cols-1 md:grid-cols-2 place-content-center items-center scale-[0.9] "
+          className="grid grid-cols-1 lg:grid-cols-2 place-content-center items-center scale-[0.9] "
         >
           {/* Main Content */}
-          <div className=" space-y-4 w-[90%]">
+          <div className=" space-y-4 lg:w-[90%]">
             <div className="w-full h-64 relative">
               <Image
                 src={img1} // Replace with real image
@@ -800,7 +814,7 @@ export default function Home() {
           </div>
 
           {/* Sidebar */}
-          <div className="space-y-6 md:border-l scale-[0.9] max-sm:grid max-sm:grid-cols-2 gap-[50px] max-sm:border-t pl-4 max-sm:pt-4">
+          <div className="flex justify-center gap-[10px] all:pt-4 md:flex-col">
             {sidebarPosts.map((post) => (
               <div
                 key={post.id}
@@ -828,7 +842,7 @@ export default function Home() {
       </section>
 
       {/* Footer */}
-      <footer className="w-full h-fit pt-16 pb-4 text-foreground flex flex-col px-12 shadow-inner bg-[#170e01] gap-14 text-white">
+      <footer className="w-full h-fit pt-16 pb-4 text-foreground flex flex-col px-12 max-sm:px-6 bg-[#170e01] gap-8 text-white">
         <motion.div
           initial={{ x: 20, opacity: 0 }}
           whileInView={{ x: 0, opacity: 1 }}
@@ -836,8 +850,14 @@ export default function Home() {
           viewport={{ once: true }}
           className="lg:flex flex-col "
         >
-          <div className="flex items-start justify-between border-b-[1px] mb-2 pb-2 all:flex-col gap-[10px] lg:flex-row ">
-            <h1 className="text-2xl">HillsApartment</h1>
+          {/* Logo */}
+          <div className="flex items-center justify-between border-b-[1px]  pb-2 max-sm:flex-col max-sm:items-start ">
+            <Image
+              src={img5}
+              alt="logo"
+              className="w-[100px] h-[60px] object-cover invert-75"
+            />
+
             <div className="flex gap-3">
               {Btns.map((i, item) => (
                 <Link key={item} href="/partner" className="btn">
@@ -846,46 +866,28 @@ export default function Home() {
               ))}
             </div>
           </div>
-          <div className="flex pt-4 flex-col md:flex-row">
-            <div className=" basis-1/2 pb-12">
-              <h1 className="font-sans font-bold text-xl ">
-                Subscribe For Updates
-              </h1>
 
-              <div className="w-full flex items-center justify-center max-sm:w-full relative mt-8">
-                <input
-                  type="email"
-                  name="Email"
-                  id="Email"
-                  placeholder="Your email"
-                  className="w-full border-b border-white text-accent2 relative  transition-all duration-300 pb-2 "
-                />
-
-                <button className="absolute rounded-3xl text-primary transition-colors right-[0] bg-accent2 p-2 text-sm bottom-[0] mb-2">
-                  Subscribe
-                </button>
-              </div>
-            </div>
-
-            <div className="grid grid-row-4 lg:grid-cols-3 md:grid-cols-2 gap-4 md:gap-12 lg:px-12 all:space-y-[0px] md:space-y-[100px] md:pl-8">
+          <div className="flex pt-4 flex-col md:flex-row max-sm:flex-col-reverse">
+            {/* Links */}
+            <div className="grid grid-row-4 lg:grid-cols-3 md:grid-cols-2 gap-4 md:gap-12 lg:px-12 md:pl-8">
               {footerLinks.map((footer, id) => (
                 <div key={id}>
                   {/* Section Header */}
                   <button
                     onClick={() => toggleSection(id)}
-                    className="flex justify-between items-center w-full text-lg font-sans font-bold md:text-nowrap"
+                    className="flex justify-between items-center w-full text-lg font-sans font-bold"
                   >
                     {footer.heading}
                     {openSection === id ? (
-                      <IoIosArrowUp className="text-xl outline-none text-secondary md:hidden" />
+                      <IoIosArrowUp className="text-xl outline-none text-secondary lg:hidden" />
                     ) : (
-                      <IoIosArrowDown className="text-xl outline-none text-secondary md:hidden" />
+                      <IoIosArrowDown className="text-xl outline-none text-secondary lg:hidden" />
                     )}
                   </button>
 
                   {/* Collapsible Links */}
                   <ul
-                    className={`mt-2 space-y-2 text-neutral-400 text-sm overflow-hidden md:overflow-visible transition-all duration-300 ease-in-out ${
+                    className={`mt-2 space-y-2 text-neutral-400 text-sm overflow-hidden lg:overflow-visible transition-all duration-300 ease-in-out ${
                       openSection === id ? "max-h-full p-2" : " max-h-0 p-0"
                     }`}
                   >
@@ -910,6 +912,27 @@ export default function Home() {
                   </ul>
                 </div>
               ))}
+            </div>
+
+            {/* Newsletter */}
+            <div className="w-[100%] py-12 max-sm:pb-12">
+              <h1 className="font-sans font-bold text-xl ">
+                Subscribe For Updates
+              </h1>
+
+              <div className="w-full flex items-center justify-center max-sm:w-full relative mt-8">
+                <input
+                  type="email"
+                  name="Email"
+                  id="Email"
+                  placeholder="Your email"
+                  className="w-full border-b border-white text-accent2 relative  transition-all duration-300 pb-2 "
+                />
+
+                <button className="absolute rounded-3xl text-primary transition-colors right-[0] bg-accent2 p-2 text-sm bottom-[0] mb-2">
+                  Subscribe
+                </button>
+              </div>
             </div>
           </div>
         </motion.div>

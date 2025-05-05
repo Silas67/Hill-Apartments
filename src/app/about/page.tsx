@@ -24,6 +24,7 @@ import "swiper/css";
 import "swiper/css/navigation";
 import { Autoplay, Pagination, Navigation } from "swiper/modules";
 import Breadcrumbs from "@/components/sections/Breadcrumbs";
+import img5 from "@/components/assets/Images/Logo.png";
 
 const overlayVariants = {
   initial: { y: "100%" },
@@ -89,7 +90,7 @@ const About = () => {
           <h1 className="font-sans text-4xl text-primary font-bold">
             Who We Are
           </h1>
-          <p className="font-mono text-[12px] font-extralight text-foreground">
+          <p className="font-mono text-[12px]  text-foreground">
             Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nesciunt
             doloremque, magnam possimus omnis, repellendus dolore ducimus velit
             similique alias natus quis vitae nobis, ipsum aliquam aspernatur et
@@ -97,7 +98,7 @@ const About = () => {
             ipsum eum aliquid ad veniam dicta cum dolor natus aperiam, assumenda
             molestias voluptate! Impedit!
           </p>
-          <p className="font-mono text-[12px] font-extralight text-foreground">
+          <p className="font-mono text-[12px] text-foreground">
             Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nesciunt
             doloremque, magnam possimus omnis, repellendus dolore ducimus velit
             similique alias natus quis vitae nobis, ipsum aliquam aspernatur et
@@ -105,7 +106,7 @@ const About = () => {
             ipsum eum aliquid ad veniam dicta cum dolor natus aperiam, assumenda
             molestias voluptate! Impedit!
           </p>
-          <div className="grid grid-cols-4 place-content-center items-center w-full my-[20px] max-sm:gap-[40px] ">
+          <div className="grid md:grid-cols-4 max-sm:grid-cols-2 place-content-center items-center w-full my-[20px] ">
             {achievementsList.map((achievement, index) => {
               return (
                 <div
@@ -359,7 +360,7 @@ const About = () => {
           }}
           className="w-full text-center pb-6"
         >
-          <div className="text-2xl font-sans pt-6 font-bold">
+          <div className="text-[30px] font-sans pt-6 font-bold">
             Frequently Asked{" "}
             <span className="bg-secondary p-2 my-2">Questions?</span>
           </div>
@@ -418,7 +419,7 @@ const About = () => {
       </section>
 
       {/* Footer */}
-      <footer className="w-full h-fit pt-16 pb-4 text-foreground flex flex-col px-12 shadow-inner bg-[#170e01] gap-14 text-white">
+      <footer className="w-full h-fit pt-16 pb-4 text-foreground flex flex-col px-12 max-sm:px-6 bg-[#170e01] gap-8 text-white">
         <motion.div
           initial={{ x: 20, opacity: 0 }}
           whileInView={{ x: 0, opacity: 1 }}
@@ -426,8 +427,14 @@ const About = () => {
           viewport={{ once: true }}
           className="lg:flex flex-col "
         >
-          <div className="flex items-start justify-between border-b-[1px] mb-2 pb-2 all:flex-col gap-[10px] lg:flex-row ">
-            <h1 className="text-2xl">HillsApartment</h1>
+          {/* Logo */}
+          <div className="flex items-center justify-between border-b-[1px]  pb-2 max-sm:flex-col max-sm:items-start ">
+            <Image
+              src={img5}
+              alt="logo"
+              className="w-[100px] h-[60px] object-cover invert-75"
+            />
+
             <div className="flex gap-3">
               {Btns.map((i, item) => (
                 <Link key={item} href="/partner" className="btn">
@@ -436,46 +443,28 @@ const About = () => {
               ))}
             </div>
           </div>
-          <div className="flex pt-4 flex-col md:flex-row">
-            <div className=" basis-1/2 pb-12">
-              <h1 className="font-sans font-bold text-xl ">
-                Subscribe For Updates
-              </h1>
 
-              <div className="w-full flex items-center justify-center max-sm:w-full relative mt-8">
-                <input
-                  type="email"
-                  name="Email"
-                  id="Email"
-                  placeholder="Your email"
-                  className="w-full border-b border-white text-accent2 relative  transition-all duration-300 pb-2 "
-                />
-
-                <button className="absolute rounded-3xl text-primary transition-colors right-[0] bg-accent2 p-2 text-sm bottom-[0] mb-2">
-                  Subscribe
-                </button>
-              </div>
-            </div>
-
-            <div className="grid grid-row-4 lg:grid-cols-3 md:grid-cols-2 gap-4 md:gap-12 lg:px-12 all:space-y-[0px] md:space-y-[100px] md:pl-8">
+          <div className="flex pt-4 flex-col md:flex-row max-sm:flex-col-reverse">
+            {/* Links */}
+            <div className="grid grid-row-4 lg:grid-cols-3 md:grid-cols-2 gap-4 md:gap-12 lg:px-12 md:pl-8">
               {footerLinks.map((footer, id) => (
                 <div key={id}>
                   {/* Section Header */}
                   <button
                     onClick={() => toggleSection(id)}
-                    className="flex justify-between items-center w-full text-lg font-sans font-bold md:text-nowrap"
+                    className="flex justify-between items-center w-full text-lg font-sans font-bold"
                   >
                     {footer.heading}
                     {openSection === id ? (
-                      <IoIosArrowUp className="text-xl outline-none text-secondary md:hidden" />
+                      <IoIosArrowUp className="text-xl outline-none text-secondary lg:hidden" />
                     ) : (
-                      <IoIosArrowDown className="text-xl outline-none text-secondary md:hidden" />
+                      <IoIosArrowDown className="text-xl outline-none text-secondary lg:hidden" />
                     )}
                   </button>
 
                   {/* Collapsible Links */}
                   <ul
-                    className={`mt-2 space-y-2 text-neutral-400 text-sm overflow-hidden md:overflow-visible transition-all duration-300 ease-in-out ${
+                    className={`mt-2 space-y-2 text-neutral-400 text-sm overflow-hidden lg:overflow-visible transition-all duration-300 ease-in-out ${
                       openSection === id ? "max-h-full p-2" : " max-h-0 p-0"
                     }`}
                   >
@@ -500,6 +489,27 @@ const About = () => {
                   </ul>
                 </div>
               ))}
+            </div>
+
+            {/* Newsletter */}
+            <div className="w-[100%] py-12 max-sm:pb-12">
+              <h1 className="font-sans font-bold text-xl ">
+                Subscribe For Updates
+              </h1>
+
+              <div className="w-full flex items-center justify-center max-sm:w-full relative mt-8">
+                <input
+                  type="email"
+                  name="Email"
+                  id="Email"
+                  placeholder="Your email"
+                  className="w-full border-b border-white text-accent2 relative  transition-all duration-300 pb-2 "
+                />
+
+                <button className="absolute rounded-3xl text-primary transition-colors right-[0] bg-accent2 p-2 text-sm bottom-[0] mb-2">
+                  Subscribe
+                </button>
+              </div>
             </div>
           </div>
         </motion.div>

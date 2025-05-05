@@ -80,23 +80,33 @@ const Services = () => {
           </div>
         </div>
       </section>
+
       {/* CTA */}
-      <section className="w-full h-[50vh] items-center justify-center flex my-12">
-        <div className="w-[80%] h-full bg-accent text-white font-sans rounded-[10px] flex items-center justify-between overflow-hidden max-sm:w-full">
-          <div className="w-1/2 h-full flex flex-col items-start justify-center px-[50px] space-y-[10px] max-sm:scale-[0.9]">
-            <h1 className="text-3xl">Discover Our Finest Selection</h1>
-            <p className="text-[12px] ">
+      <section className="w-full h-[50vh] my-12 flex items-center justify-center ">
+        <div className="w-full h-full flex flex-col md:flex-row bg-accent text-white font-sans overflow-hidden">
+          {/* Text Content */}
+          <div className="w-full md:w-1/2 h-full flex flex-col justify-center px-12 space-y-3 max-sm:scale-[0.9] max-sm:px-4">
+            <h1 className="text-3xl max-sm:text-2xl font-semibold">
+              Discover Our Finest Selection
+            </h1>
+            <p className="text-sm">
               Lorem ipsum dolor sit amet consectetur adipisicing elit. Minima
               placeat earum impedit laudantium id totam beatae blanditiis
             </p>
-            <div className="p-2  flex items-center justify-center rounded-[10px] text-sm gap-1 text-foreground bg-accent2">
-              {" "}
+            <button className="p-2 flex items-center justify-center rounded-[10px] text-sm gap-1 text-foreground bg-accent2 w-fit">
               Discover
               <BiRightArrowAlt className="text-lg" />
-            </div>
+            </button>
           </div>
-          <div className="w-1/2 h-full overflow-hidden">
-            <Image src={img1} alt="/" className="w-full  h-full object-cover" />
+
+          {/* Image Content */}
+          <div className="w-full md:w-1/2 h-full overflow-hidden">
+            <Image
+              src={img1}
+              alt="Discover"
+              className="w-full h-full object-cover"
+              priority
+            />
           </div>
         </div>
       </section>
