@@ -4,7 +4,7 @@ import React from "react";
 const page = () => {
   return (
     <main className="bg-primary h-screen w-full flex items-center justify-center">
-      <div className="w-[500px]">
+      <div className="w-[500px] px-[70px] max-sm:scale-[0.8] max-sm:px-[10px]">
         <form className="w-full flex flex-col bg-accent2 p-4 rounded-[10px] p-6 border border-primary font-sans">
           <div className="text-primary font-bold w-full text-center text-3xl mb-6">
             Sign Up
@@ -41,10 +41,10 @@ const page = () => {
           </div>
           <div className="mb-6">
             <textarea
-              name="message"
+              name="password"
               id="message"
               className="bg-background border border-primary placeholder-[#9CA2A9] text-gray-100 text-sm rounded-lg block w-full p-2.5"
-              placeholder="Let's talk about..."
+              placeholder="Create your password."
             />
           </div>
           <button

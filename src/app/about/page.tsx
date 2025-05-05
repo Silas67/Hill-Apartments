@@ -52,7 +52,7 @@ const About = () => {
           backgroundSize: "contain",
           backgroundPosition: "top right",
         }}
-        className="w-full h-[50vh] text-center place-content-center relative max-sm:h-[30vh]"
+        className="w-full lg:h-[50vh] text-center place-content-center relative all:h-[30vh] "
       >
         <div className="relative z-30">
           {" "}
@@ -74,7 +74,7 @@ const About = () => {
           duration: 1,
           ease: "easeInOut",
         }}
-        className="w-full bg-accent2 flex justify-between items-start p-8 px-[70px] gap-[50px] all:flex-col lg:flex-row
+        className="w-full bg-accent2 flex justify-between items-start p-8 px-[70px] gap-[50px] all:flex-col lg:flex-row max-sm:px-[30px]
       "
       >
         <div className="relative lg:w-1/2 h-full overflow-hidden  rounded-[10px] all:w-full">
@@ -105,12 +105,12 @@ const About = () => {
             ipsum eum aliquid ad veniam dicta cum dolor natus aperiam, assumenda
             molestias voluptate! Impedit!
           </p>
-          <div className="grid all:grid-cols-2 md:grid-cols-4 place-content-center items-center w-full my-[20px]">
+          <div className="grid grid-cols-4 place-content-center items-center w-full my-[20px] max-sm:gap-[40px] ">
             {achievementsList.map((achievement, index) => {
               return (
                 <div
                   key={index}
-                  className="w-full flex flex-col items-center justify-center mx-4 my-4 sm:my-0"
+                  className="w-full flex flex-col items-center justify-center mx-1 my-4 "
                 >
                   <h2 className="text-3xl text-primary font-bold flex items-center">
                     {achievement.prefix}
@@ -250,7 +250,7 @@ const About = () => {
       </section>
 
       {/* Testimonials */}
-      <section className="bg-accent w-full py-[40px]  relative">
+      <section className="bg-foreground w-full py-[40px]  relative">
         <motion.div
           initial={{ y: 20, opacity: 0 }}
           whileInView={{ y: 0, opacity: 1 }}
@@ -317,7 +317,7 @@ const About = () => {
                     ease: "easeInOut",
                     delay: 0.05 * item,
                   }}
-                  className="w-[300px] h-[250px] rounded-[10px]  mt-8 bg-accent2 p-3 relative"
+                  className="w-[300px] h-[250px] rounded-[10px]  mt-[50px] bg-accent2 p-3 relative"
                 >
                   <div className="w-full flex  h-full items-center justify-center text-sm text-foreground text-center flex-col ">
                     <div>
@@ -332,7 +332,7 @@ const About = () => {
                       <h1 className="font-[600]">Ejimonye Silas</h1>
                       <p>Worker</p>
                     </div>
-                    <div className="absolute w-[80px] h-[80px] rounded-full border-[5px] border-accent -top-[5vh] overflow-hidden right-[37%]">
+                    <div className="absolute w-[80px] h-[80px] rounded-full border-[5px] border-foreground -top-[5vh] overflow-hidden right-[37%]">
                       <Image
                         src={img3}
                         alt="/"
@@ -348,7 +348,7 @@ const About = () => {
       </section>
 
       {/* FAQ */}
-      <section className="w-full py-[20px] relative px-[70px]">
+      <section className="w-full py-[20px] relative px-[70px] max-sm:px-[30px]">
         <motion.div
           initial={{ y: 20, opacity: 0 }}
           whileInView={{ y: 0, opacity: 1 }}
@@ -361,9 +361,9 @@ const About = () => {
         >
           <div className="text-2xl font-sans pt-6 font-bold">
             Frequently Asked{" "}
-            <span className="bg-secondary p-2">Questions?</span>
+            <span className="bg-secondary p-2 my-2">Questions?</span>
           </div>
-          <p className="pt-1 ">
+          <p className="pt-1 max-sm:pt-4 ">
             Lorem ipsum dolor sit amet consectetur adipisicing elit. Qui quas ea
             beatae dolorem ratione neque
           </p>
@@ -426,7 +426,7 @@ const About = () => {
           viewport={{ once: true }}
           className="lg:flex flex-col "
         >
-          <div className="flex items-center justify-between border-b-[1px] mb-2 pb-2">
+          <div className="flex items-start justify-between border-b-[1px] mb-2 pb-2 all:flex-col gap-[10px] lg:flex-row ">
             <h1 className="text-2xl">HillsApartment</h1>
             <div className="flex gap-3">
               {Btns.map((i, item) => (
@@ -457,7 +457,7 @@ const About = () => {
               </div>
             </div>
 
-            <div className="grid grid-row-4 lg:grid-cols-3 gap-4 md:gap-12 lg:px-12 all:space-y-[0px] md:space-y-[100px]">
+            <div className="grid grid-row-4 lg:grid-cols-3 md:grid-cols-2 gap-4 md:gap-12 lg:px-12 all:space-y-[0px] md:space-y-[100px] md:pl-8">
               {footerLinks.map((footer, id) => (
                 <div key={id}>
                   {/* Section Header */}
@@ -504,7 +504,7 @@ const About = () => {
           </div>
         </motion.div>
 
-        <div className="text-[12px] cursor-default w-full border-t-[1px] border-white p-4 flex justify-between max-sm:text-[10px] max-sm:gap-4">
+        <div className="text-[12px] cursor-default w-full border-t-[1px] border-white p-4 flex justify-between max-sm:text-[10px] max-sm:gap-4 max-sm:flex-col-reverse items-center">
           <p>@ CopyRight. All rights reserved</p>
           <div>
             HillsAprtment 15 E I Gomos Road, Shandam close, Abacha road,

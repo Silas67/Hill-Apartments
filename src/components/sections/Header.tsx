@@ -23,6 +23,18 @@ const Header = ({ color }: { color: boolean }) => {
     console.log(navIsLive);
   };
   useEffect(() => {
+    if (navIsLive) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "auto";
+    }
+
+    // Cleanup on unmount
+    return () => {
+      document.body.style.overflow = "auto";
+    };
+  }, [navIsLive]);
+  useEffect(() => {
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 100);
     };
@@ -51,7 +63,7 @@ const Header = ({ color }: { color: boolean }) => {
       <nav className="w-full flex items-center justify-between md:mx-[20px]">
         <div className="flex justify-between gap-10 items-center text-[12px]">
           <Link href={"/"}>
-            <Image src={"/Logo.png"} alt="/" width={200} height={150} />
+            <Image src={"/Logo.png"} alt="/" width={100} height={100} />
           </Link>
           {Navbar.map((link, id) => {
             const active = pathname === link.href;
@@ -79,17 +91,10 @@ const Header = ({ color }: { color: boolean }) => {
         </div>
 
         <div className="flex gap-7 items-center">
-          <div
-            className={` text-[14px] scale-[1] hover:scale-[1.1] hover:text-secondary transition-all duration-300${
-              isScrolled ? "text-black" : "text-background"
-            }`}
-          >
-            <Link href={"/signup"}>Sign Up</Link>
-          </div>
           <button className="bg-secondary w-[100px] p-[8px] rounded-lg flex flex-row gap-1 justify-center items-center max-sm:hidden max-md:flex max-[690px]:flex hover:bg-primary hover:text-white transition-colors duration-300 border border-secondary">
             {" "}
             <Link href="/contact" className="text-[10px]">
-              Contact{" "}
+              Contact An Agent{" "}
             </Link>
           </button>
 
@@ -138,6 +143,21 @@ const Header = ({ color }: { color: boolean }) => {
                   </li>
                 ))}
               </ul>
+              <div className="w-full items-center flex flex-col justify-center">
+                {" "}
+                <button className="bg-secondary w-fit p-[8px] rounded-lg flex flex-row gap-1 justify-center items-center hover:bg-primary hover:text-white transition-colors duration-300 border border-secondary mb-3">
+                  {" "}
+                  <Link href="/contact" className="text-[10px] text-primary">
+                    Contact An Agent{" "}
+                  </Link>
+                </button>
+                <p className="text-primary py-3 text-[10px] text-nowrap border-y-1 border-[#bcbcbc]">
+                  +(234)-810-488-4845, +(234)-812-456-5509
+                </p>
+                <p className="text-primary py-3 text-[10px] text-nowrap border-b-1 border-[#bcbcbc]">
+                  @info.company&apo;smail@gmail.com
+                </p>
+              </div>
             </nav>
           </motion.aside>
         </div>

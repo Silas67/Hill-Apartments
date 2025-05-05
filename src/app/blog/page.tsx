@@ -48,12 +48,12 @@ const Blog = () => {
           whileInView={{ y: 0, opacity: 1 }}
           viewport={{ once: true }}
           transition={{ duration: 1, ease: "easeInOut" }}
-          className="grid lg:grid-cols-4 all:grid-cols-1 w-full px-[70px] py-[50px] "
+          className="grid lg:grid-cols-4 md:grid-cols-2 all:grid-cols-1 w-full px-[70px] py-[50px] "
         >
           {blogs.map((id, item) => (
             <div
               key={item}
-              className="w-[300px] rounded-[10px] overflow-hidden grid grid-cols-subgrid mb-6 lg:scale-[0.9] "
+              className="w-[300px] rounded-[10px] overflow-hidden grid grid-cols-subgrid mb-6 md:scale-[0.9] "
             >
               {/* Image */}
               <div className="h-[250px] w-full overflow-hidden rounded-b-[10px]">
@@ -89,7 +89,7 @@ const Blog = () => {
           viewport={{ once: true }}
           className="lg:flex flex-col "
         >
-          <div className="flex items-center justify-between border-b-[1px] mb-2 pb-2">
+          <div className="flex items-start justify-between border-b-[1px] mb-2 pb-2 all:flex-col gap-[10px] lg:flex-row ">
             <h1 className="text-2xl">HillsApartment</h1>
             <div className="flex gap-3">
               {Btns.map((i, item) => (
@@ -120,7 +120,7 @@ const Blog = () => {
               </div>
             </div>
 
-            <div className="grid grid-row-4 lg:grid-cols-3 gap-4 md:gap-12 lg:px-12 all:space-y-[0px] md:space-y-[100px]">
+            <div className="grid grid-row-4 lg:grid-cols-3 md:grid-cols-2 gap-4 md:gap-12 lg:px-12 all:space-y-[0px] md:space-y-[100px] md:pl-8">
               {footerLinks.map((footer, id) => (
                 <div key={id}>
                   {/* Section Header */}
@@ -167,7 +167,7 @@ const Blog = () => {
           </div>
         </motion.div>
 
-        <div className="text-[12px] cursor-default w-full border-t-[1px] border-white p-4 flex justify-between max-sm:text-[10px] max-sm:gap-4">
+        <div className="text-[12px] cursor-default w-full border-t-[1px] border-white p-4 flex justify-between max-sm:text-[10px] max-sm:gap-4 max-sm:flex-col-reverse items-center">
           <p>@ CopyRight. All rights reserved</p>
           <div>
             HillsAprtment 15 E I Gomos Road, Shandam close, Abacha road,

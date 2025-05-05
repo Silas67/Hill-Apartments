@@ -103,7 +103,7 @@ export default function Home() {
                 whileInView={{ y: 0, opacity: 1 }}
                 viewport={{ once: true }}
                 transition={{ duration: 1, ease: "easeInOut" }}
-                className="text-4xl lg:text-5xl font-sans font-[600]"
+                className="text-4xl lg:text-5xl font-sans font-[600] "
               >
                 Your <span className="text-secondary">Property.</span> Our
                 Priority.
@@ -185,12 +185,12 @@ export default function Home() {
             ipsum eum aliquid ad veniam dicta cum dolor natus aperiam, assumenda
             molestias voluptate! Impedit!
           </p>
-          <div className="grid all:grid-cols-2 md:grid-cols-4 place-content-center items-center w-full my-[20px]">
+          <div className="grid grid-cols-4 place-content-center items-center w-full my-[20px] max-sm:gap-[70px] ">
             {achievementsList.map((achievement, index) => {
               return (
                 <div
                   key={index}
-                  className="w-full flex flex-col items-center justify-center mx-4 my-4 sm:my-0"
+                  className="w-full flex flex-col items-center justify-center mx-1 my-4 "
                 >
                   <h2 className="text-3xl text-primary font-bold flex items-center">
                     {achievement.prefix}
@@ -294,7 +294,7 @@ export default function Home() {
 
       {/* Services */}
       <section
-        className="w-full flex justify-between items-center p-8 px-[70px] gap-[50px] all:flex-col lg:flex-row-reverse scale-[0.9]
+        className="w-full flex justify-between items-center p-8 px-[70px] gap-[50px] all:flex-col lg:flex-row-reverse scale-[0.9] max-sm:px-[30px]
       "
       >
         <div className="relative lg:w-1/2 h-full overflow-hidden rounded-b-[20px] all:w-full ">
@@ -323,7 +323,7 @@ export default function Home() {
               unparalleled ROI. With Mshel Homes, it&apos;s more than a home
               it&apos;s a lifetime investment.
             </p>
-            <div className="grid grid-cols-2 items-center place-content-center space-y-[10px]">
+            <div className="grid all:grid-cols-1 md:grid-cols-2 items-center place-content-center space-y-[10px] ">
               {services.map((id, item) => (
                 <div
                   key={item}
@@ -361,17 +361,17 @@ export default function Home() {
           <p className="uppercase text-[10px] text-neutral-100 text-secondary font-bold">
             Top Features
           </p>
-          <div className="text-4xl font-sans text-primary font-bold">
+          <div className="text-4xl font-sans text-primary font-bold max-sm:text-3xl">
             Recommended For You
           </div>
         </motion.div>
-        <div className="absolute top-1/2 left-10 z-50">
-          <button className="button-prev text-accent text-5xl">
+        <div className="absolute top-1/2 left-10 z-50 max-sm:left-0">
+          <button className="button-prev text-foreground text-5xl">
             <TbSquareRoundedArrowLeftFilled />
           </button>
         </div>
-        <div className="absolute top-1/2 right-15 z-50">
-          <button className="button-next text-5xl text-accent">
+        <div className="absolute top-1/2 right-15 z-50 max-sm:right-5">
+          <button className="button-next text-5xl text-foreground">
             <TbSquareRoundedArrowRightFilled />
           </button>
         </div>
@@ -427,7 +427,7 @@ export default function Home() {
                     ease: "easeInOut",
                     delay: 0.05 * item,
                   }}
-                  className="w-[300px] rounded-[10px] overflow-hidden mt-8"
+                  className="w-[300px] rounded-[10px] overflow-hidden mt-8 ml-[6px]"
                 >
                   {/* Image */}
                   <div className="h-[250px] w-full overflow-hidden rounded-b-[10px]">
@@ -463,7 +463,7 @@ export default function Home() {
                               <TbRulerMeasure2 /> <p>{id.mesuare}</p>
                             </h1>
                           </div>
-                          <div className="text-background bg-accent rounded-[5px] p-2">
+                          <div className="text-background bg-foreground rounded-[5px] p-2">
                             <BiSolidRightArrow />
                           </div>
                         </div>
@@ -478,19 +478,19 @@ export default function Home() {
       </section>
 
       {/* Banner */}
-      <section className="w-full flex gap-[20px] bg-secondary py-12 items-center justify-around px-[70px] my-12 all:flex-col md:flex-row">
+      <section className="w-full flex gap-[20px] bg-[#f9f0e0] py-12 items-center justify-around px-[70px] my-12 all:flex-col md:flex-row">
         <div className="w-full items-center text-4xl font-sans font-black text-foreground">
           <h1>
             Take A Look <br />
             At The Numbers
           </h1>
         </div>
-        <div className="flex items-center w-full">
+        <div className="grid grid-cols-4 place-content-center items-center w-full my-[20px] max-sm:gap-[50px] ">
           {achievementsList2.map((achievement, index) => {
             return (
               <div
                 key={index}
-                className="w-full flex flex-col items-center justify-center mx-4 my-4 sm:my-0"
+                className="w-full flex flex-col items-center justify-center mx-1 my-4 "
               >
                 <h2 className="text-3xl text-primary font-bold flex items-center">
                   {achievement.prefix}
@@ -582,7 +582,7 @@ export default function Home() {
       </section>
 
       {/* Testimonials */}
-      <section className="bg-accent w-full py-[40px]  relative">
+      <section className="bg-foreground w-full py-[40px]  relative">
         <motion.div
           initial={{ y: 20, opacity: 0 }}
           whileInView={{ y: 0, opacity: 1 }}
@@ -649,7 +649,7 @@ export default function Home() {
                     ease: "easeInOut",
                     delay: 0.05 * item,
                   }}
-                  className="w-[300px] h-[250px] rounded-[10px]  mt-8 bg-accent2 p-3 relative"
+                  className="w-[300px] h-[250px] rounded-[10px]  ml-5 mt-[50px] bg-accent2 p-3 relative"
                 >
                   <div className="w-full flex  h-full items-center justify-center text-sm text-foreground text-center flex-col ">
                     <div>
@@ -664,7 +664,7 @@ export default function Home() {
                       <h1 className="font-[600]">Ejimonye Silas</h1>
                       <p>Worker</p>
                     </div>
-                    <div className="absolute w-[80px] h-[80px] rounded-full border-[5px] border-accent -top-[5vh] overflow-hidden right-[37%]">
+                    <div className="absolute w-[80px] h-[80px] rounded-full border-[5px] border-foreground -top-[5vh] overflow-hidden right-[37%]">
                       <Image
                         src={img2}
                         alt="/"
@@ -680,7 +680,7 @@ export default function Home() {
       </section>
 
       {/* FAQ */}
-      <section className="w-full py-[20px] relative px-[70px]">
+      <section className="w-full py-[20px] relative px-[70px] max-sm:px-[30px]">
         <motion.div
           initial={{ y: 20, opacity: 0 }}
           whileInView={{ y: 0, opacity: 1 }}
@@ -691,11 +691,11 @@ export default function Home() {
           }}
           className="w-full text-center pb-6"
         >
-          <div className="text-2xl font-sans pt-6 font-bold">
+          <div className="text-2xl font-sans pt-6 font-bold  max-sm:text-xl text-nowrap">
             Frequently Asked{" "}
             <span className="bg-secondary p-2">Questions?</span>
           </div>
-          <p className="pt-1 ">
+          <p className="pt-1 max-sm:text-sm">
             Lorem ipsum dolor sit amet consectetur adipisicing elit. Qui quas ea
             beatae dolorem ratione neque
           </p>
@@ -750,7 +750,7 @@ export default function Home() {
       </section>
 
       {/* Blog */}
-      <section className="w-full px-6 py-12 px-[70px]">
+      <section className="w-full px-6 py-12 px-[70px] max-sm:px-[30px]">
         <motion.div
           initial={{ y: 20, opacity: 0 }}
           whileInView={{ y: 0, opacity: 1 }}
@@ -800,7 +800,7 @@ export default function Home() {
           </div>
 
           {/* Sidebar */}
-          <div className="space-y-6 border-l pl-6">
+          <div className="space-y-6 md:border-l scale-[0.9] max-sm:grid max-sm:grid-cols-2 gap-[50px] max-sm:border-t pl-4 max-sm:pt-4">
             {sidebarPosts.map((post) => (
               <div
                 key={post.id}
@@ -836,7 +836,7 @@ export default function Home() {
           viewport={{ once: true }}
           className="lg:flex flex-col "
         >
-          <div className="flex items-center justify-between border-b-[1px] mb-2 pb-2">
+          <div className="flex items-start justify-between border-b-[1px] mb-2 pb-2 all:flex-col gap-[10px] lg:flex-row ">
             <h1 className="text-2xl">HillsApartment</h1>
             <div className="flex gap-3">
               {Btns.map((i, item) => (
@@ -867,7 +867,7 @@ export default function Home() {
               </div>
             </div>
 
-            <div className="grid grid-row-4 lg:grid-cols-3 gap-4 md:gap-12 lg:px-12 all:space-y-[0px] md:space-y-[100px]">
+            <div className="grid grid-row-4 lg:grid-cols-3 md:grid-cols-2 gap-4 md:gap-12 lg:px-12 all:space-y-[0px] md:space-y-[100px] md:pl-8">
               {footerLinks.map((footer, id) => (
                 <div key={id}>
                   {/* Section Header */}
@@ -914,7 +914,7 @@ export default function Home() {
           </div>
         </motion.div>
 
-        <div className="text-[12px] cursor-default w-full border-t-[1px] border-white p-4 flex justify-between max-sm:text-[10px] max-sm:gap-4">
+        <div className="text-[12px] cursor-default w-full border-t-[1px] border-white p-4 flex justify-between max-sm:text-[10px] max-sm:gap-4 max-sm:flex-col-reverse items-center">
           <p>@ CopyRight. All rights reserved</p>
           <div>
             HillsAprtment 15 E I Gomos Road, Shandam close, Abacha road,

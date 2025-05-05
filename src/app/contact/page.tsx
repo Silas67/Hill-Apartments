@@ -194,7 +194,7 @@ const Contact = () => {
           viewport={{ once: true }}
           className="lg:flex flex-col "
         >
-          <div className="flex items-center justify-between border-b-[1px] mb-2 pb-2">
+          <div className="flex items-start justify-between border-b-[1px] mb-2 pb-2 all:flex-col gap-[10px] lg:flex-row ">
             <h1 className="text-2xl">HillsApartment</h1>
             <div className="flex gap-3">
               {Btns.map((i, item) => (
@@ -225,7 +225,7 @@ const Contact = () => {
               </div>
             </div>
 
-            <div className="grid grid-row-4 lg:grid-cols-3 gap-4 md:gap-12 lg:px-12 all:space-y-[0px] md:space-y-[100px]">
+            <div className="grid grid-row-4 lg:grid-cols-3 md:grid-cols-2 gap-4 md:gap-12 lg:px-12 all:space-y-[0px] md:space-y-[100px] md:pl-8">
               {footerLinks.map((footer, id) => (
                 <div key={id}>
                   {/* Section Header */}
@@ -272,7 +272,7 @@ const Contact = () => {
           </div>
         </motion.div>
 
-        <div className="text-[12px] cursor-default w-full border-t-[1px] border-white p-4 flex justify-between max-sm:text-[10px] max-sm:gap-4">
+        <div className="text-[12px] cursor-default w-full border-t-[1px] border-white p-4 flex justify-between max-sm:text-[10px] max-sm:gap-4 max-sm:flex-col-reverse items-center">
           <p>@ CopyRight. All rights reserved</p>
           <div>
             HillsAprtment 15 E I Gomos Road, Shandam close, Abacha road,

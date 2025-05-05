@@ -48,7 +48,7 @@ const Properties = () => {
       </section>
 
       {/* Property Listing */}
-      <section className="grid grid-cols-3 place-content-start items-start all:grid-cols-1 col-">
+      <section className="grid lg:grid-cols-3 place-content-start items-start all:grid-cols-1 col-">
         <div className="grid grid-cols-1 place-content-center items-center px-[10px] lg:border-r-2 border-[#676767] my-6 lg:h-[80%] max-sm:shadow">
           <div className="w-full flex items-center justify-center flex-col space-y-[30px]">
             <h1 className="text-2xl font-sans font-bold">Filters</h1>
@@ -147,7 +147,7 @@ const Properties = () => {
                           <TbRulerMeasure2 /> <p>{id.mesuare}</p>
                         </h1>
                       </div>
-                      <div className="text-background bg-accent rounded-[5px] p-2">
+                      <div className="text-background bg-foreground rounded-[5px] p-2">
                         <BiSolidRightArrow />
                       </div>
                     </div>
@@ -168,7 +168,7 @@ const Properties = () => {
           viewport={{ once: true }}
           className="lg:flex flex-col "
         >
-          <div className="flex items-center justify-between border-b-[1px] mb-2 pb-2">
+          <div className="flex items-start justify-between border-b-[1px] mb-2 pb-2 all:flex-col gap-[10px] lg:flex-row ">
             <h1 className="text-2xl">HillsApartment</h1>
             <div className="flex gap-3">
               {Btns.map((i, item) => (
@@ -199,7 +199,7 @@ const Properties = () => {
               </div>
             </div>
 
-            <div className="grid grid-row-4 lg:grid-cols-3 gap-4 md:gap-12 lg:px-12 all:space-y-[0px] md:space-y-[100px]">
+            <div className="grid grid-row-4 lg:grid-cols-3 md:grid-cols-2 gap-4 md:gap-12 lg:px-12 all:space-y-[0px] md:space-y-[100px] md:pl-8">
               {footerLinks.map((footer, id) => (
                 <div key={id}>
                   {/* Section Header */}
@@ -246,7 +246,7 @@ const Properties = () => {
           </div>
         </motion.div>
 
-        <div className="text-[12px] cursor-default w-full border-t-[1px] border-white p-4 flex justify-between max-sm:text-[10px] max-sm:gap-4">
+        <div className="text-[12px] cursor-default w-full border-t-[1px] border-white p-4 flex justify-between max-sm:text-[10px] max-sm:gap-4 max-sm:flex-col-reverse items-center">
           <p>@ CopyRight. All rights reserved</p>
           <div>
             HillsAprtment 15 E I Gomos Road, Shandam close, Abacha road,
