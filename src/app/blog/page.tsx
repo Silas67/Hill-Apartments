@@ -53,7 +53,7 @@ const Blog = () => {
           {blogs.map((id, item) => (
             <div
               key={item}
-              className="w-[300px] rounded-[10px] overflow-hidden grid grid-cols-subgrid mb-6 lg:scale-[0.9]"
+              className="w-[300px] rounded-[10px] overflow-hidden grid grid-cols-subgrid mb-6 lg:scale-[0.9] "
             >
               {/* Image */}
               <div className="h-[250px] w-full overflow-hidden rounded-b-[10px]">

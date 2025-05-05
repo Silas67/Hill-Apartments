@@ -32,7 +32,7 @@ const Properties = () => {
           backgroundSize: "contain",
           backgroundPosition: "bottom",
         }}
-        className="w-full h-[50vh] text-center place-content-center relative max-sm:h-[30vh]"
+        className="w-full lg:h-[50vh] text-center place-content-center relative all:h-[30vh]"
       >
         <div className="relative z-30">
           {" "}
@@ -48,7 +48,7 @@ const Properties = () => {
       </section>
 
       {/* Property Listing */}
-      <section className="grid grid-cols-3 place-content-start items-start max-sm:grid-cols-1 col-">
+      <section className="grid grid-cols-3 place-content-start items-start all:grid-cols-1 col-">
         <div className="grid grid-cols-1 place-content-center items-center px-[10px] lg:border-r-2 border-[#676767] my-6 lg:h-[80%] max-sm:shadow">
           <div className="w-full flex items-center justify-center flex-col space-y-[30px]">
             <h1 className="text-2xl font-sans font-bold">Filters</h1>
@@ -108,7 +108,7 @@ const Properties = () => {
             </div>
           </div>
         </div>
-        <div className="col-span-2 grid grid-cols-3 px-[50px] lg:px-[10px] max-sm:grid-cols-1 place-content-center items-center max-sm:py-12">
+        <div className="col-span-2 grid lg:grid-cols-3 md:grid-cols-2 px-[50px] lg:px-[10px] max-sm:grid-cols-1 place-content-center items-center max-sm:py-12">
           {Recommended.map((id, item) => (
             <div
               key={item}
