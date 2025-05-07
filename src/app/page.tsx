@@ -496,14 +496,14 @@ export default function Home() {
             At The Numbers
           </h1>
         </div>
-        <div className="flex items-center justify-center w-full my-[20px] ">
+        <div className="grid md:grid-cols-4 max-sm:grid-cols-2 place-content-center items-center w-full my-[20px]  gap-x-[50px]">
           {achievementsList2.map((achievement, index) => {
             return (
               <div
                 key={index}
-                className="w-full flex flex-col items-center justify-center mx-1 my-4 px-2"
+                className="w-full flex flex-col items-center justify-center my-4 gap-1"
               >
-                <h2 className="text-3xl text-primary font-bold flex items-center">
+                <h2 className="text-3xl text-primary font-bold flex items-center gap-1">
                   {achievement.prefix}
                   <AnimatedNumbers
                     includeComma
@@ -567,20 +567,16 @@ export default function Home() {
           <div className="pt-2 pl-4">
             <ul className="list-disc text-sm">
               <li>
-                <span className="font-bold">Expert Knowledge</span> – We stay on
-                top of market trends to give you an edge.
+                <span className="font-bold">Expert Knowledge</span>
               </li>
               <li>
-                <span className="font-bold">Transparent Communication</span> –
-                Clear, honest updates every step of the way.
+                <span className="font-bold">Transparent Communication</span>
               </li>
               <li>
-                <span className="font-bold">Tailored Solutions</span> – Your
-                goals are our blueprint for action.
+                <span className="font-bold">Tailored Solutions</span>
               </li>
               <li>
-                <span className="font-bold"> Client-First Approach</span> – Your
-                satisfaction is our success.
+                <span className="font-bold"> Client-First Approach</span>
               </li>
             </ul>
           </div>

@@ -53,7 +53,7 @@ const Header = ({ color }: { color: boolean }) => {
   return (
     <div
       className={`fixed top-0 left-0 px-8 w-full h-[10vh] flex items-center justify-center z-50 transition-all duration-300
-      max-sm:pl-0 max-sm:pr-8
+      max-sm:pl-6 max-sm:pr-8 max-sm:py-4
       ${
         isScrolled || color
           ? "bg-white text-black shadow-lg"
