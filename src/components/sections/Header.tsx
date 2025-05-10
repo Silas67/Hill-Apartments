@@ -77,7 +77,7 @@ const Header = ({ color }: { color: boolean }) => {
               >
                 <Link
                   href={link.href}
-                  className={`flex flex-col relative hover:scale-[1.1] ${
+                  className={`flex flex-col relative hover:scale-[1.15] scale-[1] transition-all duration-500 ${
                     active
                       ? "underline underline-offset-4 text-[14px] text-secondary"
                       : "text-inherit"
