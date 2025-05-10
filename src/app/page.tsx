@@ -36,7 +36,7 @@ import {
 } from "react-icons/tb";
 import { BiSolidRightArrow } from "react-icons/bi";
 import "swiper/css/navigation";
-
+import Copy from "@/hooks/Copy";
 import { CiLocationOn } from "react-icons/ci";
 import { useState } from "react";
 import { IoIosArrowDown, IoIosArrowUp } from "react-icons/io";
@@ -174,17 +174,23 @@ export default function Home() {
           <h1 className="uppercase text-[10px] text-secondary font-bold">
             About
           </h1>
-          <h1 className="font-sans text-4xl text-primary font-bold">
-            Our Story
-          </h1>
-          <p className="font-mono text-sm text-foreground">
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nesciunt
-            doloremque, magnam possimus omnis, repellendus dolore ducimus velit
-            similique alias natus quis vitae nobis, ipsum aliquam aspernatur et
-            fugit excepturi quod debitis illum nulla. Impedit maxime illum,
-            ipsum eum aliquid ad veniam dicta cum dolor natus aperiam, assumenda
-            molestias voluptate! Impedit!
-          </p>
+          <Copy>
+            {" "}
+            <h1 className="font-sans text-4xl text-primary font-bold">
+              Our Story
+            </h1>
+          </Copy>
+
+          <Copy>
+            <p className="font-mono text-sm text-foreground">
+              Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nesciunt
+              doloremque, magnam possimus omnis, repellendus dolore ducimus
+              velit similique alias natus quis vitae nobis, ipsum aliquam
+              aspernatur et fugit excepturi quod debitis illum nulla. Impedit
+              maxime illum, ipsum eum aliquid ad veniam dicta cum dolor natus
+              aperiam, assumenda molestias voluptate! Impedit!
+            </p>
+          </Copy>
 
           <div className="grid md:grid-cols-4 max-sm:grid-cols-2 place-content-center items-center w-full my-[20px]  ">
             {achievementsList2.map((achievement, index) => {
@@ -312,18 +318,24 @@ export default function Home() {
           <h1 className="uppercase text-[10px] text-secondary font-bold">
             Services
           </h1>
-          <h1 className="font-sans text-4xl text-primary font-bold">
-            What We Offer
-          </h1>
+          <Copy>
+            <h1 className="font-sans text-4xl text-primary font-bold">
+              What We Offer
+            </h1>
+          </Copy>
+
           <div>
-            <p className="font-mono text-sm  text-foreground">
-              Step into a world where your needs shape our services. Offering
-              bespoke consultations, innovative design & automation, meticulous
-              construction, and strategic project management, we make your
-              journey seamless. Plus, unlock smart investment avenues for
-              unparalleled ROI. With Mshel Homes, it&apos;s more than a home
-              it&apos;s a lifetime investment.
-            </p>
+            <Copy>
+              <p className="font-mono text-sm  text-foreground">
+                Step into a world where your needs shape our services. Offering
+                bespoke consultations, innovative design & automation,
+                meticulous construction, and strategic project management, we
+                make your journey seamless. Plus, unlock smart investment
+                avenues for unparalleled ROI. With Mshel Homes, it&apos;s more
+                than a home it&apos;s a lifetime investment.
+              </p>
+            </Copy>
+
             <div className="flex items-center justify-center flex-wrap ">
               {services.map((id, item) => (
                 <div
@@ -333,16 +345,29 @@ export default function Home() {
                   <div className="text-secondary p-2 w-[35px] rounded-[5px] text-xl">
                     <GiStarsStack />
                   </div>
-                  <div className="text-primary py-2 text-xl font-sans font-bold">
+                  <motion.div
+                    initial={{ y: 20, opacity: 0 }}
+                    whileInView={{ y: 0, opacity: 1 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 1, ease: "easeInOut" }}
+                    className="text-primary py-2 text-xl font-sans font-bold"
+                  >
                     {id.Heading}
-                  </div>
-                  <p className="text-[12px] line-clamp-4 font-mono">
+                  </motion.div>
+                  <motion.p
+                    initial={{ y: 20, opacity: 0 }}
+                    whileInView={{ y: 0, opacity: 1 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 1, ease: "easeInOut" }}
+                    className="text-[12px] line-clamp-4 font-mono"
+                  >
                     {id.text}
-                  </p>
+                  </motion.p>
                   <div className="w-full h-full absolute inset-0 bg-gradient-to-t from-[#a3a3a3] to-transparent opacity-10"></div>
                 </div>
               ))}
             </div>
+
             <div className="w-full flex items-center justify-center">
               {" "}
               <button className="bg-secondary w-fit p-[8px] rounded-lg flex gap-1 justify-center items-center hover:bg-primary hover:text-white transition-colors duration-300 my-4">
@@ -491,10 +516,12 @@ export default function Home() {
       {/* Banner */}
       <section className="w-full flex gap-[20px] bg-[#fdf0d8] py-12 items-center justify-around px-[70px] my-12 all:flex-col md:flex-row">
         <div className="w-full  text-4xl font-sans font-black text-foreground max-sm:text-center">
-          <h1>
-            Take A Look <br />
-            At The Numbers
-          </h1>
+          <Copy>
+            <h1>
+              Take A Look <br />
+              At The Numbers
+            </h1>
+          </Copy>
         </div>
         <div className="grid md:grid-cols-4 max-sm:grid-cols-2 place-content-center items-center w-full my-[20px]  gap-x-[50px]">
           {achievementsList2.map((achievement, index) => {
@@ -553,31 +580,46 @@ export default function Home() {
           }}
           className="grid lg:w-1/2 gap-[10px] all:w-full py-4 "
         >
-          <h1 className="font-sans text-4xl text-primary font-bold md:w-[80%] all:w-full">
-            Why You Should Work With Us
-          </h1>
-          <p className="font-mono text-[12px]  text-foreground md:w-[80%] all:w-full">
-            Choosing the right real estate partner can make all the difference.
-            At HillsApartment, we combine industry expertise with a commitment
-            to client satisfaction, guiding you through every step of the
-            buying, selling, or investing journey. Whether you&apos;re a
-            first-time buyer or a seasoned investor, we’re here to make your
-            experience smooth, informed, and rewarding.
-          </p>
+          <Copy>
+            {" "}
+            <h1 className="font-sans text-4xl text-primary font-bold md:w-[80%] all:w-full">
+              Why You Should Work With Us
+            </h1>
+          </Copy>
+
+          <Copy>
+            <p className="font-mono text-[12px]  text-foreground md:w-[80%] all:w-full">
+              Choosing the right real estate partner can make all the
+              difference. At HillsApartment, we combine industry expertise with
+              a commitment to client satisfaction, guiding you through every
+              step of the buying, selling, or investing journey. Whether
+              you&apos;re a first-time buyer or a seasoned investor, we’re here
+              to make your experience smooth, informed, and rewarding.
+            </p>
+          </Copy>
+
           <div className="pt-2 pl-4">
             <ul className="list-disc text-sm">
-              <li>
-                <span className="font-bold">Expert Knowledge</span>
-              </li>
-              <li>
-                <span className="font-bold">Transparent Communication</span>
-              </li>
-              <li>
-                <span className="font-bold">Tailored Solutions</span>
-              </li>
-              <li>
-                <span className="font-bold"> Client-First Approach</span>
-              </li>
+              <Copy>
+                <li>
+                  <span className="font-bold">Expert Knowledge</span>
+                </li>
+              </Copy>
+              <Copy>
+                <li>
+                  <span className="font-bold">Transparent Communication</span>
+                </li>
+              </Copy>
+              <Copy>
+                <li>
+                  <span className="font-bold">Tailored Solutions</span>
+                </li>
+              </Copy>
+              <Copy>
+                <li>
+                  <span className="font-bold"> Client-First Approach</span>
+                </li>
+              </Copy>
             </ul>
           </div>
           <div className="w-[80%] text-center flex items-center justify-start my-2 max-sm:w-full max-sm:justify-center">
@@ -590,23 +632,19 @@ export default function Home() {
 
       {/* Testimonials */}
       <section className="bg-foreground w-full py-[40px]  relative">
-        <motion.div
-          initial={{ y: 20, opacity: 0 }}
-          whileInView={{ y: 0, opacity: 1 }}
-          viewport={{ once: true }}
-          transition={{
-            duration: 1,
-            ease: "easeInOut",
-          }}
-          className="w-full text-center text-white"
-        >
-          <div className="text-[10px] font-sans text-secondary font-bold pb-1">
-            What our customers say
-          </div>
-          <div className="text-4xl font-sans text-background pb-6 font-bold">
-            Testimonials
-          </div>
-        </motion.div>
+        <div className="w-full text-center text-white">
+          <Copy>
+            <div className="text-[10px] font-sans text-secondary font-bold pb-1">
+              What our customers say
+            </div>
+          </Copy>
+
+          <Copy>
+            <div className="text-4xl font-sans text-background pb-6 font-bold">
+              Testimonials
+            </div>
+          </Copy>
+        </div>
 
         <Swiper
           breakpoints={{
@@ -691,25 +729,20 @@ export default function Home() {
 
       {/* FAQ */}
       <section className="w-full py-[20px] relative px-[70px] max-sm:px-[30px]">
-        <motion.div
-          initial={{ y: 20, opacity: 0 }}
-          whileInView={{ y: 0, opacity: 1 }}
-          viewport={{ once: true }}
-          transition={{
-            duration: 1,
-            ease: "easeInOut",
-          }}
-          className="w-full text-center pb-6"
-        >
-          <div className="text-2xl font-sans pt-6 font-bold  max-sm:text-xl text-nowrap">
-            Frequently Asked{" "}
-            <span className="bg-secondary p-2">Questions?</span>
-          </div>
-          <p className="pt-1 max-sm:text-sm">
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Qui quas ea
-            beatae dolorem ratione neque
-          </p>
-        </motion.div>
+        <div className="w-full text-center pb-6">
+          <Copy>
+            <div className="text-2xl font-sans pt-6 font-bold  max-sm:text-xl text-nowrap">
+              Frequently Asked{" "}
+              <span className="bg-secondary p-2">Questions?</span>
+            </div>
+          </Copy>
+          <Copy>
+            <p className="pt-1 max-sm:text-sm">
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. Qui quas
+              ea beatae dolorem ratione neque
+            </p>
+          </Copy>
+        </div>
         <div className="grid grid-cols-1 md:grid-cols-3 my-12 gap-8">
           {FaQs.map((item, id) => (
             <motion.div

@@ -25,6 +25,8 @@ import "swiper/css/navigation";
 import { Autoplay, Pagination, Navigation } from "swiper/modules";
 import Breadcrumbs from "@/components/sections/Breadcrumbs";
 import img5 from "@/components/assets/Images/Logo.png";
+import img6 from "@/components/assets/Images/hero.jpg";
+import Copy from "@/hooks/Copy";
 
 const overlayVariants = {
   initial: { y: "100%" },
@@ -47,14 +49,7 @@ const About = () => {
       <Header color={false} />
 
       {/* Hero */}
-      <section
-        style={{
-          backgroundImage: "url('/Images/Hero.jpg')",
-          backgroundSize: "contain",
-          backgroundPosition: "top right",
-        }}
-        className="w-full lg:h-[50vh] text-center place-content-center relative all:h-[30vh] "
-      >
+      <section className="w-full lg:h-[50vh] text-center place-content-center relative all:h-[30vh] ">
         <div className="relative z-30">
           {" "}
           <div className="w-full flex items-center justify-center pb-2">
@@ -63,49 +58,57 @@ const About = () => {
           <h1 className="font-sans text-4xl text-white font-bold ">About Us</h1>
         </div>
 
-        <div className="overlay opacity-80 bg-primary"></div>
+        <div className="absolute inset-0">
+          <div className="h-full w-full">
+            <Image src={img6} alt="" className="object-cover w-full h-full" />
+          </div>
+        </div>
+
+        <div className="absolute bg-foreground opacity-45 inset-0 w-full h-full"></div>
       </section>
 
       {/* Who We Are */}
-      <motion.section
-        initial={{ y: 20, opacity: 0 }}
-        whileInView={{ y: 0, opacity: 1 }}
-        viewport={{ once: true }}
-        transition={{
-          duration: 1,
-          ease: "easeInOut",
-        }}
-        className="w-full bg-accent2 flex justify-between items-start p-8 px-[70px] gap-[50px] all:flex-col lg:flex-row max-sm:px-[30px]
-      "
-      >
+      <section className="w-full bg-accent2 flex justify-between items-start p-8 px-[70px] gap-[50px] all:flex-col lg:flex-row max-sm:px-[30px]">
         <div className="relative lg:w-1/2 h-full overflow-hidden  rounded-[10px] all:w-full">
           <Image src={img2} alt="/" className="object-cover w-full h-full" />
           <div className="absolute w-full h-full inset-[0] bg-foreground opacity-30"></div>
         </div>
 
         <div className="grid lg:w-1/2 gap-[5px] all:w-full pt-6">
-          <h1 className="uppercase text-[10px] text-secondary font-bold">
-            Our Story
-          </h1>
-          <h1 className="font-sans text-4xl text-primary font-bold">
-            Who We Are
-          </h1>
-          <p className="font-mono text-[12px]  text-foreground">
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nesciunt
-            doloremque, magnam possimus omnis, repellendus dolore ducimus velit
-            similique alias natus quis vitae nobis, ipsum aliquam aspernatur et
-            fugit excepturi quod debitis illum nulla. Impedit maxime illum,
-            ipsum eum aliquid ad veniam dicta cum dolor natus aperiam, assumenda
-            molestias voluptate! Impedit!
-          </p>
-          <p className="font-mono text-[12px] text-foreground">
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nesciunt
-            doloremque, magnam possimus omnis, repellendus dolore ducimus velit
-            similique alias natus quis vitae nobis, ipsum aliquam aspernatur et
-            fugit excepturi quod debitis illum nulla. Impedit maxime illum,
-            ipsum eum aliquid ad veniam dicta cum dolor natus aperiam, assumenda
-            molestias voluptate! Impedit!
-          </p>
+          <Copy>
+            <h1 className="uppercase text-[10px] text-secondary font-bold">
+              Our Story
+            </h1>
+          </Copy>
+
+          <Copy>
+            <h1 className="font-sans text-4xl text-primary font-bold">
+              Who We Are
+            </h1>
+          </Copy>
+
+          <Copy>
+            <p className="font-mono text-[12px]  text-foreground">
+              Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nesciunt
+              doloremque, magnam possimus omnis, repellendus dolore ducimus
+              velit similique alias natus quis vitae nobis, ipsum aliquam
+              aspernatur et fugit excepturi quod debitis illum nulla. Impedit
+              maxime illum, ipsum eum aliquid ad veniam dicta cum dolor natus
+              aperiam, assumenda molestias voluptate! Impedit!
+            </p>
+          </Copy>
+
+          <Copy>
+            <p className="font-mono text-[12px] text-foreground">
+              Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nesciunt
+              doloremque, magnam possimus omnis, repellendus dolore ducimus
+              velit similique alias natus quis vitae nobis, ipsum aliquam
+              aspernatur et fugit excepturi quod debitis illum nulla. Impedit
+              maxime illum, ipsum eum aliquid ad veniam dicta cum dolor natus
+              aperiam, assumenda molestias voluptate! Impedit!
+            </p>
+          </Copy>
+
           <div className="grid md:grid-cols-4 max-sm:grid-cols-2 place-content-center items-center w-full my-[20px] ">
             {achievementsList.map((achievement, index) => {
               return (
@@ -132,7 +135,7 @@ const About = () => {
             })}
           </div>
         </div>
-      </motion.section>
+      </section>
 
       {/* Mission and Vision */}
       <section className="w-full">
@@ -252,20 +255,19 @@ const About = () => {
 
       {/* Testimonials */}
       <section className="bg-foreground w-full py-[40px]  relative">
-        <motion.div
-          initial={{ y: 20, opacity: 0 }}
-          whileInView={{ y: 0, opacity: 1 }}
-          viewport={{ once: true }}
-          transition={{
-            duration: 1,
-            ease: "easeInOut",
-          }}
-          className="w-full text-center text-white"
-        >
-          <div className="text-4xl font-sans text-background pb-6 font-bold">
-            Testimonials
-          </div>
-        </motion.div>
+        <div className="w-full text-center text-white">
+          <Copy>
+            <div className="text-[10px] font-sans text-secondary font-bold pb-1">
+              What our customers say
+            </div>
+          </Copy>
+
+          <Copy>
+            <div className="text-4xl font-sans text-background pb-6 font-bold">
+              Testimonials
+            </div>
+          </Copy>
+        </div>
 
         <Swiper
           breakpoints={{
@@ -306,7 +308,7 @@ const About = () => {
           loop={true}
           className="w-[80%]"
         >
-          <div className="flex items-center justify-center gap-[20px] py-12 px-8 ">
+          <div className="w-full flex items-center justify-center gap-[20px] py-12 px-5 ">
             {Recommended.map((id, item) => (
               <SwiperSlide key={item}>
                 <motion.div
@@ -318,9 +320,9 @@ const About = () => {
                     ease: "easeInOut",
                     delay: 0.05 * item,
                   }}
-                  className="w-[300px] h-[250px] rounded-[10px]  mt-[50px] bg-accent2 p-3 relative"
+                  className="w-[300px] h-[250px] rounded-[10px] ml-[5px] mt-[50px] bg-accent2 p-3 relative"
                 >
-                  <div className="w-full flex  h-full items-center justify-center text-sm text-foreground text-center flex-col ">
+                  <div className="w-full h-full flex items-center justify-center text-sm text-foreground text-center flex-col ">
                     <div>
                       <BsQuote />
                     </div>
@@ -350,25 +352,20 @@ const About = () => {
 
       {/* FAQ */}
       <section className="w-full py-[20px] relative px-[70px] max-sm:px-[30px]">
-        <motion.div
-          initial={{ y: 20, opacity: 0 }}
-          whileInView={{ y: 0, opacity: 1 }}
-          viewport={{ once: true }}
-          transition={{
-            duration: 1,
-            ease: "easeInOut",
-          }}
-          className="w-full text-center pb-6"
-        >
-          <div className="text-[30px] font-sans pt-6 font-bold">
-            Frequently Asked{" "}
-            <span className="bg-secondary p-2 my-2">Questions?</span>
-          </div>
-          <p className="pt-1 max-sm:pt-4 ">
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Qui quas ea
-            beatae dolorem ratione neque
-          </p>
-        </motion.div>
+        <div className="w-full text-center pb-6">
+          <Copy>
+            <div className="text-2xl font-sans pt-6 font-bold  max-sm:text-xl text-nowrap">
+              Frequently Asked{" "}
+              <span className="bg-secondary p-2">Questions?</span>
+            </div>
+          </Copy>
+          <Copy>
+            <p className="pt-1 max-sm:text-sm">
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. Qui quas
+              ea beatae dolorem ratione neque
+            </p>
+          </Copy>
+        </div>
         <div className="grid grid-cols-1 md:grid-cols-3 my-12 gap-8">
           {FaQs.map((item, id) => (
             <motion.div
@@ -385,7 +382,7 @@ const About = () => {
             >
               <button
                 onClick={() => toggleSection(id)}
-                className="flex justify-between w-full text-left font-sans font-bold text-sm "
+                className="flex justify-between w-full text-left font-sans font-bold text-[12px] "
               >
                 {item.Question}
                 {openSection === id ? (

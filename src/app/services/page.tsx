@@ -10,7 +10,10 @@ import useLenis from "@/hooks/useLenis";
 import Breadcrumbs from "@/components/sections/Breadcrumbs";
 import Image from "next/image";
 import img1 from "@/components/assets/Images/img5.jpg";
+import img6 from "@/components/assets/Images/hero.jpg";
 import { BiRightArrowAlt } from "react-icons/bi";
+import Copy from "@/hooks/Copy";
+// import Copy from "@/hooks/Copy";
 
 const Services = () => {
   useLenis();
@@ -23,14 +26,7 @@ const Services = () => {
     <main className="lg:w-full sm:w-[100vw] overflow-hidden relative ">
       <Header color={false} />
       {/* Hero */}
-      <section
-        style={{
-          backgroundImage: "url('/Images/Hero.jpg')",
-          backgroundSize: "contain",
-          backgroundPosition: "left",
-        }}
-        className="w-full h-[50vh] text-center place-content-center relative all:h-[30vh]"
-      >
+      <section className="w-full lg:h-[50vh] text-center place-content-center relative all:h-[30vh]">
         <div className="relative z-30">
           {" "}
           <div className="w-full flex items-center justify-center pb-2">
@@ -39,7 +35,13 @@ const Services = () => {
           <h1 className="font-sans text-4xl text-white font-bold ">Services</h1>
         </div>
 
-        <div className="overlay opacity-80 bg-primary"></div>
+        <div className="absolute inset-0">
+          <div className="h-full w-full">
+            <Image src={img6} alt="" className="object-cover w-full h-full" />
+          </div>
+        </div>
+
+        <div className="absolute bg-foreground opacity-45 inset-0 w-full h-full"></div>
       </section>
 
       {/* What we offer */}
@@ -48,13 +50,20 @@ const Services = () => {
       "
       >
         <div className="grid lg:w-full gap-[5px] all:w-full pt-6 ">
-          <div className="w-full space-y-[10px]">
+          <motion.div
+            initial={{ y: 20, opacity: 0 }}
+            whileInView={{ y: 0, opacity: 1 }}
+            transition={{ duration: 1, ease: "easeIn" }}
+            viewport={{ once: true }}
+            className="w-full space-y-[10px]"
+          >
+            {" "}
             <h1 className="uppercase text-[10px] text-secondary font-bold">
               Services
             </h1>
             <h1 className="font-sans text-4xl text-primary font-bold">
               What We Offer
-            </h1>
+            </h1>{" "}
             <p className="font-mono text-sm font-extralight text-foreground lg:w-[70%]">
               Step into a world where your needs shape our services. Offering
               bespoke consultations, innovative design & automation, meticulous
@@ -63,7 +72,7 @@ const Services = () => {
               unparalleled ROI. With Mshel Homes, it&apos;s more than a home
               it&apos;s a lifetime investment.
             </p>
-          </div>
+          </motion.div>
 
           <div className="grid lg:grid-cols-2 all:grid-cols-1 gap-[50px] items-center place-content-center space-y-[10px] pt-[100px]">
             {servicesfull.map((id, item) => (
@@ -71,10 +80,15 @@ const Services = () => {
                 key={item}
                 className="w-[300px] rounded-[10px] overflow-hidden lg:p-4 relative grid grid-cols-subgrid"
               >
-                <div className="text-primary py-2 text-xl font-sans font-bold text-center">
-                  {id.heading}
-                </div>
-                <p className="text-[12px]  font-mono">{id.title}</p>
+                <Copy>
+                  {" "}
+                  <div className="text-primary py-2 text-xl font-sans font-bold text-center">
+                    {id.heading}
+                  </div>
+                </Copy>
+                <Copy>
+                  <p className="text-[12px] font-mono">{id.title}</p>
+                </Copy>
               </div>
             ))}
           </div>
@@ -85,7 +99,13 @@ const Services = () => {
       <section className="w-full h-[50vh] my-12 flex items-center justify-center ">
         <div className="w-full h-full flex flex-col md:flex-row bg-accent text-white font-sans overflow-hidden">
           {/* Text Content */}
-          <div className="w-full md:w-1/2 h-full flex flex-col justify-center px-12 space-y-3 max-sm:scale-[0.9] max-sm:px-4">
+          <motion.div
+            initial={{ y: 20, opacity: 0 }}
+            whileInView={{ y: 0, opacity: 1 }}
+            transition={{ duration: 1, ease: "easeIn" }}
+            viewport={{ once: true }}
+            className="w-full md:w-1/2 h-full flex flex-col justify-center px-12 space-y-3 max-sm:scale-[0.9] max-sm:px-4"
+          >
             <h1 className="text-3xl max-sm:text-2xl font-semibold">
               Discover Our Finest Selection
             </h1>
@@ -97,7 +117,7 @@ const Services = () => {
               Discover
               <BiRightArrowAlt className="text-lg" />
             </button>
-          </div>
+          </motion.div>
 
           {/* Image Content */}
           <div className="w-full md:w-1/2 h-full overflow-hidden">

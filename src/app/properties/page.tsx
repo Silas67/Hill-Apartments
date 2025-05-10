@@ -12,6 +12,7 @@ import { GiBathtub } from "react-icons/gi";
 import { IoIosArrowUp, IoIosArrowDown } from "react-icons/io";
 import { TbRulerMeasure2 } from "react-icons/tb";
 import Image from "next/image";
+import img6 from "@/components/assets/Images/hero.jpg";
 import Breadcrumbs from "@/components/sections/Breadcrumbs";
 
 const Properties = () => {
@@ -26,14 +27,7 @@ const Properties = () => {
       <Header color={false} />
 
       {/* Hero */}
-      <section
-        style={{
-          backgroundImage: "url('/Images/Hero.jpg')",
-          backgroundSize: "contain",
-          backgroundPosition: "bottom",
-        }}
-        className="w-full lg:h-[50vh] text-center place-content-center relative all:h-[30vh]"
-      >
+      <section className="w-full lg:h-[50vh] text-center place-content-center relative all:h-[30vh]">
         <div className="relative z-30">
           {" "}
           <div className="w-full flex items-center justify-center pb-2">
@@ -44,11 +38,17 @@ const Properties = () => {
           </h1>
         </div>
 
-        <div className="overlay opacity-80 bg-primary"></div>
+        <div className="absolute inset-0">
+          <div className="h-full w-full">
+            <Image src={img6} alt="" className="object-cover w-full h-full" />
+          </div>
+        </div>
+
+        <div className="absolute bg-foreground opacity-45 inset-0 w-full h-full"></div>
       </section>
 
       {/* Property Listing */}
-      <section className="grid lg:grid-cols-3 place-content-start items-start all:grid-cols-1 col-">
+      <section className="grid lg:grid-cols-3 place-content-start items-start all:grid-cols-1 lg:mr-[10px]">
         <div className="grid grid-cols-1 place-content-center items-center px-[10px] lg:border-r-2 border-[#676767] my-6 lg:h-[80%] max-sm:shadow">
           <div className="w-full flex items-center justify-center flex-col space-y-[30px]">
             <h1 className="text-2xl font-sans font-bold">Filters</h1>

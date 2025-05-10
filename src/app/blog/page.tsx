@@ -11,6 +11,7 @@ import Image from "next/image";
 import Breadcrumbs from "@/components/sections/Breadcrumbs";
 import img1 from "@/components/assets/Images/img5.jpg";
 import img5 from "@/components/assets/Images/Logo.png";
+import img6 from "@/components/assets/Images/hero.jpg";
 import { BiRightArrowAlt } from "react-icons/bi";
 
 const Blog = () => {
@@ -25,14 +26,7 @@ const Blog = () => {
       <Header color={false} />
 
       {/* Hero */}
-      <section
-        style={{
-          backgroundImage: "url('/Images/Hero.jpg')",
-          backgroundSize: "contain",
-          backgroundPosition: "top",
-        }}
-        className="w-full h-[50vh] text-center place-content-center relative max-sm:h-[30vh]"
-      >
+      <section className="w-full h-[50vh] text-center place-content-center relative max-sm:h-[30vh]">
         <div className="relative z-30 ">
           {" "}
           <div className="w-full flex items-center justify-center pb-2">
@@ -41,7 +35,13 @@ const Blog = () => {
           <h1 className="font-sans text-4xl text-white font-bold ">Blog</h1>
         </div>
 
-        <div className="overlay opacity-80 bg-primary"></div>
+        <div className="absolute inset-0">
+          <div className="h-full w-full">
+            <Image src={img6} alt="" className="object-cover w-full h-full" />
+          </div>
+        </div>
+
+        <div className="absolute bg-foreground opacity-45 inset-0 w-full h-full"></div>
       </section>
 
       {/* Blogs */}
