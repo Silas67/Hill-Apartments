@@ -11,6 +11,8 @@ import { IoIosArrowUp, IoIosArrowDown } from "react-icons/io";
 import { MdMail } from "react-icons/md";
 import Image from "next/image";
 import img5 from "@/components/assets/Images/Logo.png";
+import img6 from "@/components/assets/Images/hero.jpg";
+import Copy from "@/hooks/Copy";
 
 const Contact = () => {
   useLenis();
@@ -24,14 +26,7 @@ const Contact = () => {
       <Header color={false} />
 
       {/* Hero */}
-      <section
-        style={{
-          backgroundImage: "url('/Images/Hero.jpg')",
-          backgroundSize: "cover",
-          backgroundPosition: "top right",
-        }}
-        className="w-full lg:h-[50vh] text-center place-content-center relative h-[30vh]"
-      >
+      <section className="w-full lg:h-[50vh] text-center place-content-center relative h-[30vh]">
         <div className="relative z-30">
           {" "}
           <div className="w-full flex items-center justify-center pb-2">
@@ -39,43 +34,43 @@ const Contact = () => {
           </div>
           <h1 className="font-sans text-4xl text-white font-bold ">Contact</h1>
         </div>
-
-        <div className="overlay opacity-80 bg-primary"></div>
+        <div className="absolute inset-0">
+          <div className="h-full w-full">
+            <Image src={img6} alt="" className="object-cover w-full h-full" />
+          </div>
+        </div>
+        <div className="absolute bg-foreground opacity-45 inset-0 w-full h-full"></div>
+        ``
       </section>
 
       {/* Getintouch */}
       <section className="w-full flex items-center justify-center flex-col bg-accent2">
-        <motion.div
-          initial={{ y: 20, opacity: 0 }}
-          whileInView={{ y: 0, opacity: 1 }}
-          viewport={{ once: true }}
-          transition={{ duration: 1, ease: "easeInOut" }}
-          className="flex flex-col items-center mt-10 p-8 w-full gap-[10px]"
-        >
-          <h1 className="text-5xl font-sans font-bold text-primary">
-            Get in Touch
-          </h1>
-          <p className="text-[12px] font-mono text-[#424242]">
-            Lorem ipsum dolor, sit amet consectetur adipisicing elit. Accusamus,
-            ullam.
-          </p>
-        </motion.div>
+        <div className="flex flex-col items-center mt-10 p-8 w-full gap-[10px]">
+          <Copy>
+            <h1 className="text-5xl font-sans font-bold text-primary">
+              Get in Touch
+            </h1>
+          </Copy>
+          <Copy>
+            {" "}
+            <p className="text-[12px] font-mono text-[#424242]">
+              Lorem ipsum dolor, sit amet consectetur adipisicing elit.
+              Accusamus, ullam.
+            </p>
+          </Copy>
+        </div>
 
-        <motion.div
-          initial={{ y: 20, opacity: 0 }}
-          whileInView={{ y: 0, opacity: 1 }}
-          viewport={{ once: true }}
-          transition={{ duration: 1, ease: "easeInOut" }}
-          className="w-full p-8 flex items-center justify-around gap-4 max-sm:flex-col"
-        >
+        <div className="w-full p-8 flex items-center justify-around gap-4 max-sm:flex-col">
           <div>
             <div className="text-foreground mb-8 hover:text-gray-500 transition-colors flex gap-2 items-center text-lg">
-              <FaMapMarkerAlt className="text-xl" /> T19 Road 2 Lekki Garden
-              Phase 4, Lekki Lagos.
+              <FaMapMarkerAlt className="text-xl" />
+              T19 Road 2 Lekki Garden Phase 4, Lekki Lagos.
             </div>
+
             <div className="text-foreground mb-8 hover:text-gray-500 transition-colors flex gap-2 items-center text-lg">
               <FaPhone className="text-xl" /> (+234) 803 283 2962
             </div>
+
             <div className="text-foreground mb-8 hover:text-gray-500 transition-colors flex gap-2 items-center text-lg">
               <MdMail className="text-xl" /> Blinkzsparks@gmail.com
             </div>
@@ -135,30 +130,25 @@ const Contact = () => {
               Send Message
             </button>
           </form>
-        </motion.div>
+        </div>
       </section>
 
       {/* FAQ */}
       <section className="w-full py-[20px] relative px-[70px] max-sm:px-[30px]">
-        <motion.div
-          initial={{ y: 20, opacity: 0 }}
-          whileInView={{ y: 0, opacity: 1 }}
-          viewport={{ once: true }}
-          transition={{
-            duration: 1,
-            ease: "easeInOut",
-          }}
-          className="w-full text-center pb-6"
-        >
-          <div className="text-[30px] font-sans pt-6 font-bold">
-            Frequently Asked{" "}
-            <span className="bg-secondary p-2 my-2">Questions?</span>
-          </div>
-          <p className="pt-1 max-sm:pt-4 ">
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Qui quas ea
-            beatae dolorem ratione neque
-          </p>
-        </motion.div>
+        <div className="w-full text-center pb-6">
+          <Copy>
+            <div className="text-2xl font-sans pt-6 font-bold  max-sm:text-xl text-nowrap">
+              Frequently Asked{" "}
+              <span className="bg-secondary p-2">Questions?</span>
+            </div>
+          </Copy>
+          <Copy>
+            <p className="pt-1 max-sm:text-sm">
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. Qui quas
+              ea beatae dolorem ratione neque
+            </p>
+          </Copy>
+        </div>
         <div className="grid grid-cols-1 md:grid-cols-3 my-12 gap-8">
           {FaQs.map((item, id) => (
             <motion.div
@@ -175,7 +165,7 @@ const Contact = () => {
             >
               <button
                 onClick={() => toggleSection(id)}
-                className="flex justify-between w-full text-left font-sans font-bold text-sm "
+                className="flex justify-between w-full text-left font-sans font-bold text-[12px] "
               >
                 {item.Question}
                 {openSection === id ? (

@@ -401,12 +401,12 @@ export default function Home() {
           </div>
         </motion.div>
 
-        <div className="absolute top-1/2 left-10 z-50 max-sm:left-0">
+        <div className="absolute top-1/2 left-10 z-30 max-sm:left-0">
           <button className="button-prev text-foreground text-5xl">
             <TbSquareRoundedArrowLeftFilled />
           </button>
         </div>
-        <div className="absolute top-1/2 right-15 z-50 max-sm:right-0">
+        <div className="absolute top-1/2 right-15 z-30 max-sm:right-0">
           <button className="button-next text-5xl text-foreground">
             <TbSquareRoundedArrowRightFilled />
           </button>
