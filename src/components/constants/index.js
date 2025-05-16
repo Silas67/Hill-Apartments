@@ -5,8 +5,7 @@ import { FaCompass } from "react-icons/fa";
 import { HiPaperAirplane } from "react-icons/hi2";
 import { IoPerson } from "react-icons/io5";
 import { BiSolidBuildingHouse } from "react-icons/bi";
-import { GrUserWorker } from "react-icons/gr";
-import { FaMoneyBillTrendUp } from "react-icons/fa6";
+import { Icon } from "@iconify/react/dist/iconify.js";
 import img1 from "@/components/assets/Images/img1.jpg";
 import img2 from "@/components/assets/Images/img15.jpg";
 import img3 from "@/components/assets/Images/img2.jpg";
@@ -66,7 +65,13 @@ export const property = [
 export const achievementsList2 = [
   { prefix: <IoPerson />, value: "150", postfix: "+", metric: "Clients" },
   {
-    prefix: <GrUserWorker />,
+    prefix: (
+      <Icon
+        icon="fluent-emoji-high-contrast:office-worker"
+        width="32"
+        height="32"
+      />
+    ),
     value: "100",
     postfix: "+",
     metric: "Workers",
@@ -78,7 +83,7 @@ export const achievementsList2 = [
     metric: "Properties",
   },
   {
-    prefix: <FaMoneyBillTrendUp />,
+    prefix: <Icon icon="heroicons-outline:chart-bar" />,
     value: "200",
     postfix: "M",
     metric: "Revenue",
