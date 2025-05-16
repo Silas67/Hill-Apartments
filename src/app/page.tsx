@@ -29,11 +29,8 @@ import AnimatedNumbers from "react-animated-numbers";
 import { BsQuote } from "react-icons/bs";
 import { GiBathtub, GiStarsStack } from "react-icons/gi";
 import { FaBed } from "react-icons/fa";
-import {
-  TbRulerMeasure2,
-  TbSquareRoundedArrowLeftFilled,
-  TbSquareRoundedArrowRightFilled,
-} from "react-icons/tb";
+import { TbRulerMeasure2 } from "react-icons/tb";
+import { Icon } from "@iconify/react/dist/iconify.js";
 import { BiSolidRightArrow } from "react-icons/bi";
 import "swiper/css/navigation";
 import Copy from "@/hooks/Copy";
@@ -402,13 +399,13 @@ export default function Home() {
         </motion.div>
 
         <div className="absolute top-1/2 left-10 z-30 max-sm:left-0">
-          <button className="button-prev text-foreground text-5xl">
-            <TbSquareRoundedArrowLeftFilled />
+          <button className="button-prev max-sm:ml-[10px]">
+            <Icon icon="guidance:right-arrow" width="24" height="24" />
           </button>
         </div>
-        <div className="absolute top-1/2 right-15 z-30 max-sm:right-0">
-          <button className="button-next text-5xl text-foreground">
-            <TbSquareRoundedArrowRightFilled />
+        <div className="absolute top-1/2 right-13 z-30 max-sm:right-0">
+          <button className="button-next max-sm:mr-[10px]">
+            <Icon icon="guidance:left-arrow" width="24" height="24" />
           </button>
         </div>
 
@@ -451,65 +448,62 @@ export default function Home() {
           loop={true}
           className="w-[80%]"
         >
-          <div className="flex items-center justify-center gap-[20px] py-12 px-8 overflow-hidden">
-            {Recommended.map((id, item) => (
-              <SwiperSlide key={item}>
-                <motion.div
-                  initial={{ y: 20, opacity: 0 }}
-                  whileInView={{ y: 0, opacity: 1 }}
-                  viewport={{ once: true }}
-                  transition={{
-                    duration: 1,
-                    ease: "easeInOut",
-                    delay: 0.05 * item,
-                  }}
-                  className="w-[300px] rounded-[10px] overflow-hidden mt-8 ml-[7px]"
-                >
-                  {/* Image */}
-                  <div className="h-[250px] w-full overflow-hidden rounded-b-[10px] max-sm:ml-[20px]">
-                    <Image
-                      src={id.img}
-                      alt="/"
-                      className="w-full h-full object-cover scale-[1] hover:scale-[1.3] transition-all duration-500"
-                    />
-                  </div>
-                  <Link href={"/"}>
-                    {" "}
-                    <div className="w-full py-4">
-                      <div className="flex items-start justify-between flex-col font-sans">
-                        <div className="flex items-center justify-between  w-full">
-                          <h1 className="text-sm text-[#373737] font-bold">
-                            {id.title}
-                          </h1>
-                          <h1 className="text-lg font-bold">{id.price}</h1>
-                        </div>
-
-                        <h1 className="text-[#5c5c5c] font-sans text-sm flex items-center gap-[2px] pt-1 ">
-                          <CiLocationOn /> <p>{id.location}</p>
+          {Recommended.map((id, item) => (
+            <SwiperSlide key={item} className="scale-[0.9] ">
+              <motion.div
+                initial={{ y: 20, opacity: 0 }}
+                whileInView={{ y: 0, opacity: 1 }}
+                viewport={{ once: true }}
+                transition={{
+                  duration: 1,
+                  ease: "easeInOut",
+                  delay: 0.05 * item,
+                }}
+              >
+                {/* Image */}
+                <div className="h-[250px] w-full rounded-[10px] overflow-hidden ">
+                  <Image
+                    src={id.img}
+                    alt="/"
+                    className="w-full h-full object-cover scale-[1] hover:scale-[1.3] transition-all duration-500"
+                  />
+                </div>
+                <Link href={"/"}>
+                  {" "}
+                  <div className="w-full py-4">
+                    <div className="flex items-start justify-between flex-col font-sans">
+                      <div className="flex items-center justify-between gap-[20px]  w-full">
+                        <h1 className="text-sm text-[#373737] font-bold">
+                          {id.title}
                         </h1>
-                        <div className="flex items-center justify-between w-full">
-                          <div className="flex items-center gap-[10px] text-[#545454]">
-                            <h1 className="flex items-center gap-[2px] text-[13px]">
-                              <GiBathtub /> <p>{id.bath}</p>
-                            </h1>
-                            <h1 className="flex items-center gap-[2px] text-[13px]">
-                              <FaBed /> <p>{id.beds}</p>
-                            </h1>
-                            <h1 className="flex items-center gap-[2px] text-[13px]">
-                              <TbRulerMeasure2 /> <p>{id.mesuare}</p>
-                            </h1>
-                          </div>
-                          <div className="text-background bg-foreground rounded-[5px] p-2">
-                            <BiSolidRightArrow />
-                          </div>
+                        <h1 className="text-lg font-bold">{id.price}</h1>
+                      </div>
+
+                      <h1 className="text-[#5c5c5c] font-sans text-sm flex items-center gap-[2px] pt-1 ">
+                        <CiLocationOn /> <p>{id.location}</p>
+                      </h1>
+                      <div className="flex items-center justify-between w-full">
+                        <div className="flex items-center gap-[10px] text-[#545454]">
+                          <h1 className="flex items-center gap-[2px] text-[13px]">
+                            <GiBathtub /> <p>{id.bath}</p>
+                          </h1>
+                          <h1 className="flex items-center gap-[2px] text-[13px]">
+                            <FaBed /> <p>{id.beds}</p>
+                          </h1>
+                          <h1 className="flex items-center gap-[2px] text-[13px]">
+                            <TbRulerMeasure2 /> <p>{id.mesuare}</p>
+                          </h1>
+                        </div>
+                        <div className="text-background bg-foreground rounded-[5px] p-2">
+                          <BiSolidRightArrow />
                         </div>
                       </div>
                     </div>
-                  </Link>
-                </motion.div>
-              </SwiperSlide>
-            ))}
-          </div>
+                  </div>
+                </Link>
+              </motion.div>
+            </SwiperSlide>
+          ))}
         </Swiper>
       </section>
 

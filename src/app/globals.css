@@ -21,6 +21,7 @@
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-montserrat);
   --breakpoint-all: 20rem;
+  --breakpoint-mini: 23.75rem;
 }
 
 @media (prefers-color-scheme: dark) {

@@ -34,6 +34,7 @@ const Header = ({ color }: { color: boolean }) => {
       document.body.style.overflow = "auto";
     };
   }, [navIsLive]);
+
   useEffect(() => {
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 100);
