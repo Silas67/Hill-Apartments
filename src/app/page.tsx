@@ -399,12 +399,12 @@ export default function Home() {
         </motion.div>
 
         <div className="absolute top-1/2 left-10 z-30 max-sm:left-0">
-          <button className="button-prev max-sm:ml-[10px]">
+          <button className="button-prev max-sm:ml-[12px]">
             <Icon icon="guidance:right-arrow" width="24" height="24" />
           </button>
         </div>
         <div className="absolute top-1/2 right-13 z-30 max-sm:right-0">
-          <button className="button-next max-sm:mr-[10px]">
+          <button className="button-next max-sm:mr-[12px]">
             <Icon icon="guidance:left-arrow" width="24" height="24" />
           </button>
         </div>
