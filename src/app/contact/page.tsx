@@ -37,7 +37,7 @@ const Contact = () => {
                 </h1>
               </div>
 
-              <div className="flex flex-col lg:items-start gap-[20px] max-mobile:mt-[20px]">
+              <div className="flex flex-col lg:items-start gap-[20px] max-mobile:mt-[20px] md:items-center pb-4">
                 <div className="text-white  hover:text-gray-500 transition-colors flex gap-2 items-center text-[14px]">
                   <FaMapMarkerAlt className="text-xl" />
                   T19 Road 2 Lekki Garden Phase 4, Lekki Lagos.
