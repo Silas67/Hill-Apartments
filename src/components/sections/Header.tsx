@@ -5,6 +5,7 @@ import { usePathname } from "next/navigation";
 import Link from "next/link";
 import { MdClose, MdMenu } from "react-icons/md";
 import Image from "next/image";
+import CornerNavGSAP from "./Corner";
 
 export const Navbar = [
   { label: "Home", href: "/" },
@@ -111,7 +112,7 @@ const Header = () => {
                 exit={{ rotate: 0, scale: 1 }}
                 transition={{ duration: 0.3, ease: easeInOut }}
               >
-                <MdClose className="text-foreground lg:hidden" />
+                <MdClose className="text-foreground md:hidden" />
               </motion.div>
             ) : (
               <motion.div
@@ -120,7 +121,7 @@ const Header = () => {
                 exit={{ rotate: -180, scale: 1 }}
                 transition={{ duration: 0.3, ease: easeInOut }}
               >
-                <MdMenu className="lg:hidden" />
+                <MdMenu className="md:hidden" />
               </motion.div>
             )}
           </div>
@@ -130,52 +131,67 @@ const Header = () => {
       {/* Sidebar */}
       <div>
         <div className="lg:hidden">
-          <motion.aside
-            initial={{ x: "-100%", opacity: 0 }}
+          <CornerNavGSAP />
+          {/* <motion.aside
+            initial={{ y: "100%", opacity: 0 }}
             animate={
               navIsLive
-                ? { x: 0, opacity: 1 }
-                : { x: "30%", opacity: 0, display: "none" }
+                ? { y: 0, opacity: 1 }
+                : { y: "-30%", opacity: 0, display: "none" }
             }
-            transition={{ duration: 0.5, ease: "easeInOut" }}
-            className="md:hidden fixed top-0 left-0 w-full lg:h-screen  h-screen bg-accent2 text-white z-40 flex flex-col justify-between px-6 pt-8 pb-6"
+            transition={{ duration: 1.5, ease: "anticipate" }}
+            className="md:hidden fixed top-0 left-0 w-full lg:h-screen  h-screen bg-primary text-white z-40 flex flex-col justify-between px-6 pt-8 pb-6"
           >
             <div className="flex justify-between items-center">
-              <div className="text-xl font-anton">HillsApartment</div>
+              <Link href={"/"} className="outline-none">
+                <Image
+                  src={"/Logo.png"}
+                  alt="/"
+                  width={100}
+                  height={100}
+                  className={`filter invert-0 transition-all duration-500 `}
+                />
+              </Link>
               <button
                 onClick={handleClick}
                 className="text-white text-2xl"
               ></button>
             </div>
 
-            <ul className="flex flex-col gap-6 uppercase transform -translate-y-14 text-5xl ">
+            <motion.ul
+              initial={{ y: 20, opacity: 0 }}
+              whileInView={{ y: 0, opacity: 1 }}
+              transition={{ duration: 1, ease: "easeInOut", delay: 1 }}
+              className="flex flex-col gap-6 uppercase transform -translate-y-14 text-5xl "
+            >
               {Navbar.map((link, i) => (
                 <li key={i}>
                   <Link
                     href={link.href}
-                    className="break-after-all font-heather tracking-wide text-primary"
+                    className="break-after-all font-heather tracking-wide"
                   >
                     {link.label}
                   </Link>
                 </li>
               ))}
-            </ul>
+            </motion.ul>
+
             <div className="w-full items-center flex flex-col justify-center">
               {" "}
               <button className="bg-secondary w-fit p-[8px] rounded-lg flex flex-row gap-1 justify-center items-center hover:bg-primary hover:text-white transition-colors duration-300 border border-secondary mb-3">
                 {" "}
-                <Link href="/contact" className="text-[10px] text-primary">
+                <Link href="/contact" className="text-[12px] text-white">
                   Contact An Agent{" "}
                 </Link>
               </button>
-              <p className="text-primary py-3 text-[10px] text-nowrap border-y-1 border-[#bcbcbc]">
+              <p className="text-white py-3 text-[10px] text-nowrap border-y-1 border-[#bcbcbc]">
                 +(234)-810-488-4845, +(234)-812-456-5509
               </p>
-              <p className="text-primary py-3 text-[10px] text-nowrap border-b-1 border-[#bcbcbc]">
+              <p className=" text-white  py-3 text-[10px] text-nowrap border-b-1 border-[#bcbcbc]">
                 @info.company&apo;smail@gmail.com
               </p>
             </div>
-          </motion.aside>
+          </motion.aside> */}
         </div>
       </div>
     </div>
