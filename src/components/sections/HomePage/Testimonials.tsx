@@ -5,7 +5,7 @@ import { BsQuote } from "react-icons/bs";
 import { Autoplay, Pagination, Navigation } from "swiper/modules";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Recommended } from "@/components/constants";
-import img1 from "@/components/assets/Images/profile.png";
+import img1 from "@/components/assets/Images/profile.jpg";
 
 const Testimonials = () => {
   return (
