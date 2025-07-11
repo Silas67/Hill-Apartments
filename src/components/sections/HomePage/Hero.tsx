@@ -9,20 +9,20 @@ import { Icon } from "@iconify/react/dist/iconify.js";
 
 const Hero = () => {
   return (
-    <div className="relative w-full max-mobile:h-[80vh] md:h-[100vh] overflow-hidden">
-      <div className="w-full h-full overflow-hidden">
+    <div className="relative w-full max-mobile:h-[70vh] md:h-[100vh] overflow-hidden">
+      <div className="absolute w-full h-full z-10">
         <Image src={img1} alt="/" className="w-full h-full object-cover" />
       </div>
 
       {/* Text Content */}
-      <div className="relative flex flex-col w-full h-full items-start justify-center z-20 text-center text-white px-4 -mt-[100vh] max-mobile:-mt-[70vh]">
-        <div className="absolute lg:right-[40px] md:right-[20px] max-md:top-[100px] top-[80px] text-left max-mobile:px-[20px] ">
+      <div className="relative flex flex-col w-full h-full items-start justify-center z-20 text-center text-white px-4 max-mobile:px-[0px]">
+        <div className="absolute lg:right-[40px] md:right-[20px] max-md:top-[100px] top-[80px] text-left max-mobile:px-[20px] max-w-[400px] max-mobile:max-w-[250px] max-mobile:right-[10px]">
           <motion.h1
             initial={{ y: 20, opacity: 0 }}
             whileInView={{ y: 0, opacity: 1 }}
             viewport={{ once: true }}
             transition={{ duration: 1, ease: "easeInOut" }}
-            className="text-[30px] md:text-[35px] lg:text-4xl max-w-[400px] text-left text-background font-sans"
+            className="text-[30px] max-mobile:text-[20px] md:text-[35px] lg:text-4xl  text-left text-background font-sans max-mobile:text-right"
           >
             Where Vision Meets Structure and Dreams Becomes Purpose
           </motion.h1>
@@ -33,7 +33,8 @@ const Hero = () => {
             transition={{ duration: 1, ease: "easeInOut" }}
             className="text-sm mt-2 text-neutral-300 flex items-center gap-[10px] group  transition-all duration-500 cursor-pointer"
           >
-            View Properties
+            <h1 className="text-right w-full"> View Properties</h1>
+
             <Icon
               icon="line-md:arrow-right"
               className="-rotate-45 group-hover:rotate-0  transition-all duration-500 "
@@ -42,88 +43,27 @@ const Hero = () => {
         </div>
 
         {/* Buttons */}
-        <div className="absolute md:bottom-[10vh] bottom-[15vh] md:px-[30px] max-mobile:pr-[30px] z-30 w-full  flex md:justify-start md:items-start flex-col gap-[10px] scale-[1]">
-          {/* <div className="flex flex-col items-center justify-center">
-            <div className="w-[150px] h-[30px] bg-primary rounded-t-[10px] text-white text-[12px] flex items-center justify-between overflow-hidden">
-              <div className="w-fit bg-white h-full px-[20px] text-primary flex items-center justify-center">
-                All
-              </div>
-              <div className="w-fit h-full px-[15px]  flex items-center justify-center">
-                Sale
-              </div>
-              <div className="w-fit h-full px-[15px]  flex items-center justify-center">
-                Rent
-              </div>
-            </div>
-            <form className="w-[500px] mb-[30px] h-[60px] border rounded-[20px] bg-background flex px-[20px] py-[10px] gap-[10px]">
-              <div className="border-r border-[#d6d6d6] flex justify-between items-center px-[10px]">
-                <div className="flex flex-col items-start justify-center ">
-                  <label htmlFor="" className="text-[#414141] text-[10px]">
-                    Location
-                  </label>
-                  <input
-                    type="text"
-                    name="Location"
-                    id="Location"
-                    placeholder="Enter KeyWord"
-                    className="text-black text-[12px] outline-none"
-                  />
-                </div>
-                <button>
-                  <FaCaretDown className="text-black w-1/2 cursor-pointer" />
-                </button>
-              </div>
-              <div className="border-r border-[#d6d6d6] flex justify-between items-center px-[10px]">
-                <div className="flex flex-col items-start justify-center ">
-                  <label htmlFor="" className="text-[#414141] text-[10px]">
-                    Type
-                  </label>
-                  <input
-                    type="text"
-                    name="Location"
-                    id="Location"
-                    placeholder="All Type"
-                    className="text-black text-[12px] outline-none"
-                  />
-                </div>
-                <button>
-                  <FaCaretDown className="text-black w-1/2 cursor-pointer" />
-                </button>
-              </div>
-              <button className="px-[20px] py-[10px] bg-primary text-white flex items-center justify-center rounded-[10px] text-[12px] gap-[3px]">
-                Search
-              </button>
-            </form>
-          </div> */}
-
+        <div className="absolute md:bottom-[10vh] bottom-[7vh] md:px-[30px] max-mobile:pr-[100px] z-30 w-full flex md:justify-start md:items-start flex-col gap-[10px] scale-[0.8] max-mobile:w-full">
           <motion.div
             initial={{ y: 20, opacity: 0 }}
             whileInView={{ y: 0, opacity: 1 }}
             viewport={{ once: true }}
             transition={{ duration: 1, ease: "easeInOut" }}
-            className="flex gap-8"
+            className="flex gap-8 max-mobile:gap-4"
           >
             <div className="border-r pr-8">
-              <h1 className="md:text-[50px] text-[30px]">70+</h1>
+              <h1 className="md:text-[50px] text-[20px]">70+</h1>
               <p className="text-[12px]">Satisfied Customers</p>
             </div>
             <div className="border-r pr-8">
-              <h1 className="md:text-[50px] text-[30px]">100+</h1>
+              <h1 className="md:text-[50px] text-[20px]">100+</h1>
               <p className="text-[12px]">Projects Completed</p>
             </div>
             <div>
-              <h1 className="md:text-[50px] text-[30px]">10+</h1>
+              <h1 className="md:text-[50px] text-[20px]">10+</h1>
               <p className="text-[12px]">Years in Business</p>
             </div>
           </motion.div>
-
-          {/* <div className="flex gap-[20px] lg:pr-[50px]">
-            {Btns.map((i, item) => (
-              <Link key={item} href="/partner" className="btn">
-                {i.icon}
-              </Link>
-            ))}
-          </div> */}
         </div>
       </div>
 
