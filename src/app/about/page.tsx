@@ -76,21 +76,19 @@ const About = () => {
             <h1 className="text-4xl text-primary font-bold">Who We Are</h1>
 
             <p className="text-[12px]  text-foreground">
-              Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nesciunt
-              doloremque, magnam possimus omnis, repellendus dolore ducimus
-              velit similique alias natus quis vitae nobis, ipsum aliquam
-              aspernatur et fugit excepturi quod debitis illum nulla. Impedit
-              maxime illum, ipsum eum aliquid ad veniam dicta cum dolor natus
-              aperiam, assumenda molestias voluptate! Impedit!
+              This is Hill’s Apartments & Homes — a team of visionary builders,
+              designers, and thinkers committed to redefining modern living.
+              With a strong focus on innovation, elegance, and sustainability,
+              we create spaces that go beyond walls and roofs — we create
+              lifestyles.
             </p>
 
             <p className=" text-[12px] text-foreground">
-              Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nesciunt
-              doloremque, magnam possimus omnis, repellendus dolore ducimus
-              velit similique alias natus quis vitae nobis, ipsum aliquam
-              aspernatur et fugit excepturi quod debitis illum nulla. Impedit
-              maxime illum, ipsum eum aliquid ad veniam dicta cum dolor natus
-              aperiam, assumenda molestias voluptate! Impedit!
+              Every project we deliver is a reflection of deep understanding,
+              thoughtful design, and an unwavering passion for excellence. From
+              contemporary apartments to luxurious family homes, we’re building
+              more than properties — we’re shaping the future of how people
+              live, feel, and connect with their spaces.
             </p>
 
             <div className=" grid md:grid-cols-4 max-sm:grid-cols-2 place-content-start items-center w-full my-[20px] ">
@@ -143,12 +141,14 @@ const About = () => {
               Desiging spaces that insipire and elevate
             </h1>
             <p className=" text-sm ">
-              Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nesciunt
-              doloremque, magnam possimus omnis, repellendus dolore ducimus
-              velit similique alias natus quis vitae nobis, ipsum aliquam
-              aspernatur et fugit excepturi quod debitis illum nulla. Impedit
-              maxime illum, ipsum eum aliquid ad veniam dicta cum dolor natus
-              aperiam, assumenda molestias voluptate! Impedit!
+              At Hill’s Apartments & Homes, we believe that every space tells a
+              story. Our passion lies in creating luxurious, functional
+              environments that reflect elegance, comfort, and timeless design.
+              From concept to completion, we focus on every detail — because we
+              know home is more than a place, it’s a feeling. Whether
+              you&apos;re investing, relocating, or simply upgrading your
+              lifestyle, our commitment to quality and innovation ensures that
+              every project exceeds expectations.
             </p>
             <div className="">
               <h1>Ejimonye Silas</h1>

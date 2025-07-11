@@ -20,8 +20,9 @@ const Banner = () => {
             Discover Our Finest Selection
           </h1>
           <p className="text-sm">
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Minima
-            placeat earum impedit laudantium id totam beatae blanditiis
+            Step into a world where design meets comfort. Each space is
+            thoughtfully crafted to reflect timeless elegance, modern
+            functionality, and lasting quality.
           </p>
           <button className="p-2 flex items-center justify-center rounded-[10px] text-sm gap-1 text-white bg-foreground w-fit">
             Discover

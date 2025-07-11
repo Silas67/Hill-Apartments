@@ -88,11 +88,9 @@ const Testimonials = () => {
                   </div>
                   <p className="text-[12px]">
                     {" "}
-                    From the moment I stepped into the property, I knew I had
-                    found something special. The attention to detail, the
-                    seamless design, and the peaceful environment made it feel
-                    like home instantly. Hill’s Apartments truly understands
-                    what modern living should feel like.
+                    Working with Hill Apartments was seamless. The team
+                    understood exactly what I needed and delivered beyond my
+                    expectations.
                   </p>
                   <div className="relative -bottom-[4vh] italic">
                     <h1 className="font-[600]">Adesua O.</h1>

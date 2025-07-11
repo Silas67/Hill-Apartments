@@ -258,17 +258,17 @@ export const values = [
   {
     icon: <HiPaperAirplane />,
     title: "Mission",
-    text: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Tenetur voluptas dignissimos aspernatur voluptatum, reiciendis tempore",
+    text: "To design and deliver exceptional living spaces that blend functionality, elegance, and sustainability — enriching lives and elevating everyday experiences.",
   },
   {
     icon: <FaRegEye />,
     title: "Vision",
-    text: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Tenetur voluptas dignissimos aspernatur voluptatum, reiciendis tempore",
+    text: "To become a leading force in real estate innovation, redefining urban and residential living across Africa by creating timeless spaces that adapt to evolving lifestyles.",
   },
   {
     icon: <FaCompass />,
     title: "Our Core Values",
-    text: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Tenetur voluptas dignissimos aspernatur voluptatum, reiciendis tempore",
+    text: "At Hill’s Apartments & Homes, we value integrity, innovation, excellence, and sustainability — building with purpose, passion, and people in mind.",
   },
 ];
 
