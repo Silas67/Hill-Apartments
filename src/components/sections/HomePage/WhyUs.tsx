@@ -27,7 +27,7 @@ const WhyUs = () => {
             Why Us
           </p>{" "}
           <h1 className="font-sans text-4xl text-primary md:w-[80%] all:w-full">
-            Desiging spaces that insipire and elevate
+            The Art of Living Begins With Us
           </h1>
         </motion.div>
 
@@ -57,11 +57,11 @@ const WhyUs = () => {
           className="grid lg:w-1/2 lg:gap-[30px] all:w-full py-4 "
         >
           <div>
-            <p className="underline underline-offset-2 text-[12px] text-secondary font-bold max-mobile:hidden">
+            <p className="underline underline-offset-2 text-[12px] text-secondary font-bold max-mobile:hidden lg:mb-2">
               Why Us
             </p>{" "}
             <h1 className="font-sans text-4xl text-primary md:w-[80%] all:w-full max-mobile:hidden">
-              Desiging spaces that insipire and elevate
+              The Art of Living Begins With Us
             </h1>
           </div>
 

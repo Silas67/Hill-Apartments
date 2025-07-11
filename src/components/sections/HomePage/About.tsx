@@ -4,7 +4,7 @@ import { motion } from "framer-motion";
 import Link from "next/link";
 import React from "react";
 import Image from "next/image";
-import img1 from "@/components/assets/Images/img23.jpg";
+import img1 from "@/components/assets/Images/Ceo.jpg";
 // import AnimatedNumbers from "react-animated-numbers";
 
 const About = () => {
@@ -69,7 +69,7 @@ const About = () => {
           whileInView={{ y: 0, opacity: 1 }}
           viewport={{ once: true }}
           transition={{ duration: 1, ease: "easeInOut" }}
-          className="relative lg:w-[500px] h-full overflow-hidden all:w-full"
+          className="relative lg:w-[500px] h-full overflow-hidden all:w-full rounded-[10px]"
         >
           <Image src={img1} alt="/" className="object-cover w-full h-full" />
           <div className="absolute w-full h-full inset-[0] bg-black/30"></div>

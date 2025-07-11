@@ -37,7 +37,7 @@ const Services = () => {
         className="flex lg:items-start max-mobile:items-center justify-center flex-col lg:text-left max-mobile:text-center flex-1 gap-[20px]"
       >
         <h1 className="font-sans text-3xl text-primary mt-[5px]">
-          Desiging spaces that insipire and elevate
+          Tailored Real Estate Experiences, Exceptionally Delivered
         </h1>
         <p className="text-sm text-foreground  lg:max-w-[80%] max-mobile:w-full">
           Step into a world where your needs shape our services. Offering
