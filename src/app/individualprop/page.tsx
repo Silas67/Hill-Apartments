@@ -19,7 +19,7 @@ const PropertyPage = () => {
   };
   return (
     <div className="w-full py-10 ">
-      <Header color />
+      <Header />
       {/* Top Section */}
       <section className="flex items-center justify-center gap-[20px] all:py-[100px] lg:py-0 lg:my-12 px-[70px] flex-col lg:flex-row">
         <div className="w-[1/2] rounded overflow-hidden">
