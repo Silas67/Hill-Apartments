@@ -86,14 +86,17 @@ const Testimonials = () => {
                   <div>
                     <BsQuote />
                   </div>
-                  <p>
+                  <p className="text-[12px]">
                     {" "}
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                    Pariatur repellendus, assumenda ad nesciunt,
+                    From the moment I stepped into the property, I knew I had
+                    found something special. The attention to detail, the
+                    seamless design, and the peaceful environment made it feel
+                    like home instantly. Hill’s Apartments truly understands
+                    what modern living should feel like.
                   </p>
                   <div className="relative -bottom-[4vh] italic">
-                    <h1 className="font-[600]">Ejimonye Silas</h1>
-                    <p>Worker</p>
+                    <h1 className="font-[600]">Adesua O.</h1>
+                    <p>Satisfied Homeowner</p>
                   </div>
                   <div className="absolute w-[80px] h-[80px] rounded-full border-[5px] border-primary -top-[5vh] overflow-hidden right-[37%]">
                     <Image

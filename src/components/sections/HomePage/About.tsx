@@ -40,12 +40,12 @@ const About = () => {
           className="w-1/2 space-y-[20px]  max-mobile:w-full"
         >
           <p className=" text-sm ">
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nesciunt
-            doloremque, magnam possimus omnis, repellendus dolore ducimus velit
-            similique alias natus quis vitae nobis, ipsum aliquam aspernatur et
-            fugit excepturi quod debitis illum nulla. Impedit maxime illum,
-            ipsum eum aliquid ad veniam dicta cum dolor natus aperiam, assumenda
-            molestias voluptate! Impedit!
+            At Hill’s Apartments & Homes, we don’t just build properties — we
+            design spaces that adapt to evolving lifestyles. With a deep
+            understanding of today’s architectural needs, we combine elegance,
+            technology, and sustainability to create homes that truly stand the
+            test of time. From modern apartments to luxurious family residences,
+            our mission is to elevate everyday living.
           </p>
 
           <button className="bg-primary text-white border border-primary w-fit py-[8px] px-[12px] rounded-l-[10px] rounded-r-[10px] flex flex-row gap-1 justify-center items-center hover:bg-white hover:text-primary scale-[1] hover:scale-105 transition-all duration-300 ">
@@ -79,12 +79,14 @@ const About = () => {
             Desiging spaces that insipire and elevate
           </h1>
           <p className=" text-sm ">
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nesciunt
-            doloremque, magnam possimus omnis, repellendus dolore ducimus velit
-            similique alias natus quis vitae nobis, ipsum aliquam aspernatur et
-            fugit excepturi quod debitis illum nulla. Impedit maxime illum,
-            ipsum eum aliquid ad veniam dicta cum dolor natus aperiam, assumenda
-            molestias voluptate! Impedit!
+            At Hill’s Apartments & Homes, we believe that every space tells a
+            story. Our passion lies in creating luxurious, functional
+            environments that reflect elegance, comfort, and timeless design.
+            From concept to completion, we focus on every detail — because we
+            know home is more than a place, it’s a feeling. Whether you&apos;re
+            investing, relocating, or simply upgrading your lifestyle, our
+            commitment to quality and innovation ensures that every project
+            exceeds expectations.
           </p>
           <div className="">
             <h1>Ejimonye Silas</h1>
