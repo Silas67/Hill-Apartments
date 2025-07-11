@@ -23,7 +23,7 @@ const Contact = () => {
   };
   return (
     <main className="lg:w-full sm:w-[100vw] overflow-hidden relative ">
-      <Header color={false} />
+      <Header />
 
       {/* Hero */}
       <section className="w-full lg:h-[50vh] text-center place-content-center relative h-[30vh]">

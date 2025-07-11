@@ -263,6 +263,46 @@ export default function CornerNavGSAP() {
             </motion.div>
           </div>
         </div>
+
+        <div className="w-full flex flex-col items-center gap-5 sm:mt-0 mt-8 md:hidden ">
+          {/* small‑screen social icons */}
+          <div className="flex gap-6 sm:hidden">
+            <Link href="https://instagram.com">
+              <Icon
+                icon="line-md:instagram"
+                width="20"
+                height="20"
+                className="text-primary hover:text-white transition"
+              />
+            </Link>
+            <Link href="https://twitter.com">
+              <Icon
+                icon="line-md:twitter"
+                width="20"
+                height="20"
+                className="text-primary hover:text-white transition"
+              />
+            </Link>
+            <Link href="https://linkedin.com">
+              <Icon
+                icon="line-md:linkedin"
+                width="20"
+                height="20"
+                className="text-primary hover:text-white transition"
+              />
+            </Link>
+          </div>
+
+          {/* Contact Us button */}
+          <Link
+            href="#contact"
+            onClick={() => handleNavClick("#contact")}
+            className="w-full max-w-xs py-3 bg-primary rounded-3xl text-center
+               text-black font-semibold hover:bg-secondary transition"
+          >
+            Contact&nbsp;Us
+          </Link>
+        </div>
       </div>
     </>
   );
