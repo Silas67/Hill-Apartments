@@ -299,7 +299,7 @@ export default function CornerNavGSAP() {
             href="#contact"
             onClick={() => handleNavClick("#contact")}
             className="w-full max-w-xs py-3 bg-primary rounded-3xl text-center
-               text-white font-semibold hover:bg-secondary transition mb-[50px]"
+               text-white font-semibold hover:bg-secondary transition mb-[100px]"
           >
             Contact&nbsp;Us
           </Link>
