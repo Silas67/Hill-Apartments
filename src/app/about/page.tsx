@@ -39,7 +39,7 @@ const About = () => {
 
       {/* Hero */}
       <section className="w-full lg:h-[50vh] text-center place-content-center relative all:h-[30vh] ">
-        <div className="relative z-30 w-full flexcent flex-col ">
+        <div className="relative z-30 w-full flexcent flex-col h-full">
           {" "}
           <div className="w-full flex items-center justify-center pb-2">
             <Breadcrumbs />
