@@ -9,9 +9,10 @@ import { usePathname } from "next/navigation";
 
 export const Navlinks = [
   { label: "Home", href: "/" },
-  { label: "About", href: "#about" },
-  { label: "Services", href: "#services" },
-  { label: "Contact", href: "#contact" },
+  { label: "About", href: "/about" },
+  { label: "Services", href: "/services" },
+  { label: "Blog", href: "/blog" },
+  { label: "Contact", href: "/contact" },
 ];
 
 export default function CornerNavGSAP() {
@@ -125,7 +126,7 @@ export default function CornerNavGSAP() {
             icon="fluent:dismiss-20-regular"
             width="24"
             height="24"
-            className="z-50"
+            className="z-50 text-primary"
           />
         ) : (
           <Icon
@@ -147,11 +148,11 @@ export default function CornerNavGSAP() {
           willChange: "clip-path",
         }}
         className="absolute inset-0 bg-primary
-                   z-40 h-[100vh] md:px-[100px] px-8 flex items-center justify-between max-sm:flex-col pb-32 pt-10"
+                   z-40 h-[100vh] md:px-[100px] px-8 flex items-center justify-between max-sm:flex-col pt-10"
       >
         <div
-          className="md:w-[70%] w-full h-full  flex flex-col items-start justify-center gap-10
-                   text-4xl text-neutral-300"
+          className="md:w-[70%] w-full h-full  flex flex-col items-start justify-center gap-5
+                   text-3xl text-neutral-300"
           onClick={closeMenu}
         >
           {" "}
@@ -168,8 +169,8 @@ export default function CornerNavGSAP() {
                 <Link
                   href={txt.href}
                   onClick={() => handleNavClick(txt.href)}
-                  className={`uppercase hover:tracking-wider transition-all duration-300 hover:text-accent text-primary ${
-                    active ? "underline underline-offset-4" : ""
+                  className={`uppercase hover:tracking-wider transition-all duration-300 hover:text-accent text-primary font-anton ${
+                    active ? " font-[100] font-sans" : ""
                   }`}
                 >
                   {txt.label}
@@ -298,7 +299,7 @@ export default function CornerNavGSAP() {
             href="#contact"
             onClick={() => handleNavClick("#contact")}
             className="w-full max-w-xs py-3 bg-primary rounded-3xl text-center
-               text-black font-semibold hover:bg-secondary transition"
+               text-white font-semibold hover:bg-secondary transition mb-[50px]"
           >
             Contact&nbsp;Us
           </Link>

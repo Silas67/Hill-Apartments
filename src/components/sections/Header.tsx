@@ -1,40 +1,33 @@
 "use client";
 import React, { useEffect, useState } from "react";
-import { easeInOut, motion } from "framer-motion";
+import { motion } from "framer-motion";
 import { usePathname } from "next/navigation";
 import Link from "next/link";
-import { MdClose, MdMenu } from "react-icons/md";
 import Image from "next/image";
 import CornerNavGSAP from "./Corner";
 
 export const Navbar = [
-  { label: "Home", href: "/" },
+  { label: "About", href: "/about" },
+  { label: "Blog", href: "/blog" },
   { label: "Properties", href: "/properties" },
   { label: "Services", href: "/services" },
-  { label: "Blog", href: "/blog" },
-  { label: "About", href: "/about" },
 ];
 
 const Header = () => {
-  const [navIsLive, setNavIsLive] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
 
-  const handleClick = () => {
-    setNavIsLive(!navIsLive);
-    console.log(navIsLive);
-  };
-  useEffect(() => {
-    if (navIsLive) {
-      document.body.style.overflow = "hidden";
-    } else {
-      document.body.style.overflow = "auto";
-    }
+  // useEffect(() => {
+  //   if (navIsLive) {
+  //     document.body.style.overflow = "hidden";
+  //   } else {
+  //     document.body.style.overflow = "auto";
+  //   }
 
-    // Cleanup on unmount
-    return () => {
-      document.body.style.overflow = "auto";
-    };
-  }, [navIsLive]);
+  //   // Cleanup on unmount
+  //   return () => {
+  //     document.body.style.overflow = "auto";
+  //   };
+  // }, [navIsLive]);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -101,99 +94,13 @@ const Header = () => {
             </Link>
           </button>
 
-          <div
-            onClick={handleClick}
-            className="hidden text-2xl max-sm:flex max-[1030px]:flex sm:text-3xl relative transition-all duration-[2s] z-50"
-          >
-            {navIsLive ? (
-              <motion.div
-                initial={{ rotate: 0, scale: 1 }}
-                animate={{ rotate: 180, scale: 1.2 }}
-                exit={{ rotate: 0, scale: 1 }}
-                transition={{ duration: 0.3, ease: easeInOut }}
-              >
-                <MdClose className="text-foreground md:hidden" />
-              </motion.div>
-            ) : (
-              <motion.div
-                initial={{ rotate: -180, scale: 1 }}
-                animate={{ rotate: 0, scale: 1.2 }}
-                exit={{ rotate: -180, scale: 1 }}
-                transition={{ duration: 0.3, ease: easeInOut }}
-              >
-                <MdMenu className="md:hidden" />
-              </motion.div>
-            )}
+          <div className="lg:hidden">
+            <CornerNavGSAP />
           </div>
         </div>
       </nav>
 
       {/* Sidebar */}
-      <div>
-        <div className="lg:hidden">
-          <CornerNavGSAP />
-          {/* <motion.aside
-            initial={{ y: "100%", opacity: 0 }}
-            animate={
-              navIsLive
-                ? { y: 0, opacity: 1 }
-                : { y: "-30%", opacity: 0, display: "none" }
-            }
-            transition={{ duration: 1.5, ease: "anticipate" }}
-            className="md:hidden fixed top-0 left-0 w-full lg:h-screen  h-screen bg-primary text-white z-40 flex flex-col justify-between px-6 pt-8 pb-6"
-          >
-            <div className="flex justify-between items-center">
-              <Link href={"/"} className="outline-none">
-                <Image
-                  src={"/Logo.png"}
-                  alt="/"
-                  width={100}
-                  height={100}
-                  className={`filter invert-0 transition-all duration-500 `}
-                />
-              </Link>
-              <button
-                onClick={handleClick}
-                className="text-white text-2xl"
-              ></button>
-            </div>
-
-            <motion.ul
-              initial={{ y: 20, opacity: 0 }}
-              whileInView={{ y: 0, opacity: 1 }}
-              transition={{ duration: 1, ease: "easeInOut", delay: 1 }}
-              className="flex flex-col gap-6 uppercase transform -translate-y-14 text-5xl "
-            >
-              {Navbar.map((link, i) => (
-                <li key={i}>
-                  <Link
-                    href={link.href}
-                    className="break-after-all font-heather tracking-wide"
-                  >
-                    {link.label}
-                  </Link>
-                </li>
-              ))}
-            </motion.ul>
-
-            <div className="w-full items-center flex flex-col justify-center">
-              {" "}
-              <button className="bg-secondary w-fit p-[8px] rounded-lg flex flex-row gap-1 justify-center items-center hover:bg-primary hover:text-white transition-colors duration-300 border border-secondary mb-3">
-                {" "}
-                <Link href="/contact" className="text-[12px] text-white">
-                  Contact An Agent{" "}
-                </Link>
-              </button>
-              <p className="text-white py-3 text-[10px] text-nowrap border-y-1 border-[#bcbcbc]">
-                +(234)-810-488-4845, +(234)-812-456-5509
-              </p>
-              <p className=" text-white  py-3 text-[10px] text-nowrap border-b-1 border-[#bcbcbc]">
-                @info.company&apo;smail@gmail.com
-              </p>
-            </div>
-          </motion.aside> */}
-        </div>
-      </div>
     </div>
   );
 };

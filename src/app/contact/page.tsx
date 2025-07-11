@@ -1,6 +1,5 @@
 "use client";
-import { Btns, FaQs, footerLinks } from "@/components/constants";
-import Breadcrumbs from "@/components/sections/Breadcrumbs";
+import { FaQs } from "@/components/constants";
 import Header from "@/components/sections/Header";
 import { motion } from "framer-motion";
 import useLenis from "@/hooks/useLenis";
@@ -9,10 +8,11 @@ import React, { useState } from "react";
 import { FaMapMarkerAlt, FaPhone } from "react-icons/fa";
 import { IoIosArrowUp, IoIosArrowDown } from "react-icons/io";
 import { MdMail } from "react-icons/md";
-import Image from "next/image";
-import img5 from "@/components/assets/Images/Logo.png";
-import img6 from "@/components/assets/Images/hero.jpg";
+import { Icon } from "@iconify/react/dist/iconify.js";
 import Copy from "@/hooks/Copy";
+import Image from "next/image";
+import img1 from "@/components/assets/Images/img30.jpg";
+import Footer from "@/components/sections/Footer";
 
 const Contact = () => {
   useLenis();
@@ -25,111 +25,175 @@ const Contact = () => {
     <main className="lg:w-full sm:w-[100vw] overflow-hidden relative ">
       <Header />
 
-      {/* Hero */}
-      <section className="w-full lg:h-[50vh] text-center place-content-center relative h-[30vh]">
-        <div className="relative z-30">
-          {" "}
-          <div className="w-full flex items-center justify-center pb-2">
-            <Breadcrumbs />
-          </div>
-          <h1 className="font-sans text-4xl text-white font-bold ">Contact</h1>
-        </div>
-        <div className="absolute inset-0">
-          <div className="h-full w-full">
-            <Image src={img6} alt="" className="object-cover w-full h-full" />
-          </div>
-        </div>
-        <div className="absolute bg-foreground opacity-45 inset-0 w-full h-full"></div>
-        ``
-      </section>
-
       {/* Getintouch */}
-      <section className="w-full flex items-center justify-center flex-col bg-accent2">
-        <div className="flex flex-col items-center mt-10 p-8 w-full gap-[10px]">
-          <Copy>
-            <h1 className="text-5xl font-sans font-bold text-primary">
-              Get in Touch
-            </h1>
-          </Copy>
-          <Copy>
-            {" "}
-            <p className="text-[12px] font-mono text-[#424242]">
-              Lorem ipsum dolor, sit amet consectetur adipisicing elit.
-              Accusamus, ullam.
-            </p>
-          </Copy>
-        </div>
+      <section className="w-full flex items-center justify-center flex-col bg-white md:py-20  gap-[20px] ">
+        <div className="relative md:rounded-[20px] overflow-hidden flexcent">
+          <div className="lg:w-[90%] w-full lg:h-[100vh]  flex md:py-[30px] max-mobile:px-[10px] max-mobile:py-[100px] md:px-[30px] lg:items-start md:items-center flex-col-reverse lg:flex-row ">
+            {/* Left */}
+            <div className="w-full md:p-8 flex lg:items-start justify-between gap-4 flex-col text-white p-2 h-full md:items-center z-30">
+              <div className="w-[80%] hidden lg:block">
+                <h1 className="lg:text-[30px]  font-bold md:text-3xl">
+                  Let&apos;s discuss on something cool together
+                </h1>
+              </div>
 
-        <div className="w-full p-8 flex items-center justify-around gap-4 max-sm:flex-col">
-          <div>
-            <div className="text-foreground mb-8 hover:text-gray-500 transition-colors flex gap-2 items-center text-lg">
-              <FaMapMarkerAlt className="text-xl" />
-              T19 Road 2 Lekki Garden Phase 4, Lekki Lagos.
+              <div className="flex flex-col lg:items-start gap-[20px] max-mobile:mt-[20px]">
+                <div className="text-white  hover:text-gray-500 transition-colors flex gap-2 items-center text-[14px]">
+                  <FaMapMarkerAlt className="text-xl" />
+                  T19 Road 2 Lekki Garden Phase 4, Lekki Lagos.
+                </div>
+
+                <div className="text-white  hover:text-gray-500 transition-colors flex gap-2 items-center text-[14px]">
+                  <FaPhone className="text-xl" /> (+234) 803 283 2962
+                </div>
+
+                <div className="text-white  hover:text-gray-500 transition-colors flex gap-2 items-center text-[14px]">
+                  <MdMail className="text-xl" /> HillsApartment@gmail.com
+                </div>
+              </div>
+
+              <div className="flex gap-6 ">
+                <Link href="https://instagram.com">
+                  <Icon
+                    icon="line-md:instagram"
+                    width="20"
+                    height="20"
+                    className="text-white hover:scale-110 transition-all duration-300 hover:rotate-6"
+                  />
+                </Link>
+                <Link href="https://twitter.com">
+                  <Icon
+                    icon="line-md:twitter"
+                    width="20"
+                    height="20"
+                    className="text-white hover:scale-110 transition-all duration-300 hover:rotate-6"
+                  />
+                </Link>
+                <Link href="https://linkedin.com">
+                  <Icon
+                    icon="line-md:linkedin"
+                    width="20"
+                    height="20"
+                    className="text-white hover:scale-110 transition-all duration-300 hover:rotate-6"
+                  />
+                </Link>
+              </div>
             </div>
 
-            <div className="text-foreground mb-8 hover:text-gray-500 transition-colors flex gap-2 items-center text-lg">
-              <FaPhone className="text-xl" /> (+234) 803 283 2962
-            </div>
+            {/* Right */}
+            <div className="flexcent flex-col gap-6 z-30">
+              <div className="w-[80%] max-mobile:w-full text-white lg:hidden">
+                <h1 className="lg:text-[30px]  font-bold md:text-3xl text-center max-mobile:text-4xl">
+                  Let&apos;s discuss on something cool together
+                </h1>
+              </div>
+              <motion.form
+                initial={{ opacity: 0 }}
+                whileInView={{ opacity: 1 }}
+                viewport={{ once: true }}
+                transition={{ duration: 1, ease: "easeInOut" }}
+                className="flex-1 rounded-xl space-y-6 w-full bg-white p-[20px] flex flex-col justify-center"
+              >
+                <div className="flex items-center justify-between gap-6 max-mobile:flex-col">
+                  <div className="flex flex-col max-mobile:w-full">
+                    <label
+                      htmlFor="name"
+                      className="text-neutral-800 font-bold mb-1"
+                    >
+                      Name
+                    </label>
+                    <input
+                      type="text"
+                      id="name"
+                      className="px-6 py-2 rounded-3xl bg-neutral-100  border border-neutral-300 "
+                      placeholder="Silas Ejimonye"
+                      required
+                    />
+                  </div>
+                  <div className="flex flex-col max-mobile:w-full">
+                    <label
+                      htmlFor="email"
+                      className="text-neutral-800 font-bold mb-1"
+                    >
+                      Email
+                    </label>
+                    <input
+                      type="email"
+                      id="email"
+                      className="px-6 py-2 rounded-3xl bg-neutral-100  border border-neutral-300 "
+                      placeholder="chibukesilas@gmail.com"
+                      required
+                    />
+                  </div>
+                </div>
 
-            <div className="text-foreground mb-8 hover:text-gray-500 transition-colors flex gap-2 items-center text-lg">
-              <MdMail className="text-xl" /> Blinkzsparks@gmail.com
+                <div className="flex flex-col">
+                  <label
+                    htmlFor="Phone"
+                    className="text-neutral-800 font-bold mb-1"
+                  >
+                    Phone Number
+                  </label>
+                  <input
+                    type="tel"
+                    id="phone"
+                    className="px-4 py-2 rounded-3xl bg-neutral-100  border border-neutral-300 "
+                    placeholder="(+234)-810-488-4845"
+                    required
+                  />
+                </div>
+                <div className="flex flex-col">
+                  <label
+                    htmlFor="subject"
+                    className="text-neutral-800 font-bold mb-1"
+                  >
+                    Subject
+                  </label>
+                  <input
+                    type="text"
+                    id="subject"
+                    className="px-4 py-2 rounded-3xl bg-neutral-100  border border-neutral-300 "
+                    placeholder="Subject"
+                    required
+                  />
+                </div>
+                <div className="flex flex-col">
+                  <label
+                    htmlFor="message"
+                    className="text-neutral-800 font-bold mb-1"
+                  >
+                    Message
+                  </label>
+                  <textarea
+                    id="message"
+                    rows={4}
+                    className="px-4 py-2 rounded-3xl bg-neutral-100  border border-neutral-300 "
+                    placeholder="Tell us what you need..."
+                    required
+                  ></textarea>
+                </div>
+                <div className="w-full flexcent">
+                  <button
+                    type="submit"
+                    className="group flex items-center gap-2 bg-primary hover:bg-white transition-all text-white font-semibold py-2 px-6 rounded-3xl outline-none hover:scale-105 hover:shadow-2xl hover:text-primary border border-primary duration-200"
+                  >
+                    <p className="transition-all duration-500 text-sm">
+                      Send Message
+                    </p>
+                    <Icon
+                      icon="line-md:arrow-right"
+                      className="-rotate-45 group-hover:-rotate-0 text-lg transition-all duration-500"
+                    />
+                  </button>
+                </div>
+              </motion.form>
             </div>
           </div>
-
-          <form className="w-1/2 flex flex-col bg-accent2 p-4 rounded-[10px] p-6 border border-primary max-sm:w-full mb-4">
-            <div className="mb-6">
-              <label
-                htmlFor="email"
-                className="text-primary font-bold block mb-2 text-sm "
-              >
-                Your email
-              </label>
-              <input
-                name="email"
-                type="email"
-                id="email"
-                required
-                className="bg-background border border-primary  placeholder-[#9CA2A9] text-gray-100 text-sm rounded-lg block w-full p-2.5"
-                placeholder="jacob@google.com"
-              />
-            </div>
-            <div className="mb-6">
-              <label
-                htmlFor="subject"
-                className="text-primary font-bold block mb-2 text-sm "
-              >
-                Subject
-              </label>
-              <input
-                name="subject"
-                type="text"
-                id="subject"
-                required
-                className="bg-background border border-primary placeholder-[#9CA2A9] text-gray-100 text-sm rounded-lg block w-full p-2.5"
-                placeholder="Just saying hi"
-              />
-            </div>
-            <div className="mb-6">
-              <label
-                htmlFor="message"
-                className="text-primary font-bold block mb-2 text-sm "
-              >
-                Message
-              </label>
-              <textarea
-                name="message"
-                id="message"
-                className="bg-background border border-primary placeholder-[#9CA2A9] text-gray-100 text-sm rounded-lg block w-full p-2.5"
-                placeholder="Let's talk about..."
-              />
-            </div>
-            <button
-              type="submit"
-              className="bg-primary hover:bg-transparent border border-primary hover:text-primary transition-all duration-500 font-bold text-white  py-2.5 px-5 rounded-lg w-full"
-            >
-              Send Message
-            </button>
-          </form>
+          {/* Background */}
+          <div className="absolute inset-0 w-full h-full z-10">
+            <Image src={img1} alt="/" className="object-cover w-full h-full" />
+          </div>
+          <div className="absolute bg-black/50 z-20 w-full h-full"></div>
         </div>
       </section>
 
@@ -139,7 +203,7 @@ const Contact = () => {
           <Copy>
             <div className="text-2xl font-sans pt-6 font-bold  max-sm:text-xl text-nowrap">
               Frequently Asked{" "}
-              <span className="bg-secondary p-2">Questions?</span>
+              <span className="bg-secondary p-2 text-white">Questions?</span>
             </div>
           </Copy>
           <Copy>
@@ -175,7 +239,7 @@ const Contact = () => {
                 )}
               </button>
               <div
-                className={`space-y-2 text-foreground text-sm transition-all duration-500 ease-in-out overflow-hidden ${
+                className={`space-y-2 text-white text-sm transition-all duration-500 ease-in-out overflow-hidden ${
                   openSection === id ? "max-h-full p-2" : " max-h-0 p-0"
                 }`}
               >
@@ -199,109 +263,7 @@ const Contact = () => {
       </section>
 
       {/* Footer */}
-      <footer className="w-full h-fit pt-16 pb-4 text-foreground flex flex-col px-12 max-sm:px-6 bg-[#170e01] gap-8 text-white">
-        <motion.div
-          initial={{ x: 20, opacity: 0 }}
-          whileInView={{ x: 0, opacity: 1 }}
-          transition={{ duration: 1, ease: "easeInOut" }}
-          viewport={{ once: true }}
-          className="lg:flex flex-col "
-        >
-          {/* Logo */}
-          <div className="flex items-center justify-between border-b-[1px]  pb-2 max-sm:flex-col max-sm:items-start ">
-            <Image
-              src={img5}
-              alt="logo"
-              className="w-[100px] h-[60px] object-cover invert-75"
-            />
-
-            <div className="flex gap-3">
-              {Btns.map((i, item) => (
-                <Link key={item} href="/partner" className="btn">
-                  {i.icon}
-                </Link>
-              ))}
-            </div>
-          </div>
-
-          <div className="flex pt-4 flex-col md:flex-row max-sm:flex-col-reverse">
-            {/* Links */}
-            <div className="grid grid-row-4 lg:grid-cols-3 md:grid-cols-2 gap-4 md:gap-12 lg:px-12 md:pl-8">
-              {footerLinks.map((footer, id) => (
-                <div key={id}>
-                  {/* Section Header */}
-                  <button
-                    onClick={() => toggleSection(id)}
-                    className="flex justify-between items-center w-full text-lg font-sans font-bold"
-                  >
-                    {footer.heading}
-                    {openSection === id ? (
-                      <IoIosArrowUp className="text-xl outline-none text-secondary lg:hidden" />
-                    ) : (
-                      <IoIosArrowDown className="text-xl outline-none text-secondary lg:hidden" />
-                    )}
-                  </button>
-
-                  {/* Collapsible Links */}
-                  <ul
-                    className={`mt-2 space-y-2 text-neutral-400 text-sm overflow-hidden lg:overflow-visible transition-all duration-300 ease-in-out ${
-                      openSection === id ? "max-h-full p-2" : " max-h-0 p-0"
-                    }`}
-                  >
-                    {footer.link.map((link, index) => (
-                      <li
-                        key={index}
-                        className="cursor-pointer hover:text-white hover:underline transition-all duration-300"
-                      >
-                        {link.href.startsWith("https") ? (
-                          <a
-                            href={link.href}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                          >
-                            {link.name}
-                          </a>
-                        ) : (
-                          <Link href={link.href}>{link.name}</Link>
-                        )}
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-              ))}
-            </div>
-
-            {/* Newsletter */}
-            <div className="w-[100%] py-12 max-sm:pb-12">
-              <h1 className="font-sans font-bold text-xl ">
-                Subscribe For Updates
-              </h1>
-
-              <div className="w-full flex items-center justify-center max-sm:w-full relative mt-8">
-                <input
-                  type="email"
-                  name="Email"
-                  id="Email"
-                  placeholder="Your email"
-                  className="w-full border-b border-white text-accent2 relative  transition-all duration-300 pb-2 "
-                />
-
-                <button className="absolute rounded-3xl text-primary transition-colors right-[0] bg-accent2 p-2 text-sm bottom-[0] mb-2">
-                  Subscribe
-                </button>
-              </div>
-            </div>
-          </div>
-        </motion.div>
-
-        <div className="text-[12px] cursor-default w-full border-t-[1px] border-white p-4 flex justify-between max-sm:text-[10px] max-sm:gap-4 max-sm:flex-col-reverse items-center">
-          <p>@ CopyRight. All rights reserved</p>
-          <div>
-            HillsAprtment 15 E I Gomos Road, Shandam close, Abacha road,
-            Mararaba Nassarawa | Tel:(+234) 703 380 9119
-          </div>
-        </div>
-      </footer>
+      <Footer />
     </main>
   );
 };
