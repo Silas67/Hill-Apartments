@@ -62,7 +62,7 @@ export default function CornerNavGSAP() {
     if (!menuRef.current) return;
 
     gsap.set(menuRef.current, {
-      clipPath: "circle(0% at 92% 5%)",
+      clipPath: "circle(0% at 89% 5%)",
     });
 
     tl.current = gsap.timeline({
@@ -122,19 +122,23 @@ export default function CornerNavGSAP() {
                     duration-300"
       >
         {open ? (
-          <Icon
-            icon="fluent:dismiss-20-regular"
-            width="24"
-            height="24"
-            className="z-50 text-primary"
-          />
+          <motion.div className="z-50">
+            <Icon
+              icon="mdi:home-outline"
+              width="24"
+              height="24"
+              className="z-50 text-black"
+            />
+          </motion.div>
         ) : (
-          <Icon
-            icon="fluent:apps-20-regular"
-            width="24"
-            height="24"
-            className="z-50"
-          />
+          <motion.div>
+            <Icon
+              icon="ic:baseline-home"
+              width="24"
+              height="24"
+              className="z-50"
+            />
+          </motion.div>
         )}
       </button>
 

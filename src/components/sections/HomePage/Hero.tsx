@@ -16,7 +16,7 @@ const Hero = () => {
 
       {/* Text Content */}
       <div className="relative flex flex-col w-full h-full items-start justify-center z-20 text-center text-white px-4 max-mobile:px-[0px]">
-        <div className="absolute lg:right-[40px] md:right-[20px] max-md:top-[100px] top-[80px] text-left max-mobile:px-[20px] max-w-[400px] max-mobile:max-w-[250px] max-mobile:right-[10px]">
+        <div className="absolute lg:right-[40px] md:right-[20px] max-md:top-[100px] lg:top-[80px]  text-left max-mobile:px-[20px] max-w-[400px] max-mobile:max-w-[250px] max-mobile:right-[10px]">
           <motion.h1
             initial={{ y: 20, opacity: 0 }}
             whileInView={{ y: 0, opacity: 1 }}
@@ -26,14 +26,18 @@ const Hero = () => {
           >
             Where Vision Meets Structure and Dreams Becomes Purpose
           </motion.h1>
+
           <motion.div
             initial={{ y: 20, opacity: 0 }}
             whileInView={{ y: 0, opacity: 1 }}
             viewport={{ once: true }}
             transition={{ duration: 1, ease: "easeInOut" }}
-            className="text-sm mt-2 text-neutral-300 flex items-center gap-[10px] group  transition-all duration-500 cursor-pointer"
+            className="text-[16px] mt-2 text-neutral-300 flex items-center gap-[10px] group  transition-all duration-500 cursor-pointer"
           >
-            <h1 className="text-right w-full"> View Properties</h1>
+            <h1 className="max-mobile:text-right max-mobile:w-full">
+              {" "}
+              View Properties
+            </h1>
 
             <Icon
               icon="line-md:arrow-right"
