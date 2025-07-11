@@ -1,11 +1,10 @@
-@import url("https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400..700;1,400..700&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap");
 @import "tailwindcss";
 
 :root {
   --background: #ffffff;
   --foreground: #171717;
-  --primary: #352111;
-  --secondary: #f4a460;
+  --primary: #0e252e;
+  --secondary: #0e252e;
   --accent: #2a4e2f;
   --accent2: #fdf6ec;
 }
@@ -18,27 +17,46 @@
   --color-accent: var(--accent);
   --color-accent2: var(--accent2);
   --font-serif: var(--font-lora);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-montserrat);
+  --font-anton: var(--font-anton);
   --breakpoint-all: 20rem;
-  --breakpoint-mini: 23.75rem;
+  --breakpoint-mobile: 440px;
+  --breakpoint-tab: 51.3rem;
+  --breakpoint-laptop: 80rem;
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
     --background: #ffffff;
     --foreground: #171717;
-    --primary: #352111;
-    --secondary: #f4a460;
+    --primary: #143948;
+    --secondary: #0e252e;
     --accent: #2a4e2f;
     --accent2: #fdf6ec;
   }
 }
 
+@font-face {
+  font-family: "MyCustomFont2";
+  src: url(/font/Heathergreen.otf) format("truetype");
+  font-weight: 400;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "MyCustomFont";
+  src: url(/font/ClashGrotesk-Variable.ttf) format("truetype");
+  font-weight: 400;
+  font-style: normal;
+}
+
 body {
   background: var(--background);
-  color: var(--foreground);
-  font-family: "Montserrat", sans-serif;
+  color: var(--primary);
+  font-family: "MyCustomFont", sans-serif;
+}
+
+.font-sans {
+  font-family: "MyCustomFont", sans-serif;
 }
 
 .bb {
@@ -46,8 +64,8 @@ body {
 }
 
 .btn {
-  border: #ffffff solid 1px;
-  color: #ffffff;
+  border: var(--background) solid 1px;
+  color: var(--background);
   padding: 5px;
   border-radius: 10px;
 
@@ -104,7 +122,7 @@ body {
       bottom: 0;
       background-image: linear-gradient(
         to right,
-        var(--color-accent2),
+        var(--color-accent),
         var(--color-secondary)
       );
     }
@@ -128,4 +146,10 @@ body {
   height: 100%;
   inset: 0;
   z-index: 10;
+}
+
+.flexcent {
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }

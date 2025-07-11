@@ -3,30 +3,19 @@ import React, { useState } from "react";
 import Header from "@/components/sections/Header";
 import AnimatedNumbers from "react-animated-numbers";
 import Image from "next/image";
-import {
-  achievementsList,
-  Btns,
-  FaQs,
-  footerLinks,
-  Recommended,
-  values,
-} from "@/components/constants";
-import img1 from "@/components/assets/Images/profile2.png";
+import { achievementsList, Btns, FaQs, values } from "@/components/constants";
 import img2 from "@/components/assets/Images/img27.jpg";
-import img3 from "@/components/assets/Images/profile.png";
+import img3 from "@/components/assets/Images/img30.jpg";
 import useLenis from "@/hooks/useLenis";
 import { motion } from "framer-motion";
 import Link from "next/link";
-import { BsQuote } from "react-icons/bs";
 import { IoIosArrowUp, IoIosArrowDown } from "react-icons/io";
-import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import "swiper/css/navigation";
-import { Autoplay, Pagination, Navigation } from "swiper/modules";
 import Breadcrumbs from "@/components/sections/Breadcrumbs";
-import img5 from "@/components/assets/Images/Logo.png";
-import img6 from "@/components/assets/Images/hero.jpg";
-import Copy from "@/hooks/Copy";
+// import Testimonials from "@/components/sections/HomePage/Testimonials";
+import img1 from "@/components/assets/Images/img23.jpg";
+import Footer from "@/components/sections/Footer";
 
 const overlayVariants = {
   initial: { y: "100%" },
@@ -46,7 +35,7 @@ const About = () => {
   };
   return (
     <main className="lg:w-full sm:w-[100vw] overflow-hidden relative ">
-      <Header color={false} />
+      <Header />
 
       {/* Hero */}
       <section className="w-full lg:h-[50vh] text-center place-content-center relative all:h-[30vh] ">
@@ -59,36 +48,34 @@ const About = () => {
         </div>
 
         <div className="absolute inset-0">
-          <div className="h-full w-full">
-            <Image src={img6} alt="" className="object-cover w-full h-full" />
-          </div>
+          <Image src={img3} alt="/" className="object-cover w-full h-full" />
         </div>
 
-        <div className="absolute bg-foreground opacity-45 inset-0 w-full h-full"></div>
+        <div className="absolute bg-black/80 inset-0 w-full h-full"></div>
       </section>
 
       {/* Who We Are */}
-      <section className="w-full bg-accent2 flex justify-between items-start p-8 px-[70px] gap-[50px] all:flex-col lg:flex-row max-sm:px-[30px]">
-        <div className="relative lg:w-1/2 h-full overflow-hidden  rounded-[10px] all:w-full">
-          <Image src={img2} alt="/" className="object-cover w-full h-full" />
-          <div className="absolute w-full h-full inset-[0] bg-foreground opacity-30"></div>
-        </div>
+      <section className="w-full px-[70px] py-20 max-sm:px-[30px]">
+        <motion.div
+          initial={{ y: 20, opacity: 0 }}
+          whileInView={{ y: 0, opacity: 1 }}
+          viewport={{ once: true }}
+          transition={{ duration: 1, ease: "easeInOut", delay: 0.2 }}
+          className="w-full flex justify-around items-center gap-[0px] all:flex-col lg:flex-row-reverse "
+        >
+          <div className="relative lg:w-[450px] h-[350px] overflow-hidden  rounded-[10px] all:w-full">
+            <Image src={img2} alt="/" className="object-cover w-full h-full" />
+            <div className="absolute w-full h-full inset-[0] bg-foreground opacity-30"></div>
+          </div>
 
-        <div className="grid lg:w-1/2 gap-[5px] all:w-full pt-6">
-          <Copy>
+          <div className="grid lg:w-1/2 gap-[5px] all:w-full pt-6">
             <h1 className="uppercase text-[10px] text-secondary font-bold">
               Our Story
             </h1>
-          </Copy>
 
-          <Copy>
-            <h1 className="font-sans text-4xl text-primary font-bold">
-              Who We Are
-            </h1>
-          </Copy>
+            <h1 className="text-4xl text-primary font-bold">Who We Are</h1>
 
-          <Copy>
-            <p className="font-mono text-[12px]  text-foreground">
+            <p className="text-[12px]  text-foreground">
               Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nesciunt
               doloremque, magnam possimus omnis, repellendus dolore ducimus
               velit similique alias natus quis vitae nobis, ipsum aliquam
@@ -96,10 +83,8 @@ const About = () => {
               maxime illum, ipsum eum aliquid ad veniam dicta cum dolor natus
               aperiam, assumenda molestias voluptate! Impedit!
             </p>
-          </Copy>
 
-          <Copy>
-            <p className="font-mono text-[12px] text-foreground">
+            <p className=" text-[12px] text-foreground">
               Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nesciunt
               doloremque, magnam possimus omnis, repellendus dolore ducimus
               velit similique alias natus quis vitae nobis, ipsum aliquam
@@ -107,34 +92,70 @@ const About = () => {
               maxime illum, ipsum eum aliquid ad veniam dicta cum dolor natus
               aperiam, assumenda molestias voluptate! Impedit!
             </p>
-          </Copy>
 
-          <div className="grid md:grid-cols-4 max-sm:grid-cols-2 place-content-center items-center w-full my-[20px] ">
-            {achievementsList.map((achievement, index) => {
-              return (
-                <div
-                  key={index}
-                  className="w-full flex flex-col items-center justify-center mx-1 my-4 "
-                >
-                  <h2 className="text-3xl text-primary font-bold flex items-center">
-                    {achievement.prefix}
-                    <AnimatedNumbers
-                      includeComma
-                      animateToNumber={parseInt(achievement.value)}
-                      locale="en-US"
-                      className=" text-[#0f0f0f] text-3xl font-bold"
-                    />
+            <div className=" grid md:grid-cols-4 max-sm:grid-cols-2 place-content-start items-center w-full my-[20px] ">
+              {achievementsList.map((achievement, index) => {
+                return (
+                  <div
+                    key={index}
+                    className="w-full flex flex-col lg:items-start max-mobile:items-center justify-center mx-1 my-4"
+                  >
+                    <h2 className="text-3xl text-primary font-bold flex items-center">
+                      {achievement.prefix}
+                      <AnimatedNumbers
+                        includeComma
+                        animateToNumber={parseInt(achievement.value)}
+                        locale="en-US"
+                        className=" text-[#0f0f0f] text-3xl font-bold"
+                      />
 
-                    {achievement.postfix}
-                  </h2>
-                  <p className="text-[#151515] text-nowrap text-sm">
-                    {achievement.metric}
-                  </p>
-                </div>
-              );
-            })}
+                      {achievement.postfix}
+                    </h2>
+                    <p className="text-[#151515] text-nowrap text-sm">
+                      {achievement.metric}
+                    </p>
+                  </div>
+                );
+              })}
+            </div>
           </div>
-        </div>
+        </motion.div>
+
+        <motion.div
+          initial={{ y: -20, opacity: 0 }}
+          whileInView={{ y: 0, opacity: 1 }}
+          viewport={{ once: true }}
+          transition={{ duration: 1, ease: "easeInOut", delay: 0.2 }}
+          className="w-full flex justify-between items-start gap-[30px] mt-[30px]  max-tab:flex-col "
+        >
+          <motion.div
+            initial={{ y: 20, opacity: 0 }}
+            whileInView={{ y: 0, opacity: 1 }}
+            viewport={{ once: true }}
+            transition={{ duration: 1, ease: "easeInOut" }}
+            className="relative lg:w-[500px] h-full overflow-hidden all:w-full"
+          >
+            <Image src={img1} alt="/" className="object-cover w-full h-full" />
+            <div className="absolute w-full h-full inset-[0] bg-black/30"></div>
+          </motion.div>
+          <div className="w-1/2 space-y-[50px]  max-tab:w-full">
+            <h1 className="text-4xl lg:max-w-[70%]  max-tab:w-full max-mobile:text-3xl">
+              Desiging spaces that insipire and elevate
+            </h1>
+            <p className=" text-sm ">
+              Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nesciunt
+              doloremque, magnam possimus omnis, repellendus dolore ducimus
+              velit similique alias natus quis vitae nobis, ipsum aliquam
+              aspernatur et fugit excepturi quod debitis illum nulla. Impedit
+              maxime illum, ipsum eum aliquid ad veniam dicta cum dolor natus
+              aperiam, assumenda molestias voluptate! Impedit!
+            </p>
+            <div className="">
+              <h1>Ejimonye Silas</h1>
+              <p className="text-[#a4a4a4]">CEO Noxa</p>
+            </div>
+          </div>
+        </motion.div>
       </section>
 
       {/* Mission and Vision */}
@@ -151,15 +172,15 @@ const About = () => {
                 ease: "easeInOut",
                 delay: 0.1 * item,
               }}
-              className="w-[300px] h-[250px] bg-background flex items-center justify-center flex-col rounded-[10px] overflow-hidden shadow p-4 relative"
+              className="w-[300px] h-[250px] bg-background flex items-center justify-center flex-col rounded-[10px] overflow-hidden shadow-lg p-4 relative"
             >
               <h1 className="text-2xl font-bold text-primary font-sans">
                 {id.title}
               </h1>
-              <p className="text-[12px] text-foreground font-mono text-center p-2">
+              <p className="text-[12px] text-foreground  text-center p-2">
                 {id.text}
               </p>
-              <div className="w-full h-full opacity-30 absolute inset-[0] text-7xl text-secondary top-[40%] left-[40%]">
+              <div className="w-full h-full opacity-20 absolute inset-[0] text-7xl text-secondary top-[40%] left-[40%]">
                 {id.icon}
               </div>
             </motion.div>
@@ -168,7 +189,7 @@ const About = () => {
       </section>
 
       {/* Our Team */}
-      <section className="w-full grid-rows-2 items-center my-[50px]">
+      <section className="w-full grid-rows-2 items-center py-20 lg:px-[100px]">
         <motion.div
           initial={{ y: 20, opacity: 0 }}
           whileInView={{ y: 0, opacity: 1 }}
@@ -185,7 +206,7 @@ const About = () => {
           <p className="text-3xl font-[400]">Meet Our Management</p>
         </motion.div>
 
-        <div className="flex items-center justify-center gap-[50px] my-[30px] all:flex-col md:flex-row flex-wrap">
+        <div className="lg:grid lg:grid-cols-3 lg:gap-[20px] lg:place-items-center flex items-center justify-center gap-[50px] my-[30px] all:flex-col md:flex-row flex-wrap">
           {[1, 2, 3, 4, 5, 6].map((item, index) => (
             <motion.div
               initial={{ y: 20, opacity: 0 }}
@@ -199,18 +220,12 @@ const About = () => {
               key={index}
             >
               <motion.div
-                className="relative w-[300px] h-[300px] rounded-[10px] overflow-hidden"
+                className="relative w-[250px] h-[250px] rounded-[10px] overflow-hidden bg-black/80"
                 initial="initial"
                 whileHover="hover"
                 animate="initial"
               >
                 {/* Background Image */}
-                <Image
-                  src={img1}
-                  alt="property"
-                  className="object-cover w-full h-full "
-                  fill
-                />
 
                 <motion.div
                   variants={textVariants}
@@ -223,13 +238,10 @@ const About = () => {
                   </Link>
                 </motion.div>
 
-                {/* Gradient overlay always visible */}
-                <div className="absolute inset-0 bg-gradient-to-t from-foreground to-transparent z-10" />
-
                 {/* Sliding colored overlay */}
                 <div>
                   <motion.div
-                    className="absolute inset-0 bg-gradient-to-t from-primary to-transparent z-20 opacity-90 flex  px-12 pt-3 gap-2
+                    className="absolute inset-0 bg-gradient-to-t from-black/90 to-transparent z-20 opacity-90 flex  px-12 pt-3 gap-2
                       "
                     variants={overlayVariants}
                     transition={{ duration: 0.4, ease: "easeInOut" }}
@@ -254,117 +266,22 @@ const About = () => {
       </section>
 
       {/* Testimonials */}
-      <section className="bg-foreground w-full py-[40px]  relative">
-        <div className="w-full text-center text-white">
-          <Copy>
-            <div className="text-[10px] font-sans text-secondary font-bold pb-1">
-              What our customers say
-            </div>
-          </Copy>
-
-          <Copy>
-            <div className="text-4xl font-sans text-background pb-6 font-bold">
-              Testimonials
-            </div>
-          </Copy>
-        </div>
-
-        <Swiper
-          breakpoints={{
-            320: {
-              slidesPerView: 1,
-              spaceBetween: 24,
-            },
-            480: {
-              slidesPerView: 1,
-              spaceBetween: 8,
-            },
-            690: { slidesPerView: 2, spaceBetween: 5 },
-            700: {
-              slidesPerView: 2,
-              spaceBetween: 5,
-            },
-            1000: {
-              slidesPerView: 2,
-              spaceBetween: 5,
-            },
-            1200: {
-              slidesPerView: 3,
-              spaceBetween: 5,
-            },
-          }}
-          modules={[Autoplay, Pagination, Navigation]}
-          navigation={{
-            nextEl: ".button-next",
-            prevEl: ".button-prev",
-          }}
-          autoplay={{
-            delay: 2500,
-            disableOnInteraction: false,
-          }}
-          pagination={{
-            clickable: true,
-          }}
-          loop={true}
-          className="w-[80%]"
-        >
-          <div className="w-full flex items-center justify-center gap-[20px] py-12 px-5 ">
-            {Recommended.map((id, item) => (
-              <SwiperSlide key={item}>
-                <motion.div
-                  initial={{ y: 20, opacity: 0 }}
-                  whileInView={{ y: 0, opacity: 1 }}
-                  viewport={{ once: true }}
-                  transition={{
-                    duration: 1,
-                    ease: "easeInOut",
-                    delay: 0.05 * item,
-                  }}
-                  className="w-[300px] h-[250px] rounded-[10px] ml-[5px] mt-[50px] bg-accent2 p-3 relative"
-                >
-                  <div className="w-full h-full flex items-center justify-center text-sm text-foreground text-center flex-col ">
-                    <div>
-                      <BsQuote />
-                    </div>
-                    <p>
-                      {" "}
-                      Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                      Pariatur repellendus, assumenda ad nesciunt,
-                    </p>
-                    <div className="relative -bottom-[4vh] italic">
-                      <h1 className="font-[600]">Ejimonye Silas</h1>
-                      <p>Worker</p>
-                    </div>
-                    <div className="absolute w-[80px] h-[80px] rounded-full border-[5px] border-foreground -top-[5vh] overflow-hidden right-[37%]">
-                      <Image
-                        src={img3}
-                        alt="/"
-                        className="object-cover w-full h-full"
-                      />
-                    </div>
-                  </div>
-                </motion.div>
-              </SwiperSlide>
-            ))}
-          </div>
-        </Swiper>
-      </section>
+      {/* <section>
+        <Testimonials />
+      </section> */}
 
       {/* FAQ */}
-      <section className="w-full py-[20px] relative px-[70px] max-sm:px-[30px]">
+      <section className="w-full py-20 relative px-[70px] max-sm:px-[30px]">
         <div className="w-full text-center pb-6">
-          <Copy>
-            <div className="text-2xl font-sans pt-6 font-bold  max-sm:text-xl text-nowrap">
-              Frequently Asked{" "}
-              <span className="bg-secondary p-2">Questions?</span>
-            </div>
-          </Copy>
-          <Copy>
-            <p className="pt-1 max-sm:text-sm">
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Qui quas
-              ea beatae dolorem ratione neque
-            </p>
-          </Copy>
+          <div className="text-2xl font-sans pt-6 font-bold  max-sm:text-xl text-nowrap">
+            Frequently Asked{" "}
+            <span className="bg-secondary p-2 text-white">Questions?</span>
+          </div>
+
+          <p className="pt-1 max-sm:text-sm">
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Qui quas ea
+            beatae dolorem ratione neque
+          </p>
         </div>
         <div className="grid grid-cols-1 md:grid-cols-3 my-12 gap-8">
           {FaQs.map((item, id) => (
@@ -416,109 +333,9 @@ const About = () => {
       </section>
 
       {/* Footer */}
-      <footer className="w-full h-fit pt-16 pb-4 text-foreground flex flex-col px-12 max-sm:px-6 bg-[#170e01] gap-8 text-white">
-        <motion.div
-          initial={{ x: 20, opacity: 0 }}
-          whileInView={{ x: 0, opacity: 1 }}
-          transition={{ duration: 1, ease: "easeInOut" }}
-          viewport={{ once: true }}
-          className="lg:flex flex-col "
-        >
-          {/* Logo */}
-          <div className="flex items-center justify-between border-b-[1px]  pb-2 max-sm:flex-col max-sm:items-start ">
-            <Image
-              src={img5}
-              alt="logo"
-              className="w-[100px] h-[60px] object-cover invert-75"
-            />
-
-            <div className="flex gap-3">
-              {Btns.map((i, item) => (
-                <Link key={item} href="/partner" className="btn">
-                  {i.icon}
-                </Link>
-              ))}
-            </div>
-          </div>
-
-          <div className="flex pt-4 flex-col md:flex-row max-sm:flex-col-reverse">
-            {/* Links */}
-            <div className="grid grid-row-4 lg:grid-cols-3 md:grid-cols-2 gap-4 md:gap-12 lg:px-12 md:pl-8">
-              {footerLinks.map((footer, id) => (
-                <div key={id}>
-                  {/* Section Header */}
-                  <button
-                    onClick={() => toggleSection(id)}
-                    className="flex justify-between items-center w-full text-lg font-sans font-bold"
-                  >
-                    {footer.heading}
-                    {openSection === id ? (
-                      <IoIosArrowUp className="text-xl outline-none text-secondary lg:hidden" />
-                    ) : (
-                      <IoIosArrowDown className="text-xl outline-none text-secondary lg:hidden" />
-                    )}
-                  </button>
-
-                  {/* Collapsible Links */}
-                  <ul
-                    className={`mt-2 space-y-2 text-neutral-400 text-sm overflow-hidden lg:overflow-visible transition-all duration-300 ease-in-out ${
-                      openSection === id ? "max-h-full p-2" : " max-h-0 p-0"
-                    }`}
-                  >
-                    {footer.link.map((link, index) => (
-                      <li
-                        key={index}
-                        className="cursor-pointer hover:text-white hover:underline transition-all duration-300"
-                      >
-                        {link.href.startsWith("https") ? (
-                          <a
-                            href={link.href}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                          >
-                            {link.name}
-                          </a>
-                        ) : (
-                          <Link href={link.href}>{link.name}</Link>
-                        )}
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-              ))}
-            </div>
-
-            {/* Newsletter */}
-            <div className="w-[100%] py-12 max-sm:pb-12">
-              <h1 className="font-sans font-bold text-xl ">
-                Subscribe For Updates
-              </h1>
-
-              <div className="w-full flex items-center justify-center max-sm:w-full relative mt-8">
-                <input
-                  type="email"
-                  name="Email"
-                  id="Email"
-                  placeholder="Your email"
-                  className="w-full border-b border-white text-accent2 relative  transition-all duration-300 pb-2 "
-                />
-
-                <button className="absolute rounded-3xl text-primary transition-colors right-[0] bg-accent2 p-2 text-sm bottom-[0] mb-2">
-                  Subscribe
-                </button>
-              </div>
-            </div>
-          </div>
-        </motion.div>
-
-        <div className="text-[12px] cursor-default w-full border-t-[1px] border-white p-4 flex justify-between max-sm:text-[10px] max-sm:gap-4 max-sm:flex-col-reverse items-center">
-          <p>@ CopyRight. All rights reserved</p>
-          <div>
-            HillsAprtment 15 E I Gomos Road, Shandam close, Abacha road,
-            Mararaba Nassarawa | Tel:(+234) 703 380 9119
-          </div>
-        </div>
-      </footer>
+      <section>
+        <Footer />
+      </section>
     </main>
   );
 };

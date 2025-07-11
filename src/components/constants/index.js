@@ -12,7 +12,7 @@ import img3 from "@/components/assets/Images/img2.jpg";
 import img4 from "@/components/assets/Images/img16.jpg";
 import img5 from "@/components/assets/Images/img22.jpg";
 import img6 from "@/components/assets/Images/img18.jpg";
-import img7 from "@/components/assets/Images/img11.jpg";
+import img7 from "@/components/assets/Images/img16.jpg";
 import img8 from "@/components/assets/Images/img13.jpg";
 import img9 from "@/components/assets/Images/img9.jpg";
 import img10 from "@/components/assets/Images/img3.jpg";
@@ -231,16 +231,6 @@ export const footerLinks = [
       { name: "Help Center", href: "/contact" },
       { name: "Contact Us", href: "/contact" },
       { name: "FAQs", href: "/contact" },
-    ],
-  },
-
-  {
-    heading: "Address",
-    link: [
-      {
-        name: "The Mshel Hub, No. 2 Julius Adelusi Street, Guzape, Abuja.",
-        href: "",
-      },
     ],
   },
 ];

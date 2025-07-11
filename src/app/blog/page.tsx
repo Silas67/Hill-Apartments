@@ -8,10 +8,11 @@ import React, { useState } from "react";
 import { CiLocationOn } from "react-icons/ci";
 import { IoIosArrowUp, IoIosArrowDown } from "react-icons/io";
 import Image from "next/image";
+import img2 from "@/components/assets/Images/img30.jpg";
 import Breadcrumbs from "@/components/sections/Breadcrumbs";
 import img1 from "@/components/assets/Images/img5.jpg";
 import img5 from "@/components/assets/Images/Logo.png";
-import img6 from "@/components/assets/Images/hero.jpg";
+
 import { BiRightArrowAlt } from "react-icons/bi";
 
 const Blog = () => {
@@ -23,7 +24,7 @@ const Blog = () => {
   };
   return (
     <main className="lg:w-full overflow-hidden relative sm">
-      <Header color={false} />
+      <Header />
 
       {/* Hero */}
       <section className="w-full h-[50vh] text-center place-content-center relative max-sm:h-[30vh]">
@@ -36,12 +37,10 @@ const Blog = () => {
         </div>
 
         <div className="absolute inset-0">
-          <div className="h-full w-full">
-            <Image src={img6} alt="" className="object-cover w-full h-full" />
-          </div>
+          <Image src={img2} alt="/" className="object-cover w-full h-full" />
         </div>
 
-        <div className="absolute bg-foreground opacity-45 inset-0 w-full h-full"></div>
+        <div className="absolute bg-black/80 inset-0 w-full h-full"></div>
       </section>
 
       {/* Blogs */}
@@ -56,14 +55,14 @@ const Blog = () => {
           {blogs.map((blog, index) => (
             <div
               key={index}
-              className="w-[300px] rounded-[10px] overflow-hidden bg-white shadow-md transition-transform duration-300 hover:scale-105"
+              className="w-[300px] rounded-[10px] overflow-hidden bg-white shadow-md transition-transform duration-300 group scale-[0.95]"
             >
               {/* Image */}
               <div className="h-[250px] w-full overflow-hidden">
                 <Image
                   src={blog.image}
                   alt="blog image"
-                  className="w-full h-full object-cover transition-transform duration-500 hover:scale-110"
+                  className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
                 />
               </div>
 
