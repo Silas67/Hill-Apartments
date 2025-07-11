@@ -1,6 +1,6 @@
 // import { Btns } from "@/components/constants";
 import { motion } from "framer-motion";
-// import Link from "next/link";
+import Link from "next/link";
 import Image from "next/image";
 import img1 from "@/components/assets/Images/img30.jpg";
 import React from "react";
@@ -27,23 +27,25 @@ const Hero = () => {
             Where Vision Meets Structure and Dreams Becomes Purpose
           </motion.h1>
 
-          <motion.div
-            initial={{ y: 20, opacity: 0 }}
-            whileInView={{ y: 0, opacity: 1 }}
-            viewport={{ once: true }}
-            transition={{ duration: 1, ease: "easeInOut" }}
-            className="text-[16px] mt-2 text-neutral-300 flex items-center gap-[10px] group  transition-all duration-500 cursor-pointer"
-          >
-            <h1 className="max-mobile:text-right max-mobile:w-full">
-              {" "}
-              View Properties
-            </h1>
+          <Link href={"/properties"}>
+            <motion.div
+              initial={{ y: 20, opacity: 0 }}
+              whileInView={{ y: 0, opacity: 1 }}
+              viewport={{ once: true }}
+              transition={{ duration: 1, ease: "easeInOut" }}
+              className="text-[16px] mt-2 text-neutral-300 flex items-center gap-[10px] group  transition-all duration-500 cursor-pointer"
+            >
+              <h1 className="max-mobile:text-right max-mobile:w-full">
+                {" "}
+                View Properties
+              </h1>
 
-            <Icon
-              icon="line-md:arrow-right"
-              className="-rotate-45 group-hover:rotate-0  transition-all duration-500 "
-            />
-          </motion.div>
+              <Icon
+                icon="line-md:arrow-right"
+                className="-rotate-45 group-hover:rotate-0  transition-all duration-500 "
+              />
+            </motion.div>
+          </Link>
         </div>
 
         {/* Buttons */}
