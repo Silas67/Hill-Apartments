@@ -87,7 +87,7 @@ const Header = () => {
         </div>
 
         <div className="flex gap-7 items-center">
-          <button className="bg-secondary w-fit py-[8px] px-[12px] rounded-l-full rounded-r-full flex flex-row gap-1 justify-center items-center max-sm:hidden max-md:flex max-[690px]:flex hover:bg-white hover:text-primary scale-[1] hover:scale-105 font-normal hover:font-bold transition-all duration-300  ">
+          <button className="bg-secondary w-fit py-[8px] px-[12px] rounded-l-full rounded-r-full flex flex-row gap-1 justify-center items-center max-sm:hidden max-md:flex max-[690px]:flex hover:bg-white hover:text-primary scale-[1] hover:scale-105 font-normal hover:font-bold transition-all duration-300 border border-white">
             {" "}
             <Link href="/contact" className="text-[10px]">
               Contact An Agent{" "}

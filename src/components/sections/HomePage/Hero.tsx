@@ -5,6 +5,7 @@ import Image from "next/image";
 import img1 from "@/components/assets/Images/img30.jpg";
 import React from "react";
 import { Icon } from "@iconify/react/dist/iconify.js";
+import AchievementStat from "../Achievement";
 // import { FaCaretDown } from "react-icons/fa";
 
 const Hero = () => {
@@ -35,7 +36,7 @@ const Hero = () => {
               transition={{ duration: 1, ease: "easeInOut" }}
               className="text-[16px] mt-2 text-neutral-300 flex items-center gap-[10px] group  transition-all duration-500 cursor-pointer"
             >
-              <h1 className="max-mobile:text-right max-mobile:w-full">
+              <h1 className="max-mobile:text-right max-mobile:w-full font-bold">
                 {" "}
                 View Properties
               </h1>
@@ -58,16 +59,40 @@ const Hero = () => {
             className="flex gap-8 max-mobile:gap-4"
           >
             <div className="border-r pr-8">
-              <h1 className="md:text-[50px] text-[20px]">70+</h1>
-              <p className="text-[12px]">Satisfied Customers</p>
+              <AchievementStat target={70} suffix={"+"} />
+              <motion.p
+                initial={{ y: 20, opacity: 0 }}
+                whileInView={{ y: 0, opacity: 1 }}
+                viewport={{ once: true }}
+                transition={{ duration: 1, ease: "easeInOut", delay: 1 }}
+                className="text-[14px] max-mobile:text-[12px]"
+              >
+                Satisfied Customers
+              </motion.p>
             </div>
             <div className="border-r pr-8">
-              <h1 className="md:text-[50px] text-[20px]">100+</h1>
-              <p className="text-[12px]">Projects Completed</p>
+              <AchievementStat target={100} suffix={"+"} />
+              <motion.p
+                initial={{ y: 20, opacity: 0 }}
+                whileInView={{ y: 0, opacity: 1 }}
+                viewport={{ once: true }}
+                transition={{ duration: 1, ease: "easeInOut", delay: 1 }}
+                className="text-[14px] max-mobile:text-[12px]"
+              >
+                Projects Completed
+              </motion.p>
             </div>
             <div>
-              <h1 className="md:text-[50px] text-[20px]">10+</h1>
-              <p className="text-[12px]">Years in Business</p>
+              <AchievementStat target={10} suffix={"+"} />
+              <motion.p
+                initial={{ y: 20, opacity: 0 }}
+                whileInView={{ y: 0, opacity: 1 }}
+                viewport={{ once: true }}
+                transition={{ duration: 1, ease: "easeInOut", delay: 1 }}
+                className="text-[14px] max-mobile:text-[12px]"
+              >
+                Years in Business
+              </motion.p>
             </div>
           </motion.div>
         </div>
