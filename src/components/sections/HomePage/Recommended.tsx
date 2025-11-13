@@ -39,13 +39,13 @@ const Recommend = () => {
 
       {/* Swiper Navigation Buttons */}
       <div className="absolute top-1/2 left-6 z-30">
-        <button className="button-prev bg-white p-2 rounded-full shadow">
-          <Icon icon="guidance:left-arrow" width="20" height="20" />
+        <button className="button-next bg-white p-2 rounded-full shadow">
+          <Icon icon="guidance:right-arrow" width="20" height="20" />
         </button>
       </div>
       <div className="absolute top-1/2 right-6 z-30">
-        <button className="button-next bg-white p-2 rounded-full shadow">
-          <Icon icon="guidance:right-arrow" width="20" height="20" />
+        <button className="button-prev bg-white p-2 rounded-full shadow">
+          <Icon icon="guidance:left-arrow" width="20" height="20" />
         </button>
       </div>
 
