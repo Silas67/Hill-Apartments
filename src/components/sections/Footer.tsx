@@ -85,7 +85,7 @@ export default function Footer() {
             ))}
             <div className="flex items-start md:flex-col max-mobile:gap-[10px]">
               <h1 className="font-bold">Address</h1>
-              <p>The Mshel Hub, No. 2 Julius Adelusi Street, Guzape, Abuja.</p>
+              <p>7 sanatana close Wuse 2 Abuja Nigeria.</p>
             </div>
           </div>
 
@@ -115,8 +115,7 @@ export default function Footer() {
       <div className="text-[12px] cursor-default w-full border-t-[1px] border-white p-4 flex justify-between max-sm:text-[10px] max-sm:gap-4 max-sm:flex-col-reverse items-center">
         <p>@ CopyRight. All rights reserved</p>
         <div>
-          HillsAprtment 15 E I Gomos Road, Shandam close, Abacha road, Mararaba
-          Nassarawa | Tel:(+234) 703 380 9119
+          OG Winners Homes 7 sanatana close Wuse 2 Abuja Nigeria. | Tel:(+234) 70 1234 5677
         </div>
       </div>
     </footer>
