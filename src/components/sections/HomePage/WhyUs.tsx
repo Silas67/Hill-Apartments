@@ -67,7 +67,7 @@ const WhyUs = () => {
 
           <p className="text-[12px]  text-primary all:w-full">
             Choosing the right real estate partner can make all the difference.
-            At HillsApartment, we combine industry expertise with a commitment
+            At Ogwinners, we combine industry expertise with a commitment
             to client satisfaction, guiding you through every step of the
             buying, selling, or investing journey. Whether you&apos;re a
             first-time buyer or a seasoned investor, we’re here to make your

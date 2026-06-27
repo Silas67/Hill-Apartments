@@ -342,17 +342,17 @@ export const servicesfull = [
   {
     heading: "Home Buying Consultation & Support",
     title:
-      "At HillsApartments, we understand that purchasing a home—especially your first—is a life-changing decision. Our team provides personalized consultation, neighborhood guidance, property tours, and seamless negotiation support to help first-time buyers and growing families find their perfect home with confidence and peace of mind.",
+      "At Ogwinners, we understand that purchasing a home—especially your first—is a life-changing decision. Our team provides personalized consultation, neighborhood guidance, property tours, and seamless negotiation support to help first-time buyers and growing families find their perfect home with confidence and peace of mind.",
   },
   {
     heading: "Property Sales & Marketing",
     title:
-      "Looking to sell your property? HillsApartments combines market intelligence, professional staging advice, and digital marketing strategies to attract the right buyers. We make the selling process efficient, profitable, and hassle-free—so you get the best value for your property without stress.",
+      "Looking to sell your property? Ogwinners combines market intelligence, professional staging advice, and digital marketing strategies to attract the right buyers. We make the selling process efficient, profitable, and hassle-free—so you get the best value for your property without stress.",
   },
   {
     heading: " Investment & Portfolio Management",
     title:
-      "HillsApartments offers strategic investment services for seasoned investors and aspiring landlords. From identifying high-yield opportunities to managing multi-unit portfolios, we help you build long-term wealth through smart, data-driven decisions in the ever-evolving real estate market.",
+      "Ogwinners offers strategic investment services for seasoned investors and aspiring landlords. From identifying high-yield opportunities to managing multi-unit portfolios, we help you build long-term wealth through smart, data-driven decisions in the ever-evolving real estate market.",
   },
   {
     heading: " Property Management Services",

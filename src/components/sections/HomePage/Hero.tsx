@@ -2,7 +2,7 @@
 import { motion } from "framer-motion";
 import Link from "next/link";
 import Image from "next/image";
-import img1 from "@/components/assets/Images/img30.jpg";
+import img1 from "@/components/assets/Images/img22.jpeg";
 import React from "react";
 import { Icon } from "@iconify/react/dist/iconify.js";
 import AchievementStat from "../Achievement";

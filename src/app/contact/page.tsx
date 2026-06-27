@@ -48,7 +48,7 @@ const Contact = () => {
                 </div>
 
                 <div className="text-white  hover:text-gray-500 transition-colors flex gap-2 items-center text-[14px]">
-                  <MdMail className="text-xl" /> HillsApartment@gmail.com
+                  <MdMail className="text-xl" /> info@ogwinners.com
                 </div>
               </div>
 
