@@ -127,7 +127,7 @@ const Ourservice = () => {
               <Image
                 src={img3}
                 alt="/"
-                className="object-cover w-full h-full"
+                className="object-cover object-bottom w-full h-[500px]"
               />
             </motion.div>
           </div>
