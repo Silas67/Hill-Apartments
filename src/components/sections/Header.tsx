@@ -54,11 +54,11 @@ const Header = () => {
       <nav className="w-full flex items-center justify-between md:mx-[0px]">
         <Link href={"/"} className="outline-none">
           <Image
-            src={"/New-Logo2.png"}
+            src={"/Logo-2.png"}
             alt="/"
             width={100}
             height={100}
-            className={` scale-[0.8] ${
+            className={` scale-[0.8] mt-6 ${
               isScrolled
                 ? "filter invert-0 transition-all duration-500"
                 : "filter invert-100 transition-all duration-500"

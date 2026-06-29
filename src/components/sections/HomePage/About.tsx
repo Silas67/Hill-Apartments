@@ -4,7 +4,7 @@ import { motion } from "framer-motion";
 import Link from "next/link";
 import React from "react";
 import Image from "next/image";
-import img1 from "@/components/assets/Images/Ceo.jpg";
+import img1 from "@/components/assets/Images/Ceo-2.png";
 // import AnimatedNumbers from "react-animated-numbers";
 
 const About = () => {
@@ -40,7 +40,7 @@ const About = () => {
           className="w-1/2 space-y-[20px]  max-mobile:w-full"
         >
           <p className=" text-sm ">
-            At Hill’s Apartments & Homes, we don’t just build properties — we
+            At OG Winners Homes, we don’t just build properties — we
             design spaces that adapt to evolving lifestyles. With a deep
             understanding of today’s architectural needs, we combine elegance,
             technology, and sustainability to create homes that truly stand the
@@ -79,7 +79,7 @@ const About = () => {
             Desiging spaces that insipire and elevate
           </h1>
           <p className=" text-sm ">
-            At Hill’s Apartments & Homes, we believe that every space tells a
+            At OG Winners Homes, we believe that every space tells a
             story. Our passion lies in creating luxurious, functional
             environments that reflect elegance, comfort, and timeless design.
             From concept to completion, we focus on every detail — because we

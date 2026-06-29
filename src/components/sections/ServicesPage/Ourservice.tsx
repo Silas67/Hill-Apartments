@@ -3,9 +3,9 @@ import Copy from "@/hooks/Copy";
 import { motion } from "framer-motion";
 import React from "react";
 import Image from "next/image";
-import img1 from "@/components/assets/Images/img30.jpg";
-import img2 from "@/components/assets/Images/img26.jpg";
-import img3 from "@/components/assets/Images/img20.jpg";
+import img1 from "@/components/assets/Images/img23.jpeg";
+import img2 from "@/components/assets/Images/img24.jpeg";
+import img3 from "@/components/assets/Images/img22.jpeg";
 import img4 from "@/components/assets/Images/img21.jpg";
 
 const Ourservice = () => {
@@ -45,7 +45,7 @@ const Ourservice = () => {
               transition={{ duration: 1, ease: "easeInOut", delay: 0.2 }}
               className="flex items-end justify-center flex-1/2 w-full flex-col text-right gap-[10px]"
             >
-              <h1 className="font-bold">Home Buying Consultation & Support</h1>
+              <h1 className="font-sans">Home Buying Consultation & Support</h1>
               <p>
                 At Ogwinners, we understand that purchasing a
                 home—especially your first—is a life-changing decision. Our team
@@ -65,7 +65,7 @@ const Ourservice = () => {
               <Image
                 src={img1}
                 alt="/"
-                className="object-cover w-full h-full"
+                className="object-cover object-bottom w-full h-[500px]"
               />
             </motion.div>
           </div>
@@ -96,7 +96,7 @@ const Ourservice = () => {
               <Image
                 src={img2}
                 alt="/"
-                className="object-cover w-full h-full"
+                className="object-cover object-bottom w-full h-[500px]"
               />
             </motion.div>
           </div>

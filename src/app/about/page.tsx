@@ -4,8 +4,8 @@ import Header from "@/components/sections/Header";
 import AnimatedNumbers from "react-animated-numbers";
 import Image from "next/image";
 import { achievementsList, Btns, FaQs, values } from "@/components/constants";
-import img2 from "@/components/assets/Images/img27.jpg";
-import img3 from "@/components/assets/Images/img30.jpg";
+import img2 from "@/components/assets/Images/Agent.png";
+import img3 from "@/components/assets/Images/Agent.png";
 import useLenis from "@/hooks/useLenis";
 import { motion } from "framer-motion";
 import Link from "next/link";
@@ -14,7 +14,7 @@ import "swiper/css";
 import "swiper/css/navigation";
 import Breadcrumbs from "@/components/sections/Breadcrumbs";
 // import Testimonials from "@/components/sections/HomePage/Testimonials";
-import img1 from "@/components/assets/Images/Ceo.jpg";
+import img1 from "@/components/assets/Images/Ceo-2.png";
 import Footer from "@/components/sections/Footer";
 
 const overlayVariants = {
