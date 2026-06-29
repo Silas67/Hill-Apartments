@@ -89,7 +89,7 @@ const About = () => {
             exceeds expectations.
           </p>
           <div className="">
-            <h1>Ejimonye Silas</h1>
+            <h1>OG Winners Homes</h1>
             <p className="text-[#a4a4a4]">CEO Noxa</p>
           </div>
         </div>
