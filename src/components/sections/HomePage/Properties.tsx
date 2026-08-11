@@ -67,7 +67,7 @@ const Properties = () => {
                 transition={{ duration: 0.2, ease: "easeInOut" }}
                 className="w-full absolute z-30 bottom-[20px] text-center"
               >
-                <Link className="text-accent2" href={"/"}>
+                <Link className="text-accent2" href={"/properties"}>
                   {item.label}
                 </Link>
               </motion.div>
@@ -76,7 +76,7 @@ const Properties = () => {
               <div className="absolute inset-0 bg-gradient-to-t from-[#171717] to-transparent z-10" />
 
               {/* Sliding colored overlay */}
-              <Link href={"/"}>
+              <Link href={"/properties"}>
                 <motion.div
                   className="absolute inset-0 bg-gradient-to-t from-[#0a0a0a] to-transparent z-20 opacity-90 flex  px-12 pt-3 gap-2
               "
@@ -90,10 +90,7 @@ const Properties = () => {
                       {item.label}
                     </div>
 
-                    <div className="text-[#e4e2e2] text-sm">
-                      Lorem ipsum dolor sit amet con sectetur adipisicing elit.
-                      Dolorem ut architecto
-                    </div>
+                    <div className="text-[#e4e2e2] text-sm">{item.text}</div>
                   </div>
                 </motion.div>
               </Link>

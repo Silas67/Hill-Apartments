@@ -88,7 +88,7 @@ const Testimonials = () => {
                   </div>
                   <p className="text-[12px]">
                     {" "}
-                    Working with Hill Apartments was seamless. The team
+                    Working with OG Winners Homes was seamless. The team
                     understood exactly what I needed and delivered beyond my
                     expectations.
                   </p>

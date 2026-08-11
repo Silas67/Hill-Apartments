@@ -90,7 +90,7 @@ const About = () => {
           </p>
           <div className="">
             <h1>OG Winners Homes</h1>
-            <p className="text-[#a4a4a4]">CEO Noxa</p>
+            <p className="text-[#a4a4a4]">Chief Executive Officer</p>
           </div>
         </div>
       </motion.div>

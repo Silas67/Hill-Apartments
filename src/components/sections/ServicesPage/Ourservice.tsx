@@ -47,7 +47,7 @@ const Ourservice = () => {
             >
               <h1 className="font-sans">Home Buying Consultation & Support</h1>
               <p>
-                At Ogwinners, we understand that purchasing a
+                At OG Winners Homes, we understand that purchasing a
                 home—especially your first—is a life-changing decision. Our team
                 provides personalized consultation, neighborhood guidance,
                 property tours, and seamless negotiation support to help
@@ -79,7 +79,7 @@ const Ourservice = () => {
             >
               <h1 className="font-bold">Property Sales & Marketing </h1>
               <p>
-                Looking to sell your property? Ogwinners combines market
+                Looking to sell your property? OG Winners Homes combines market
                 intelligence, professional staging advice, and digital marketing
                 strategies to attract the right buyers. We make the selling
                 process efficient, profitable, and hassle-free—so you get the
@@ -110,7 +110,7 @@ const Ourservice = () => {
             >
               <h1 className="font-bold">Investment & Portfolio Management</h1>
               <p>
-                Ogwinners offers strategic investment services for
+                OG Winners Homes offers strategic investment services for
                 seasoned investors and aspiring landlords. From identifying
                 high-yield opportunities to managing multi-unit portfolios, we
                 help you build long-term wealth through smart, data-driven

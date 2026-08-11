@@ -1,16 +1,51 @@
 import { motion } from "framer-motion";
 import Link from "next/link";
 import { IoIosArrowUp, IoIosArrowDown } from "react-icons/io";
-import { Btns, footerLinks } from "../constants";
+import { Btns, company, footerLinks } from "../constants";
 import Image from "next/image";
 import img5 from "@/components/assets/Images/Logo.png";
 import { useState } from "react";
 
 export default function Footer() {
   const [openSection, setOpenSection] = useState<number | null>(null);
+  const [subscribeStatus, setSubscribeStatus] = useState<
+    "idle" | "sending" | "sent" | "error"
+  >("idle");
+  const [subscribeMessage, setSubscribeMessage] = useState("");
 
   const toggleSection = (index: number) => {
     setOpenSection(openSection === index ? null : index);
+  };
+
+  const handleSubscribe = async (event: React.FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+    const form = event.currentTarget;
+    const email = new FormData(form).get("email");
+
+    setSubscribeStatus("sending");
+    setSubscribeMessage("");
+
+    try {
+      const response = await fetch("/api/subscribe", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ email }),
+      });
+      const result = await response.json().catch(() => ({}));
+
+      if (!response.ok) {
+        setSubscribeStatus("error");
+        setSubscribeMessage(result.error ?? "Please try again.");
+        return;
+      }
+
+      form.reset();
+      setSubscribeStatus("sent");
+      setSubscribeMessage("You're on the list — thank you!");
+    } catch {
+      setSubscribeStatus("error");
+      setSubscribeMessage("Could not reach the server. Please try again.");
+    }
   };
   return (
     <footer className="w-full h-fit pt-16 pb-4 text-foreground flex flex-col px-12 max-sm:px-6 bg-primary gap-8 text-white">
@@ -31,9 +66,16 @@ export default function Footer() {
 
           <div className="flex gap-3">
             {Btns.map((i, item) => (
-              <Link key={item} href="/partner" className="btn">
+              <a
+                key={item}
+                href={i.href}
+                aria-label={i.label}
+                target={i.href.startsWith("mailto:") ? undefined : "_blank"}
+                rel="noopener noreferrer"
+                className="btn"
+              >
                 {i.icon}
-              </Link>
+              </a>
             ))}
           </div>
         </div>
@@ -83,9 +125,26 @@ export default function Footer() {
                 </ul>
               </div>
             ))}
-            <div className="flex items-start md:flex-col max-mobile:gap-[10px]">
-              <h1 className="font-bold">Address</h1>
-              <p>7 sanatana close Wuse 2 Abuja Nigeria.</p>
+            <div className="flex flex-col items-start gap-[10px]">
+              <h1 className="font-bold">Offices</h1>
+              {company.offices.map((office) => (
+                <div key={office.label} className="text-sm text-neutral-400">
+                  <p className="font-semibold text-white">{office.label}</p>
+                  <p>{office.address}</p>
+                </div>
+              ))}
+              <a
+                href={`tel:${company.phoneHref}`}
+                className="text-sm text-neutral-400 hover:text-white hover:underline transition-all duration-300"
+              >
+                {company.phone}
+              </a>
+              <a
+                href={`mailto:${company.email}`}
+                className="text-sm text-neutral-400 hover:text-white hover:underline transition-all duration-300"
+              >
+                {company.email}
+              </a>
             </div>
           </div>
 
@@ -95,27 +154,59 @@ export default function Footer() {
               Subscribe For Updates
             </h1>
 
-            <div className="w-full flex items-center justify-center max-sm:w-full relative mt-8">
-              <input
-                type="email"
-                name="Email"
-                id="Email"
-                placeholder="Your email"
-                className="w-full border-b border-white text-accent2 relative  transition-all duration-300 pb-2 "
-              />
+            <form
+              onSubmit={handleSubscribe}
+              className="w-full max-sm:w-full mt-8"
+            >
+              <div className="w-full flex items-center justify-center relative">
+                <label htmlFor="newsletter-email" className="sr-only">
+                  Your email
+                </label>
+                <input
+                  type="email"
+                  name="email"
+                  id="newsletter-email"
+                  autoComplete="email"
+                  required
+                  placeholder="Your email"
+                  className="w-full border-b border-white text-accent2 relative  transition-all duration-300 pb-2 "
+                />
 
-              <button className="absolute rounded-3xl text-primary transition-colors right-[0] bg-accent2 p-2 text-sm bottom-[0] mb-2">
-                Subscribe
-              </button>
-            </div>
+                <button
+                  type="submit"
+                  disabled={subscribeStatus === "sending"}
+                  className="absolute rounded-3xl text-primary transition-colors right-[0] bg-accent2 p-2 text-sm bottom-[0] mb-2 disabled:opacity-60"
+                >
+                  {subscribeStatus === "sending" ? "..." : "Subscribe"}
+                </button>
+              </div>
+
+              {subscribeMessage && (
+                <p
+                  aria-live="polite"
+                  className={`mt-2 text-sm ${
+                    subscribeStatus === "error"
+                      ? "text-red-300"
+                      : "text-green-300"
+                  }`}
+                >
+                  {subscribeMessage}
+                </p>
+              )}
+            </form>
           </div>
         </div>
       </motion.div>
 
       <div className="text-[12px] cursor-default w-full border-t-[1px] border-white p-4 flex justify-between max-sm:text-[10px] max-sm:gap-4 max-sm:flex-col-reverse items-center">
-        <p>@ CopyRight. All rights reserved</p>
+        <p>
+          © {new Date().getFullYear()} {company.name}. All rights reserved.
+        </p>
         <div>
-          OG Winners Homes 7 sanatana close Wuse 2 Abuja Nigeria. | Tel:(+234) 70 1234 5677
+          {company.offices.map((office) => office.label).join(" · ")} | Tel:{" "}
+          <a href={`tel:${company.phoneHref}`} className="hover:underline">
+            {company.phone}
+          </a>
         </div>
       </div>
     </footer>

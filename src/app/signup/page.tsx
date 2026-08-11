@@ -51,7 +51,7 @@ const page = () => {
             type="submit"
             className="bg-primary hover:bg-transparent border border-primary hover:text-primary transition-all duration-500 font-bold text-white  py-2.5 px-5 rounded-lg w-full"
           >
-            Send Message
+            Create Account
           </button>
           <div className="text-center mt-2  text-sm">
             Have an account?

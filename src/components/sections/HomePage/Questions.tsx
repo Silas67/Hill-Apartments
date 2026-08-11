@@ -22,8 +22,8 @@ const Questions = () => {
         </Copy>
         <Copy>
           <p className="pt-1 max-sm:text-sm">
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Qui quas ea
-            beatae dolorem ratione neque
+            Answers to the questions we hear most from buyers, sellers and
+            investors. If yours is not here, talk to an agent.
           </p>
         </Copy>
       </div>

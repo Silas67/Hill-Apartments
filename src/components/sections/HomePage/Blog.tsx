@@ -36,20 +36,25 @@ const Blog = () => {
         >
           <div className="w-full h-64 relative">
             <Image
-              src={img1} // Replace with real image
-              alt="Main"
-              layout="fill"
-              objectFit="cover"
-              className="rounded"
+              src={img1}
+              alt="A residential development in Abuja"
+              fill
+              className="rounded object-cover"
             />
           </div>
-          <h2 className="text-xl font-semibold">A Subtitle</h2>
+          <h2 className="text-xl font-semibold">
+            Top Neighbourhoods to Watch in Abuja
+          </h2>
           <p className="text-gray-600 text-sm line-clamp-4">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed
-            consequat justo non orci fermentum, nec efficitur orci hendrerit.
+            Property values across the city are shifting, and a handful of
+            districts are quietly outperforming the rest. We look at where
+            demand is building, what is driving it, and which areas still offer
+            room for growth.
           </p>
           <p className="text-gray-600 text-sm line-clamp-4">
-            More text here to simulate a paragraph about the blog content.
+            Whether you are buying your first home or adding to a portfolio,
+            knowing where the market is heading is the difference between a
+            good purchase and a great one.
           </p>
         </motion.div>
 
@@ -80,9 +85,7 @@ const Blog = () => {
               <div className="flex flex-col justify-center">
                 <p className="font-semibold text-sm">{post.title}</p>
                 <p className="text-gray-600 text-sm line-clamp-4">
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed
-                  consequat justo non orci fermentum, nec efficitur orci
-                  hendrerit.
+                  {post.excerpt}
                 </p>
               </div>
             </div>

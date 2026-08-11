@@ -1,5 +1,5 @@
 "use client";
-import { FaQs } from "@/components/constants";
+import { company, FaQs } from "@/components/constants";
 import Header from "@/components/sections/Header";
 import { motion } from "framer-motion";
 import useLenis from "@/hooks/useLenis";
@@ -14,12 +14,55 @@ import Image from "next/image";
 import img1 from "@/components/assets/Images/img30.jpg";
 import Footer from "@/components/sections/Footer";
 
+type Status = "idle" | "sending" | "sent" | "error";
+
 const Contact = () => {
   useLenis();
   const [openSection, setOpenSection] = useState<number | null>(null);
+  const [status, setStatus] = useState<Status>("idle");
+  const [errorMessage, setErrorMessage] = useState("");
 
   const toggleSection = (index: number) => {
     setOpenSection(openSection === index ? null : index);
+  };
+
+  const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+    const form = event.currentTarget;
+    const data = new FormData(form);
+
+    setStatus("sending");
+    setErrorMessage("");
+
+    try {
+      const response = await fetch("/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          name: data.get("name"),
+          email: data.get("email"),
+          phone: data.get("phone"),
+          subject: data.get("subject"),
+          message: data.get("message"),
+        }),
+      });
+
+      const result = await response.json().catch(() => ({}));
+
+      if (!response.ok) {
+        setStatus("error");
+        setErrorMessage(result.error ?? "Something went wrong. Please try again.");
+        return;
+      }
+
+      form.reset();
+      setStatus("sent");
+    } catch {
+      setStatus("error");
+      setErrorMessage(
+        "We could not reach the server. Please check your connection and try again."
+      );
+    }
   };
   return (
     <main className="lg:w-full sm:w-[100vw] overflow-hidden relative ">
@@ -38,45 +81,51 @@ const Contact = () => {
               </div>
 
               <div className="flex flex-col lg:items-start gap-[20px] max-mobile:mt-[20px] md:items-center pb-4">
-                <div className="text-white  hover:text-gray-500 transition-colors flex gap-2 items-center text-[14px]">
-                  <FaMapMarkerAlt className="text-xl" />
-                  T19 Road 2 Lekki Garden Phase 4, Lekki Lagos.
-                </div>
+                {company.offices.map((office) => (
+                  <div
+                    key={office.label}
+                    className="text-white flex gap-2 items-start text-[14px]"
+                  >
+                    <FaMapMarkerAlt className="text-xl shrink-0" />
+                    <span>
+                      <strong className="block">{office.label}</strong>
+                      {office.address}
+                    </span>
+                  </div>
+                ))}
 
-                <div className="text-white  hover:text-gray-500 transition-colors flex gap-2 items-center text-[14px]">
-                  <FaPhone className="text-xl" /> (+234) 803 283 2962
-                </div>
+                <a
+                  href={`tel:${company.phoneHref}`}
+                  className="text-white hover:text-gray-500 transition-colors flex gap-2 items-center text-[14px]"
+                >
+                  <FaPhone className="text-xl" /> {company.phone}
+                </a>
 
-                <div className="text-white  hover:text-gray-500 transition-colors flex gap-2 items-center text-[14px]">
-                  <MdMail className="text-xl" /> info@ogwinners.com
-                </div>
+                <a
+                  href={`mailto:${company.email}`}
+                  className="text-white hover:text-gray-500 transition-colors flex gap-2 items-center text-[14px]"
+                >
+                  <MdMail className="text-xl" /> {company.email}
+                </a>
               </div>
 
               <div className="flex gap-6 ">
-                <Link href="https://instagram.com">
-                  <Icon
-                    icon="line-md:instagram"
-                    width="20"
-                    height="20"
-                    className="text-white hover:scale-110 transition-all duration-300 hover:rotate-6"
-                  />
-                </Link>
-                <Link href="https://twitter.com">
-                  <Icon
-                    icon="line-md:twitter"
-                    width="20"
-                    height="20"
-                    className="text-white hover:scale-110 transition-all duration-300 hover:rotate-6"
-                  />
-                </Link>
-                <Link href="https://linkedin.com">
-                  <Icon
-                    icon="line-md:linkedin"
-                    width="20"
-                    height="20"
-                    className="text-white hover:scale-110 transition-all duration-300 hover:rotate-6"
-                  />
-                </Link>
+                {company.socials.map((social) => (
+                  <a
+                    key={social.name}
+                    href={social.href}
+                    aria-label={social.name}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    <Icon
+                      icon={`line-md:${social.name.toLowerCase()}`}
+                      width="20"
+                      height="20"
+                      className="text-white hover:scale-110 transition-all duration-300 hover:rotate-6"
+                    />
+                  </a>
+                ))}
               </div>
             </div>
 
@@ -88,6 +137,7 @@ const Contact = () => {
                 </h1>
               </div>
               <motion.form
+                onSubmit={handleSubmit}
                 initial={{ opacity: 0 }}
                 whileInView={{ opacity: 1 }}
                 viewport={{ once: true }}
@@ -105,8 +155,10 @@ const Contact = () => {
                     <input
                       type="text"
                       id="name"
+                      name="name"
+                      autoComplete="name"
                       className="px-6 py-2 rounded-3xl bg-neutral-100  border border-neutral-300 "
-                      placeholder="Silas Ejimonye"
+                      placeholder="Your full name"
                       required
                     />
                   </div>
@@ -120,8 +172,10 @@ const Contact = () => {
                     <input
                       type="email"
                       id="email"
+                      name="email"
+                      autoComplete="email"
                       className="px-6 py-2 rounded-3xl bg-neutral-100  border border-neutral-300 "
-                      placeholder="chibukesilas@gmail.com"
+                      placeholder="you@example.com"
                       required
                     />
                   </div>
@@ -129,7 +183,7 @@ const Contact = () => {
 
                 <div className="flex flex-col">
                   <label
-                    htmlFor="Phone"
+                    htmlFor="phone"
                     className="text-neutral-800 font-bold mb-1"
                   >
                     Phone Number
@@ -137,8 +191,10 @@ const Contact = () => {
                   <input
                     type="tel"
                     id="phone"
+                    name="phone"
+                    autoComplete="tel"
                     className="px-4 py-2 rounded-3xl bg-neutral-100  border border-neutral-300 "
-                    placeholder="(+234)-810-488-4845"
+                    placeholder="(+234) 800 000 0000"
                     required
                   />
                 </div>
@@ -152,8 +208,9 @@ const Contact = () => {
                   <input
                     type="text"
                     id="subject"
+                    name="subject"
                     className="px-4 py-2 rounded-3xl bg-neutral-100  border border-neutral-300 "
-                    placeholder="Subject"
+                    placeholder="What is this about?"
                     required
                   />
                 </div>
@@ -166,25 +223,39 @@ const Contact = () => {
                   </label>
                   <textarea
                     id="message"
+                    name="message"
                     rows={4}
                     className="px-4 py-2 rounded-3xl bg-neutral-100  border border-neutral-300 "
                     placeholder="Tell us what you need..."
                     required
                   ></textarea>
                 </div>
-                <div className="w-full flexcent">
+                <div className="w-full flexcent flex-col gap-3">
                   <button
                     type="submit"
-                    className="group flex items-center gap-2 bg-primary hover:bg-white transition-all text-white font-semibold py-2 px-6 rounded-3xl outline-none hover:scale-105 hover:shadow-2xl hover:text-primary border border-primary duration-200"
+                    disabled={status === "sending"}
+                    className="group flex items-center gap-2 bg-primary hover:bg-white transition-all text-white font-semibold py-2 px-6 rounded-3xl outline-none hover:scale-105 hover:shadow-2xl hover:text-primary border border-primary duration-200 disabled:opacity-60 disabled:cursor-not-allowed disabled:hover:scale-100"
                   >
                     <p className="transition-all duration-500 text-sm">
-                      Send Message
+                      {status === "sending" ? "Sending..." : "Send Message"}
                     </p>
                     <Icon
                       icon="line-md:arrow-right"
                       className="-rotate-45 group-hover:-rotate-0 text-lg transition-all duration-500"
                     />
                   </button>
+
+                  <p aria-live="polite" className="text-sm text-center">
+                    {status === "sent" && (
+                      <span className="text-green-700">
+                        Thank you — your message is on its way. We usually reply
+                        within one business day.
+                      </span>
+                    )}
+                    {status === "error" && (
+                      <span className="text-red-600">{errorMessage}</span>
+                    )}
+                  </p>
                 </div>
               </motion.form>
             </div>
@@ -208,8 +279,8 @@ const Contact = () => {
           </Copy>
           <Copy>
             <p className="pt-1 max-sm:text-sm">
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Qui quas
-              ea beatae dolorem ratione neque
+              Answers to the questions we hear most from buyers, sellers and
+              investors. If yours is not here, talk to an agent.
             </p>
           </Copy>
         </div>

@@ -3,7 +3,13 @@ import React, { useState } from "react";
 import Header from "@/components/sections/Header";
 import AnimatedNumbers from "react-animated-numbers";
 import Image from "next/image";
-import { achievementsList, Btns, FaQs, values } from "@/components/constants";
+import {
+  achievementsList,
+  Btns,
+  FaQs,
+  team,
+  values,
+} from "@/components/constants";
 import img2 from "@/components/assets/Images/Agent.png";
 import img3 from "@/components/assets/Images/Agent.png";
 import useLenis from "@/hooks/useLenis";
@@ -41,17 +47,17 @@ const About = () => {
       <section className="w-full lg:h-[50vh] text-center place-content-center relative all:h-[30vh] ">
         <div className="relative z-30 w-full flexcent flex-col h-full">
           {" "}
-          <div className="w-full flex items-center justify-center pb-2">
+          <div className="w-full flex items-center justify-center pb-2 text-secondary">
             <Breadcrumbs />
           </div>
-          <h1 className="font-sans text-4xl text-white font-bold ">About Us</h1>
+          <h1 className="font-sans text-4xl text-secondary font-bold ">About Us</h1>
         </div>
 
         <div className="absolute inset-0">
           <Image src={img3} alt="/" className="object-cover w-full h-full" />
         </div>
 
-        <div className="absolute bg-black/80 inset-0 w-full h-full"></div>
+        <div className="absolute bg-white inset-0 w-full h-full"></div>
       </section>
 
       {/* Who We Are */}
@@ -76,7 +82,7 @@ const About = () => {
             <h1 className="text-4xl text-primary font-bold">Who We Are</h1>
 
             <p className="text-[12px]  text-foreground">
-              This is Hill’s Apartments & Homes — a team of visionary builders,
+              This is OG Winners Homes — a team of visionary builders,
               designers, and thinkers committed to redefining modern living.
               With a strong focus on innovation, elegance, and sustainability,
               we create spaces that go beyond walls and roofs — we create
@@ -138,10 +144,10 @@ const About = () => {
           </motion.div>
           <div className="w-1/2 space-y-[50px]  max-tab:w-full">
             <h1 className="text-4xl lg:max-w-[70%]  max-tab:w-full max-mobile:text-3xl">
-              Desiging spaces that insipire and elevate
+              Designing spaces that inspire and elevate
             </h1>
             <p className=" text-sm ">
-              At Hill’s Apartments & Homes, we believe that every space tells a
+              At OG Winners Homes, we believe that every space tells a
               story. Our passion lies in creating luxurious, functional
               environments that reflect elegance, comfort, and timeless design.
               From concept to completion, we focus on every detail — because we
@@ -152,7 +158,7 @@ const About = () => {
             </p>
             <div className="">
               <h1>OG Winners Homes</h1>
-              <p className="text-[#a4a4a4]">CEO Noxa</p>
+              <p className="text-[#a4a4a4]">Chief Executive Officer</p>
             </div>
           </div>
         </motion.div>
@@ -188,8 +194,12 @@ const About = () => {
         </div>
       </section>
 
-      {/* Our Team */}
-      <section className="w-full grid-rows-2 items-center py-20 lg:px-[100px]">
+      {/* Our Team — hidden until real team members are added to `team` */}
+      <section
+        className={`w-full grid-rows-2 items-center py-20 lg:px-[100px] ${
+          team.length === 0 ? "hidden" : ""
+        }`}
+      >
         <motion.div
           initial={{ y: 20, opacity: 0 }}
           whileInView={{ y: 0, opacity: 1 }}
@@ -207,7 +217,7 @@ const About = () => {
         </motion.div>
 
         <div className="lg:grid lg:grid-cols-3 lg:gap-[20px] lg:place-items-center flex items-center justify-center gap-[50px] my-[30px] all:flex-col md:flex-row flex-wrap">
-          {[1, 2, 3, 4, 5, 6].map((item, index) => (
+          {team.map((member, index) => (
             <motion.div
               initial={{ y: 20, opacity: 0 }}
               whileInView={{ y: 0, opacity: 1 }}
@@ -226,16 +236,21 @@ const About = () => {
                 animate="initial"
               >
                 {/* Background Image */}
+                {member.img && (
+                  <Image
+                    src={member.img}
+                    alt={`${member.name}, ${member.role}`}
+                    className="absolute inset-0 object-cover w-full h-full"
+                  />
+                )}
 
                 <motion.div
                   variants={textVariants}
                   transition={{ duration: 0.2, ease: "easeInOut" }}
-                  className="w-full absolute z-30 bottom-[20px] text-center"
+                  className="w-full absolute z-30 bottom-[20px] text-center text-accent2"
                 >
-                  <Link className="text-accent2" href={"/"}>
-                    <div className="font-[600]">Name</div>
-                    <div className="italic text-[#d1d1d1]">Position</div>
-                  </Link>
+                  <div className="font-[600]">{member.name}</div>
+                  <div className="italic text-[#d1d1d1]">{member.role}</div>
                 </motion.div>
 
                 {/* Sliding colored overlay */}
@@ -250,9 +265,20 @@ const About = () => {
                       <div className="text-[#e4e2e2] text-sm">
                         <div className="flex gap-3">
                           {Btns.map((i, item) => (
-                            <Link key={item} href="/partner" className="btn">
+                            <a
+                              key={item}
+                              href={i.href}
+                              aria-label={i.label}
+                              target={
+                                i.href.startsWith("mailto:")
+                                  ? undefined
+                                  : "_blank"
+                              }
+                              rel="noopener noreferrer"
+                              className="btn"
+                            >
                               {i.icon}
-                            </Link>
+                            </a>
                           ))}
                         </div>
                       </div>
@@ -279,8 +305,8 @@ const About = () => {
           </div>
 
           <p className="pt-1 max-sm:text-sm">
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Qui quas ea
-            beatae dolorem ratione neque
+            Answers to the questions we hear most from buyers, sellers and
+            investors. If yours is not here, talk to an agent.
           </p>
         </div>
         <div className="grid grid-cols-1 md:grid-cols-3 my-12 gap-8">

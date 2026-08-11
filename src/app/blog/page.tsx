@@ -3,7 +3,6 @@ import { blogs } from "@/components/constants";
 import Header from "@/components/sections/Header";
 import useLenis from "@/hooks/useLenis";
 import { motion } from "framer-motion";
-import Link from "next/link";
 import React from "react";
 import { CiLocationOn } from "react-icons/ci";
 import Image from "next/image";
@@ -58,16 +57,16 @@ const Blog = () => {
                 />
               </div>
 
-              {/* Content */}
-              <Link href={"/"}>
-                <div className="p-4 space-y-2">
-                  <h1 className="text-xl font-bold">{blog.title}</h1>
-                  <div className="text-[#5c5c5c] text-sm flex items-start gap-1">
-                    <CiLocationOn className="mt-[2px]" />
-                    <p className="line-clamp-2">{blog.excerpt}</p>
-                  </div>
+              {/* Content — article detail pages are not built yet, so these
+                  cards intentionally do not link anywhere rather than sending
+                  readers back to the homepage. */}
+              <div className="p-4 space-y-2">
+                <h1 className="text-xl font-bold">{blog.title}</h1>
+                <div className="text-[#5c5c5c] text-sm flex items-start gap-1">
+                  <CiLocationOn className="mt-[2px]" />
+                  <p className="line-clamp-2">{blog.excerpt}</p>
                 </div>
-              </Link>
+              </div>
             </div>
           ))}
         </motion.div>

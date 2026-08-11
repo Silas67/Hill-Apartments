@@ -67,7 +67,7 @@ const WhyUs = () => {
 
           <p className="text-[12px]  text-primary all:w-full">
             Choosing the right real estate partner can make all the difference.
-            At Ogwinners, we combine industry expertise with a commitment
+            At OG Winners Homes, we combine industry expertise with a commitment
             to client satisfaction, guiding you through every step of the
             buying, selling, or investing journey. Whether you&apos;re a
             first-time buyer or a seasoned investor, we’re here to make your
@@ -111,7 +111,7 @@ const WhyUs = () => {
         className="w-[80%] text-center flex items-center justify-center  max-sm:w-full max-sm:justify-center mt-4"
       >
         <div className="bg-secondary px-3 py-3 flex items-center justify-center text-accent2 text-sm rounded-[10px]">
-          <Link href={"/"}>Contact an Agent</Link>
+          <Link href={"/contact"}>Contact an Agent</Link>
         </div>
       </motion.div>
     </div>

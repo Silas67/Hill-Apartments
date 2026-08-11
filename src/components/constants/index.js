@@ -33,11 +33,27 @@ export const slides = [
 ];
 
 export const Btns = [
-  { icon: <FaFacebook /> },
-  { icon: <FaInstagram /> },
-  { icon: <FaTwitter /> },
-  { icon: <FiMail /> },
-  { icon: <FaLinkedin /> },
+  {
+    icon: <FaFacebook />,
+    label: "Facebook",
+    href: "https://facebook.com/ogwinnershomes",
+  },
+  {
+    icon: <FaInstagram />,
+    label: "Instagram",
+    href: "https://instagram.com/ogwinnershomes",
+  },
+  {
+    icon: <FaTwitter />,
+    label: "Twitter",
+    href: "https://twitter.com/ogwinnershomes",
+  },
+  { icon: <FiMail />, label: "Email us", href: "mailto:info@ogwinners.com" },
+  {
+    icon: <FaLinkedin />,
+    label: "LinkedIn",
+    href: "https://linkedin.com/company/ogwinnershomes",
+  },
 ];
 
 export const achievementsList = [
@@ -51,14 +67,17 @@ export const property = [
   {
     img: img5,
     label: "Sites & Services",
+    text: "Serviced plots in planned estates, with roads, drainage and power already in place — ready for you to build on.",
   },
   {
     img: img7,
     label: "Ultra",
+    text: "Our premium collection of luxury homes and penthouses, finished to the highest standard in the city's best addresses.",
   },
   {
     img: img6,
     label: "3rd Party Sale",
+    text: "Verified listings from trusted private owners, with every title document checked by our team before it reaches you.",
   },
 ];
 
@@ -201,27 +220,57 @@ export const sidebarPosts = [
   {
     id: 1,
     img: img15,
-    title: "Some text",
+    title: "What to Check Before You Pay a Deposit",
+    excerpt:
+      "Title documents, survey plans and building approvals — the three things to verify before any money changes hands.",
   },
   {
     id: 2,
     img: img16,
-    title: "Some text",
+    title: "Rent or Buy in Abuja This Year?",
+    excerpt:
+      "We compare the real cost of renting against a mortgage across Wuse, Gudu and Apo to help you decide.",
   },
   {
     id: 3,
     img: img17,
-    title: "Some text",
+    title: "How to Value a Property Correctly",
+    excerpt:
+      "Location, finishing and rental yield all move the number. Here is how our team arrives at a fair asking price.",
   },
 ];
+
+// Single source of truth for company details — update here, not in the
+// individual pages, so the footer and contact page can never disagree.
+export const company = {
+  name: "OG Winners Homes",
+  email: "info@ogwinners.com",
+  phone: "(+234) 803 283 2962",
+  phoneHref: "+2348032832962",
+  offices: [
+    {
+      label: "Abuja",
+      address: "7 Sanatana Close, Wuse 2, Abuja, Nigeria.",
+    },
+    {
+      label: "Lagos",
+      address: "T19 Road 2, Lekki Gardens Phase 4, Lekki, Lagos, Nigeria.",
+    },
+  ],
+  socials: [
+    { name: "Instagram", href: "https://instagram.com/ogwinnershomes" },
+    { name: "Twitter", href: "https://twitter.com/ogwinnershomes" },
+    { name: "LinkedIn", href: "https://linkedin.com/company/ogwinnershomes" },
+  ],
+};
 
 export const footerLinks = [
   {
     heading: "Company",
     link: [
       { name: "Our Mission", href: "/about" },
-      { name: "Our Story ", href: "/about" },
-      { name: " Serivices", href: "/products" },
+      { name: "Our Story", href: "/about" },
+      { name: "Services", href: "/services" },
       { name: "Blog", href: "/blog" },
     ],
   },
@@ -234,6 +283,13 @@ export const footerLinks = [
     ],
   },
 ];
+
+// Management team shown on the About page. The section hides itself entirely
+// while this list is empty, so no "Name / Position" placeholders can ship.
+// Add one entry per person: { name, role, img } — import the photo at the top
+// of this file the same way the property images are imported.
+/** @type {{ name: string, role: string, img?: import("next/image").StaticImageData }[]} */
+export const team = [];
 
 export const services = [
   {
@@ -268,7 +324,7 @@ export const values = [
   {
     icon: <FaCompass />,
     title: "Our Core Values",
-    text: "At Hill’s Apartments & Homes, we value integrity, innovation, excellence, and sustainability — building with purpose, passion, and people in mind.",
+    text: "At OG Winners Homes, we value integrity, innovation, excellence, and sustainability — building with purpose, passion, and people in mind.",
   },
 ];
 
@@ -342,17 +398,17 @@ export const servicesfull = [
   {
     heading: "Home Buying Consultation & Support",
     title:
-      "At Ogwinners, we understand that purchasing a home—especially your first—is a life-changing decision. Our team provides personalized consultation, neighborhood guidance, property tours, and seamless negotiation support to help first-time buyers and growing families find their perfect home with confidence and peace of mind.",
+      "At OG Winners Homes, we understand that purchasing a home—especially your first—is a life-changing decision. Our team provides personalized consultation, neighborhood guidance, property tours, and seamless negotiation support to help first-time buyers and growing families find their perfect home with confidence and peace of mind.",
   },
   {
     heading: "Property Sales & Marketing",
     title:
-      "Looking to sell your property? Ogwinners combines market intelligence, professional staging advice, and digital marketing strategies to attract the right buyers. We make the selling process efficient, profitable, and hassle-free—so you get the best value for your property without stress.",
+      "Looking to sell your property? OG Winners Homes combines market intelligence, professional staging advice, and digital marketing strategies to attract the right buyers. We make the selling process efficient, profitable, and hassle-free—so you get the best value for your property without stress.",
   },
   {
     heading: " Investment & Portfolio Management",
     title:
-      "Ogwinners offers strategic investment services for seasoned investors and aspiring landlords. From identifying high-yield opportunities to managing multi-unit portfolios, we help you build long-term wealth through smart, data-driven decisions in the ever-evolving real estate market.",
+      "OG Winners Homes offers strategic investment services for seasoned investors and aspiring landlords. From identifying high-yield opportunities to managing multi-unit portfolios, we help you build long-term wealth through smart, data-driven decisions in the ever-evolving real estate market.",
   },
   {
     heading: " Property Management Services",

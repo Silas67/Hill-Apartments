@@ -1,11 +1,16 @@
 "use client";
 import React from "react";
 import Image from "next/image";
+import Link from "next/link";
 import { FaStar } from "react-icons/fa";
 import useLenis from "@/hooks/useLenis";
 import { BsPlayCircle } from "react-icons/bs";
 import Header from "@/components/sections/Header";
 import Footer from "@/components/sections/Footer";
+
+// Hardcoded while there is a single demo listing — see the note on the map
+// section. Moving to per-property pages replaces this with real listing data.
+const location = "Wuse 2, Abuja, Nigeria";
 
 const PropertyPage = () => {
   useLenis();
@@ -33,19 +38,22 @@ const PropertyPage = () => {
           <p className="text-sm text-gray-600">3 Bed • 2 Bath • 1200 sqft</p>
 
           <div className="text-gray-600 text-sm lg:w-[80%] pt-2">
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Quibusdam
-            doloribus voluptates totam illum, fuga sunt quis exercitationem
-            optio, eius facilis quod nostrum repellendus repudiandae, quae
-            veniam harum suscipit autem dicta.
+            A well-finished family bungalow on a quiet residential street, set
+            within a gated estate with 24-hour security and steady power. The
+            property sits on a fully fenced plot with parking for two cars, and
+            is a short drive from schools, shops and the main expressway.
           </div>
           <ul className="list-disc list-inside my-4 space-y-1 text-gray-700 font-mono">
             <li>Spacious Living Room</li>
             <li>Modern Kitchen</li>
             <li>Balcony with a View</li>
           </ul>
-          <button className="bg-secondary text-white px-4 py-2 mt-2 rounded-md">
+          <Link
+            href="/contact"
+            className="inline-block bg-secondary text-white px-4 py-2 mt-2 rounded-md"
+          >
             Contact An Agent
-          </button>
+          </Link>
         </div>
       </section>
 
@@ -69,13 +77,18 @@ const PropertyPage = () => {
         </div>
       </section>
 
-      {/* Map */}
+      {/* Map — swap `location` for the property's address once listings are
+          driven by real data rather than hardcoded here. */}
       <section>
         <iframe
-          src="https://www.google.com/maps/embed?..."
+          title={`Map showing ${location}`}
+          src={`https://maps.google.com/maps?q=${encodeURIComponent(
+            location
+          )}&z=14&output=embed`}
           className="w-full h-[300px] border rounded-md mb-12"
           allowFullScreen
           loading="lazy"
+          referrerPolicy="no-referrer-when-downgrade"
         ></iframe>
       </section>
 
