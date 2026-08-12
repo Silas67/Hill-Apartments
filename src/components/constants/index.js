@@ -358,69 +358,333 @@ export const values = [
   },
 ];
 
+// Blog posts. `slug` drives /blog/[slug] and must stay unique - the previous
+// data reused two slugs across all eight posts, which would collide as routes.
+// `body` is a list of blocks so an article can mix prose, headings and lists
+// without needing a markdown pipeline.
 export const blogs = [
   {
+    slug: "first-time-homebuyer-mistakes",
     title: "Top 5 Mistakes First-Time Homebuyers Make",
-    slug: "live-sustainably",
+    category: "Buying",
+    date: "2026-02-11",
+    readTime: "6 min read",
     excerpt:
-      "Buying your first home is exciting, but it can also be overwhelming. In this post, we highlight the most common mistakes new buyers make—and how to avoid them.",
+      "Buying your first home is exciting, but it can also be overwhelming. Here are the mistakes we see most often — and how to avoid them.",
     image: img7,
+    body: [
+      {
+        p: "Almost every first-time buyer we meet is working with the same information: advice from family, a few listings seen online, and a rough sense of what they can afford. That is usually enough to start, but it is rarely enough to finish well. The mistakes below are the ones that cost buyers the most money and the most time.",
+      },
+      { h: "1. Shopping before knowing your real budget" },
+      {
+        p: "The asking price is not what a property costs you. Legal fees, agency commission, survey and search fees, consent fees and stamp duty routinely add ten to fifteen percent on top. Buyers who skip this arithmetic find an ideal home, commit emotionally, and then discover they are short at exactly the moment they have the least room to negotiate.",
+      },
+      {
+        p: "Work out your all-in number before you view anything. If a mortgage is involved, get a decision in principle first — it also makes your offer far more credible to a seller.",
+      },
+      { h: "2. Treating documents as a formality" },
+      {
+        p: "This is the single most expensive mistake in the Nigerian market. A beautiful finish tells you nothing about whether the seller can legally transfer the land to you.",
+      },
+      {
+        list: [
+          "Confirm the title — Certificate of Occupancy, Governor’s Consent or a registered deed.",
+          "Check the survey plan against the physical boundaries on site.",
+          "Run a search at the state land registry before any deposit changes hands.",
+          "Ask whether the land falls under government acquisition or a committed development scheme.",
+        ],
+      },
+      { h: "3. Underestimating the neighbourhood" },
+      {
+        p: "You are not only buying a building. You are buying a commute, a water supply, a power situation and a set of neighbours. Visit at different times of day — a street that is calm on a Sunday afternoon can be very different on a Monday morning.",
+      },
+      { h: "4. Skipping the inspection to save money" },
+      {
+        p: "An inspection costs a fraction of one percent of the purchase price and regularly uncovers problems worth many times that. Roofing, damp, drainage and electrical faults are all far cheaper to negotiate before you own them.",
+      },
+      { h: "5. Rushing because someone told you to" },
+      {
+        quote:
+          "Urgency is the oldest pressure tactic in property. A genuinely good deal survives a week of due diligence.",
+      },
+      {
+        p: "If a seller or agent will not allow time for basic checks, that is information about the deal rather than about the market. Walk away and keep looking.",
+      },
+    ],
   },
-
   {
+    slug: "why-location-still-matters",
     title: "Why Location Still Matters in Real Estate",
-    slug: "green-energy",
+    category: "Market",
+    date: "2026-01-28",
+    readTime: "5 min read",
     excerpt:
-      "You’ve heard it before: “location, location, location.” This article explores why a great location can be more valuable than features or finishes.",
+      "You have heard it before: location, location, location. Here is why a good location still beats features or finishes.",
     image: img8,
+    body: [
+      {
+        p: "You can renovate a kitchen. You can replace a roof, repaint every wall and change the entire layout. What you cannot change is where the building stands. That asymmetry is the whole reason location dominates every other factor in property value.",
+      },
+      { h: "What location actually means" },
+      {
+        p: "Location is not simply a fashionable address. It is a bundle of practical things that determine how pleasant a home is to live in and how easy it will be to sell later.",
+      },
+      {
+        list: [
+          "Time and cost of the daily commute.",
+          "Reliability of power, water and drainage.",
+          "Proximity to schools, healthcare and markets.",
+          "Security, street lighting and an active residents’ association.",
+          "Planned infrastructure — a new road can reshape a district within a few years.",
+        ],
+      },
+      { h: "Finishes depreciate, position does not" },
+      {
+        p: "A premium finish is at its most valuable the day it is installed. From then on it dates. Position works the other way: as an area matures and infrastructure arrives, the ground the building sits on tends to appreciate. Buyers who stretch for a better street in a smaller property usually do better over ten years than those who buy more square metres further out.",
+      },
+      { h: "The exception worth knowing" },
+      {
+        p: "Location dominates, but it is not infinite. Paying far above the ceiling price for a street rarely recovers, however good the address. Look at what comparable homes on the same road have actually sold for and treat that as your upper bound.",
+      },
+    ],
   },
-
   {
+    slug: "prepare-your-home-for-sale",
     title: "How to Prepare Your Home for Sale",
-    slug: "live-sustainably",
+    category: "Selling",
+    date: "2026-01-14",
+    readTime: "5 min read",
     excerpt:
-      "Selling a house? Small improvements can make a big difference. Learn what to fix, stage, and declutter to attract the best offers.",
+      "Small improvements make a large difference. What to fix, stage and declutter to attract the best offers.",
     image: img9,
+    body: [
+      {
+        p: "Most sellers either do too much or too little. Too little, and the property reads as neglected. Too much, and money goes into work that no buyer will pay for. The aim is to remove reasons to say no, not to renovate.",
+      },
+      { h: "Start with the paperwork" },
+      {
+        p: "Before a single photograph is taken, gather your title document, survey plan, approved building plan and receipts for any major work. Sellers who have documents ready close faster and hold firmer on price, because a buyer’s biggest fear is already answered.",
+      },
+      { h: "Fix the cheap things that read as expensive" },
+      {
+        list: [
+          "Every door and window should open and close cleanly.",
+          "No dripping taps, no running cisterns, no slow drains.",
+          "Every light fitting works and every bulb matches in colour temperature.",
+          "Touch up paint where it is scuffed rather than repainting throughout.",
+          "Clear gutters and cut back anything overgrown at the entrance.",
+        ],
+      },
+      { h: "Declutter harder than feels comfortable" },
+      {
+        p: "Buyers are trying to imagine their life in the space, which is difficult when yours is still filling it. Clear surfaces, thin out furniture until rooms feel generous, and remove personal photographs. The goal is a home that feels cared for and available, not staged into anonymity.",
+      },
+      { h: "Get the photographs right" },
+      {
+        p: "The listing photograph decides whether anyone views at all. Shoot in daylight, open every curtain, turn the lights on anyway, and lead with the strongest room rather than the hallway.",
+      },
+      {
+        quote:
+          "Price attracts the market. Presentation decides who makes an offer, and how confident that offer is.",
+      },
+    ],
   },
-
   {
+    slug: "home-inspection-process",
     title: "What to Expect During the Home Inspection Process",
-    slug: "green-energy",
+    category: "Buying",
+    date: "2025-12-19",
+    readTime: "4 min read",
     excerpt:
-      "Inspections can be nerve-wracking—but they don’t have to be. Here’s what happens during a home inspection and how to prepare for it.",
+      "Inspections can feel nerve-wracking. Here is what actually happens, and how to prepare for it.",
     image: img5,
+    body: [
+      {
+        p: "An inspection is not a test the house passes or fails. It is a survey of condition that tells you what you are taking on, what it will cost, and what is worth renegotiating.",
+      },
+      { h: "What gets checked" },
+      {
+        list: [
+          "Structure — foundations, walls, visible cracking and any settlement.",
+          "Roof — covering, flashing, drainage and evidence of past leaks.",
+          "Plumbing — pressure, leaks, water storage and waste runs.",
+          "Electrical — distribution board, earthing, socket condition and obvious overloading.",
+          "Damp and ventilation, particularly in bathrooms and ground-floor rooms.",
+        ],
+      },
+      { h: "How long it takes" },
+      {
+        p: "A standard three-bedroom property takes two to three hours. Attend if you can. A written report is useful, but standing in the room while an inspector explains what they are looking at is worth considerably more.",
+      },
+      { h: "Reading the report sensibly" },
+      {
+        p: "Every report contains findings. The question is which ones matter. Separate them into three groups: safety issues that must be resolved before you move in, significant costs worth renegotiating, and ordinary maintenance you would expect on any building of that age.",
+      },
+      {
+        p: "Bring quotes to the negotiation rather than opinions. A seller will argue with a complaint but rarely with a builder’s estimate.",
+      },
+    ],
   },
-
   {
+    slug: "real-estate-investment-for-beginners",
     title: "Understanding Real Estate Investment for Beginners",
-    slug: "live-sustainably",
+    category: "Investing",
+    date: "2025-12-02",
+    readTime: "7 min read",
     excerpt:
-      "Thinking about investing in property? This guide breaks down the basics—types of real estate investments, expected returns, and risks.",
+      "Thinking about investing in property? A plain guide to the types, the returns and the risks.",
     image: img3,
+    body: [
+      {
+        p: "Property rewards patience more than cleverness. Most investors who do well simply bought something sensible, held it, and did not panic. What follows is the groundwork that makes that possible.",
+      },
+      { h: "The main routes in" },
+      {
+        list: [
+          "Buy-to-let — a finished property let to tenants for recurring income.",
+          "Land banking — buying serviced land and holding it while the area develops.",
+          "Off-plan — purchasing during construction at a lower entry price, with higher completion risk.",
+          "Short-let — furnished lettings at higher nightly rates, with far more active management.",
+        ],
+      },
+      { h: "Judging a deal on numbers, not feel" },
+      {
+        p: "Rental yield is annual rent divided by total purchase cost, expressed as a percentage. Use total cost, including fees and any immediate work — not the headline price. Then subtract the running costs everyone forgets: management, maintenance, service charges, insurance and void periods when no one is paying rent.",
+      },
+      {
+        quote:
+          "A property that yields eight percent on paper and six percent in reality is still a reasonable investment. One you never modelled at all is a guess.",
+      },
+      { h: "The risks worth respecting" },
+      {
+        p: "Property is illiquid. You cannot sell a third of a house because you need cash this month. Values can stall for years. Tenants default. Off-plan developments are delivered late, and occasionally not at all.",
+      },
+      {
+        p: "None of this argues against investing. It argues for buying within your means, keeping a reserve for repairs and voids, and verifying the developer’s track record before any off-plan commitment.",
+      },
+      { h: "A reasonable first step" },
+      {
+        p: "Start with one property in an area you genuinely know, ideally one you could live in yourself if the tenancy plan fell through. Learn the operating side on a single asset before adding a second.",
+      },
+    ],
   },
-
   {
+    slug: "buying-versus-renting",
     title: "The Pros and Cons of Buying vs. Renting",
-    slug: "green-energy",
+    category: "Guides",
+    date: "2025-11-18",
+    readTime: "5 min read",
     excerpt:
-      "Not sure if you should buy or rent your next home? We compare both options to help you make the best decision for your lifestyle and finances.",
+      "Not sure whether to buy or rent your next home? We compare both against lifestyle and finances.",
     image: img13,
+    body: [
+      {
+        p: "There is no universally correct answer, and anyone who gives you one is selling something. The honest answer depends on how long you intend to stay, how stable your income is, and how much flexibility is worth to you.",
+      },
+      { h: "The case for renting" },
+      {
+        list: [
+          "Flexibility — you can move at the end of a tenancy without selling.",
+          "Lower entry cost, with no legal fees, consent fees or stamp duty.",
+          "Repairs and structural maintenance are the landlord’s responsibility.",
+          "Capital stays liquid and available for other opportunities.",
+        ],
+      },
+      { h: "The case for buying" },
+      {
+        list: [
+          "Payments build equity rather than disappearing.",
+          "Housing costs become predictable rather than subject to annual review.",
+          "You can renovate, extend and decide who lives there.",
+          "Any appreciation accrues to you.",
+        ],
+      },
+      { h: "The question that usually settles it" },
+      {
+        p: "How long will you stay? Buying carries significant one-off transaction costs at both ends. Over two or three years those costs often exceed the equity built, and renting wins. Over seven to ten years, ownership almost always comes out ahead.",
+      },
+      {
+        p: "Be honest about income stability too. A mortgage is a fixed obligation that does not adjust when circumstances do.",
+      },
+    ],
   },
-
   {
-    title: "Top Neighborhoods to Watch in Abuja",
-    slug: "live-sustainably",
+    slug: "abuja-neighbourhoods-to-watch",
+    title: "Top Neighbourhoods to Watch in Abuja",
+    category: "Market",
+    date: "2025-11-04",
+    readTime: "6 min read",
     excerpt:
-      "From rising property values to lifestyle perks, these are the neighborhoods gaining attention in the real estate world this year.",
+      "From rising values to lifestyle perks, these are the districts gaining attention this year.",
     image: img6,
+    body: [
+      {
+        p: "Abuja does not appreciate uniformly. Value tends to follow infrastructure, and infrastructure follows plan approvals — which means the districts worth watching are usually visible well before prices move.",
+      },
+      { h: "What we look at" },
+      {
+        list: [
+          "Road access and how far along the approved network actually is.",
+          "Power and water provision, and whether the estate supplements them.",
+          "Density of completed, occupied homes rather than fenced empty plots.",
+          "Distance to established commercial centres.",
+          "Clarity of title across the district.",
+        ],
+      },
+      { h: "Established and steady" },
+      {
+        p: "Wuse 2, Maitama and Asokoro remain the reliable end of the market. Entry prices are high and yields comparatively modest, but demand is consistent and resale is rarely difficult. These are capital-preservation locations rather than growth plays.",
+      },
+      { h: "The growth belt" },
+      {
+        p: "Gudu, Apo, Galadimawa and Lokogoma have absorbed much of the middle-market demand pushed out of the centre. Infrastructure has largely caught up, occupancy is genuine, and pricing still leaves room. For most buyers balancing budget against convenience, this is the most interesting band.",
+      },
+      { h: "Earlier, and higher risk" },
+      {
+        p: "Districts further out along the expressways offer the lowest entry prices and the widest range of outcomes. Some will mature quickly. Others will wait a decade for a road that has been approved for years. Buy here only with verified title and a genuinely long horizon.",
+      },
+      {
+        quote:
+          "The cheapest plot in a district with no water and no road is not a bargain. It is a bet on a timetable you do not control.",
+      },
+    ],
   },
-
   {
-    title: "How the Real Estate Market Is Changing in 2025",
-    slug: "green-energy",
+    slug: "market-outlook",
+    title: "How the Real Estate Market Is Changing",
+    category: "Market",
+    date: "2025-10-21",
+    readTime: "5 min read",
     excerpt:
-      "Stay ahead of the curve. This post explores trends shaping the 2025 housing market, including interest rates, demand shifts, and buyer behavior.",
+      "Trends shaping the housing market, including financing conditions, demand shifts and buyer behaviour.",
     image: img10,
+    body: [
+      {
+        p: "Three forces are doing most of the work in the current market: the cost of financing, the cost of building, and a steady shift in what buyers actually want from a home.",
+      },
+      { h: "Financing is the constraint" },
+      {
+        p: "When borrowing is expensive, the pool of mortgage-dependent buyers narrows and transactions increasingly happen in cash or in structured payments directly with developers. Sellers who price for the market of two years ago sit unsold, and the gap between asking and achieved prices widens.",
+      },
+      { h: "Construction costs have reset expectations" },
+      {
+        p: "Materials and labour have risen sharply enough that replacement cost now underpins pricing on quality stock. This is part of why well-built existing homes have held value better than the headline mood suggests — building the equivalent today would cost more.",
+      },
+      { h: "What buyers are asking for" },
+      {
+        list: [
+          "Independent power and water, treated as standard rather than a luxury.",
+          "A dedicated room that works for remote work.",
+          "Genuinely managed estates with functioning security and refuse collection.",
+          "Smaller, better-finished homes in preference to larger, rougher ones.",
+        ],
+      },
+      { h: "What it means practically" },
+      {
+        p: "For buyers, negotiating room has returned, particularly on properties that have been listed for a while. For sellers, presentation and complete documentation matter more than they did in a faster market. For investors, income stability is worth more than speculative appreciation right now.",
+      },
+    ],
   },
 ];
 

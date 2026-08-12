@@ -3,6 +3,7 @@ import { blogs } from "@/components/constants";
 import Header from "@/components/sections/Header";
 import useLenis from "@/hooks/useLenis";
 import { motion } from "framer-motion";
+import Link from "next/link";
 import React from "react";
 import Image from "next/image";
 import PageHero from "@/components/sections/PageHero";
@@ -42,6 +43,7 @@ const Blog = () => {
                 }}
                 className="group"
               >
+                <Link href={`/blog/${blog.slug}`} className="block">
                 <div className="relative w-full aspect-[3/2] overflow-hidden bg-paper">
                   <Image
                     src={blog.image}
@@ -52,11 +54,14 @@ const Blog = () => {
                   />
                 </div>
 
-                <p className="text-[0.7rem] uppercase tracking-[0.22em] text-ink-faint mt-6">
-                  Insight
-                </p>
+                <div className="flex items-center gap-3 text-[0.7rem] uppercase tracking-[0.22em] text-ink-faint mt-6">
+                  <span className="text-accent">{blog.category}</span>
+                  <span aria-hidden="true">/</span>
+                  <span>{blog.readTime}</span>
+                </div>
                 <h2 className="display-md text-ink mt-3">{blog.title}</h2>
                 <p className="prose-quiet mt-3 line-clamp-3">{blog.excerpt}</p>
+                </Link>
               </motion.article>
             ))}
           </div>

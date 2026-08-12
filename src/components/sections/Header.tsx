@@ -40,12 +40,12 @@ const Header = () => {
           <Image
             src="/Logo-2.png"
             alt="OG Winners Homes logo"
-            width={100}
-            height={40}
+            width={150}
+            height={100}
             priority
             // The source artwork is dark, so it only needs inverting when it
             // sits on the photographic hero.
-            className={`h-[34px] w-auto object-contain transition-[filter] duration-500 ${
+            className={`h-[64px] w-auto object-contain transition-[filter] duration-500 ${
               overPhoto ? "invert" : "invert-0"
             }`}
           />

@@ -38,6 +38,7 @@ const Blog = () => {
             transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
             className="lg:w-3/5 group"
           >
+            <Link href={`/blog/${lead.slug}`} className="block">
             <div className="relative w-full aspect-[16/10] overflow-hidden bg-paper">
               <Image
                 src={lead.image}
@@ -51,6 +52,7 @@ const Blog = () => {
               {lead.title}
             </h3>
             <p className="prose-quiet mt-4">{lead.excerpt}</p>
+            </Link>
           </motion.article>
 
           {/* Secondary list */}
@@ -66,8 +68,12 @@ const Blog = () => {
                   delay: 0.08 * index,
                   ease: [0.22, 1, 0.36, 1],
                 }}
-                className="flex gap-6 py-7 border-b border-line first:border-t group"
+                className="border-b border-line first:border-t group"
               >
+                <Link
+                  href={`/blog/${post.slug}`}
+                  className="flex gap-6 py-7"
+                >
                 <div className="relative w-24 h-24 shrink-0 overflow-hidden bg-paper">
                   <Image
                     src={post.image}
@@ -85,6 +91,7 @@ const Blog = () => {
                     {post.excerpt}
                   </p>
                 </div>
+                </Link>
               </motion.article>
             ))}
 
