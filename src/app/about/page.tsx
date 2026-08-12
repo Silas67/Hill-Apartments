@@ -16,7 +16,7 @@ import "swiper/css";
 import "swiper/css/navigation";
 import PageHero from "@/components/sections/PageHero";
 // import Testimonials from "@/components/sections/HomePage/Testimonials";
-import img1 from "@/components/assets/Images/Ceo-2.png";
+import owner from "@/components/assets/Images/owner.jpg";
 import Footer from "@/components/sections/Footer";
 import Chapter from "@/components/sections/Chapter";
 import Faq from "@/components/sections/Faq";
@@ -104,8 +104,8 @@ const About = () => {
         index={2}
         eyebrow="Our Approach"
         title="Designing spaces that inspire and elevate"
-        image={img1}
-        imageAlt="Chief Executive Officer of OG Winners Homes"
+        image={owner}
+        imageAlt="Chief Onyebuchi Nwodo Sunday, Founder and CEO of OG Winners Homes"
         align="left"
         tone="paper"
       >
@@ -122,8 +122,12 @@ const About = () => {
         </p>
         <div className="pt-6">
           <hr className="hairline max-w-[8rem]" />
-          <p className="text-ink mt-4 text-sm font-medium">OG Winners Homes</p>
-          <p className="text-ink-faint text-sm">Chief Executive Officer</p>
+          <p className="text-ink mt-4 text-sm font-medium">
+            Chief Onyebuchi Nwodo Sunday
+          </p>
+          <p className="text-ink-faint text-sm">
+            Founder &amp; Chief Executive Officer, OG Winners Homes
+          </p>
         </div>
       </Chapter>
 

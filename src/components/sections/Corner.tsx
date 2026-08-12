@@ -6,13 +6,13 @@ import Link from "next/link";
 import { Icon } from "@iconify/react";
 import { motion } from "framer-motion";
 import { usePathname } from "next/navigation";
+import { company, navLinks } from "../constants";
+import { startScroll, stopScroll } from "@/hooks/useLenis";
 
-export const Navlinks = [
+// Home and Contact bracket the shared primary navigation.
+const drawerLinks = [
   { label: "Home", href: "/" },
-  { label: "About", href: "/about" },
-  { label: "Services", href: "/services" },
-  { label: "Properties", href: "/properties" },
-  { label: "Blog", href: "/blog" },
+  ...navLinks,
   { label: "Contact", href: "/contact" },
 ];
 
@@ -53,9 +53,20 @@ export default function CornerNavGSAP() {
     closeMenu(); // ✅ close the menu
   };
 
-  // Lock Scrolling When Open
+  // Lock Scrolling When Open. Lenis ignores `overflow: hidden`, so the
+  // instance has to be stopped; the body style covers pages without Lenis.
   useEffect(() => {
-    document.body.style.overflow = open ? "hidden" : "auto";
+    if (open) {
+      stopScroll();
+      document.body.style.overflow = "hidden";
+    } else {
+      startScroll();
+      document.body.style.overflow = "";
+    }
+    return () => {
+      startScroll();
+      document.body.style.overflow = "";
+    };
   }, [open]);
 
   // GSAP Animation For Opening and Closing Menu
@@ -116,7 +127,9 @@ export default function CornerNavGSAP() {
     <>
       {/* toggle button */}
       <button
-        aria-label="Toggle navigation"
+        aria-label={open ? "Close menu" : "Open menu"}
+        aria-expanded={open}
+        aria-controls="mobile-menu"
         onClick={toggle}
         // Colour is inherited so the Header can flip it between white (over
         // the homepage photo) and dark ink (on white pages).
@@ -124,30 +137,19 @@ export default function CornerNavGSAP() {
                     text-current rounded-xl transition-discrete
                     duration-300"
       >
-        {open ? (
-          <motion.div className="z-50">
-            <Icon
-              icon="mdi:home-outline"
-              width="24"
-              height="24"
-              className="z-50 text-black"
-            />
-          </motion.div>
-        ) : (
-          <motion.div>
-            <Icon
-              icon="ic:baseline-home"
-              width="24"
-              height="24"
-              className="z-50"
-            />
-          </motion.div>
-        )}
+        {/* A house icon gave no hint that this opens the navigation. */}
+        <Icon
+          icon={open ? "mdi:close" : "mdi:menu"}
+          width="26"
+          height="26"
+          className={`z-50 ${open ? "text-primary" : ""}`}
+        />
       </button>
 
       {/* menu */}
 
       <div
+        id="mobile-menu"
         ref={menuRef}
         style={{
           display: "none",
@@ -163,7 +165,7 @@ export default function CornerNavGSAP() {
           onClick={closeMenu}
         >
           {" "}
-          {Navlinks.map((txt, idx) => {
+          {drawerLinks.map((txt, idx) => {
             const active = isActive(txt.href);
 
             return (
@@ -176,8 +178,9 @@ export default function CornerNavGSAP() {
                 <Link
                   href={txt.href}
                   onClick={() => handleNavClick(txt.href)}
-                  className={`uppercase hover:tracking-wider transition-all duration-300 hover:text-accent text-primary font-anton ${
-                    active ? " font-[100] font-sans" : ""
+                  aria-current={active ? "page" : undefined}
+                  className={`uppercase hover:tracking-wider transition-all duration-300 hover:text-accent font-anton ${
+                    active ? "text-accent" : "text-primary"
                   }`}
                 >
                   {txt.label}
@@ -196,12 +199,14 @@ export default function CornerNavGSAP() {
               transition={{ duration: 1, ease: "anticipate" }}
               className="flex flex-col items-start justify-center "
             >
-              <h1 className="font-semibold text-xl text-primary">Office</h1>
-              <div className="text-sm flex-col items-center flex space-y-2 text-primary">
-                <span>
-                  1st Floor, Kebbi Hotel, Central Business District, Abuja,
-                  Nigeria
-                </span>
+              <h2 className="font-semibold text-xl text-primary">Offices</h2>
+              <div className="text-sm flex-col items-start flex space-y-2 text-primary">
+                {company.offices.map((office) => (
+                  <span key={office.label}>
+                    <strong className="block">{office.label}</strong>
+                    {office.address}
+                  </span>
+                ))}
               </div>
             </motion.div>
             <motion.div
@@ -210,7 +215,7 @@ export default function CornerNavGSAP() {
               transition={{ duration: 1, ease: "anticipate" }}
               className="flex flex-col items-start justify-center "
             >
-              <h1 className="font-semibold text-xl text-primary">Contact</h1>
+              <h2 className="font-semibold text-xl text-primary">Contact</h2>
               <p className="flex items-center  gap-2">
                 <Icon
                   icon="line-md:phone-filled"
@@ -218,7 +223,7 @@ export default function CornerNavGSAP() {
                   height="18"
                   className="text-primary"
                 />
-                <span className="text-sm text-primary">+234 803 283 2962</span>
+                <span className="text-sm text-primary">{company.phone}</span>
               </p>
               <p className="flex items-center gap-2">
                 <Icon
@@ -227,10 +232,7 @@ export default function CornerNavGSAP() {
                   height="18"
                   className="text-primary"
                 />
-                <span className="text-sm text-primary">
-                  {" "}
-                  Blinkzsparks@gmail.com
-                </span>
+                <span className="text-sm text-primary">{company.email}</span>
               </p>
             </motion.div>
             <motion.div
@@ -239,34 +241,24 @@ export default function CornerNavGSAP() {
               transition={{ duration: 1, ease: "anticipate" }}
               className="flex flex-col items-start justify-center "
             >
-              <h1 className="font-semibold text-xl text-primary">Social</h1>
-              <p className="flex items-center gap-2 text-primary">
-                <Link href={"https://instagram.com"}>
-                  <Icon
-                    icon="line-md:instagram"
-                    width="18"
-                    height="18"
-                    className="hover:scale-[1.2] transition-all duration-300 text-primary"
-                  />
-                </Link>
-
-                <Link href={"https://twitter.com"}>
-                  <Icon
-                    icon="line-md:twitter"
-                    width="18"
-                    height="18"
-                    className="hover:scale-[1.2] transition-all duration-300 text-primary"
-                  />
-                </Link>
-
-                <Link href={"https://linkedin.com"}>
-                  <Icon
-                    icon="line-md:linkedin"
-                    width="18"
-                    height="18"
-                    className="scale-[1] hover:scale-[1.2] transition-all duration-300 text-primaryssssssssss"
-                  />
-                </Link>
+              <h2 className="font-semibold text-xl text-primary">Social</h2>
+              <p className="flex items-center gap-3 text-primary">
+                {company.socials.map((social) => (
+                  <a
+                    key={social.name}
+                    href={social.href}
+                    aria-label={social.name}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    <Icon
+                      icon={`line-md:${social.name.toLowerCase()}`}
+                      width="18"
+                      height="18"
+                      className="hover:scale-[1.2] transition-all duration-300 text-primary"
+                    />
+                  </a>
+                ))}
               </p>
             </motion.div>
           </div>
@@ -275,38 +267,30 @@ export default function CornerNavGSAP() {
         <div className="w-full flex flex-col items-center gap-5 sm:mt-0 mt-8 md:hidden ">
           {/* small‑screen social icons */}
           <div className="flex gap-6 sm:hidden">
-            <Link href="https://instagram.com">
-              <Icon
-                icon="line-md:instagram"
-                width="20"
-                height="20"
-                className="text-primary hover:text-white transition"
-              />
-            </Link>
-            <Link href="https://twitter.com">
-              <Icon
-                icon="line-md:twitter"
-                width="20"
-                height="20"
-                className="text-primary hover:text-white transition"
-              />
-            </Link>
-            <Link href="https://linkedin.com">
-              <Icon
-                icon="line-md:linkedin"
-                width="20"
-                height="20"
-                className="text-primary hover:text-white transition"
-              />
-            </Link>
+            {company.socials.map((social) => (
+              <a
+                key={social.name}
+                href={social.href}
+                aria-label={social.name}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <Icon
+                  icon={`line-md:${social.name.toLowerCase()}`}
+                  width="20"
+                  height="20"
+                  className="text-primary hover:text-accent transition"
+                />
+              </a>
+            ))}
           </div>
 
           {/* Contact Us button */}
           <Link
-            href="#contact"
-            onClick={() => handleNavClick("#contact")}
+            href="/contact"
+            onClick={() => handleNavClick("/contact")}
             className="w-full max-w-xs py-3 bg-primary rounded-3xl text-center
-               text-white font-semibold hover:bg-secondary transition mb-[100px]"
+               text-white font-semibold hover:bg-accent transition mb-[100px]"
           >
             Contact&nbsp;Us
           </Link>

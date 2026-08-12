@@ -23,6 +23,67 @@ import img14 from "@/components/assets/Images/img19.jpg";
 import img15 from "@/components/assets/Images/img25.jpg";
 import img16 from "@/components/assets/Images/img26.jpg";
 import img17 from "@/components/assets/Images/about1.jpg";
+import img21 from "@/components/assets/Images/img21.jpg";
+import heroImg from "@/components/assets/Images/img22.jpeg";
+
+// Primary navigation, shared by the desktop header and the mobile drawer so
+// the two can never drift apart. The drawer adds Home and Contact around it.
+export const navLinks = [
+  { label: "About", href: "/about" },
+  { label: "Blog", href: "/blog" },
+  { label: "Properties", href: "/properties" },
+  { label: "Services", href: "/services" },
+];
+
+// ---------------------------------------------------------------------------
+// HOMEPAGE HERO SLIDER
+//
+// Each entry is one full-screen slide. To announce an event, add an object with
+// `kind: "event"` and a `meta` line (date, venue). Remove it afterwards and the
+// slider carries on with whatever is left. A single entry renders as a static
+// hero with no controls, so the section never looks broken.
+//
+// Fields:
+//   image   - imported image (required)
+//   eyebrow - small uppercase line above the headline
+//   title   - the headline; keep it short, it renders very large
+//   meta    - optional supporting line, used for event date/venue
+//   cta     - { label, href }
+//   kind    - "event" adds an accent marker; omit for a normal slide
+// ---------------------------------------------------------------------------
+/**
+ * @type {{
+ *   image: import("next/image").StaticImageData,
+ *   eyebrow: string,
+ *   title: string,
+ *   meta?: string,
+ *   kind?: "event",
+ *   cta: { label: string, href: string },
+ * }[]}
+ */
+export const heroSlides = [
+  {
+    image: heroImg,
+    eyebrow: "Abuja & Lagos",
+    title: "Where vision meets structure",
+    cta: { label: "View Properties", href: "/properties" },
+  },
+  {
+    kind: "event",
+    image: img21,
+    eyebrow: "Upcoming Event",
+    title: "Open house weekend",
+    meta: "Saturday 12 September · Gudu, Abuja · 10am – 4pm",
+    cta: { label: "Reserve a viewing", href: "/contact" },
+  },
+  {
+    image: img15,
+    eyebrow: "Now Selling",
+    title: "Serviced plots, ready to build",
+    meta: "Roads, drainage and power already in place.",
+    cta: { label: "See available plots", href: "/properties" },
+  },
+];
 
 export const slides = [
   { img: img1 },

@@ -3,7 +3,7 @@ import { motion } from "framer-motion";
 import Link from "next/link";
 import Image from "next/image";
 import { Icon } from "@iconify/react/dist/iconify.js";
-import img1 from "@/components/assets/Images/Ceo-2.png";
+import img1 from "@/components/assets/Images/img21.jpg";
 
 const About = () => {
   return (
@@ -52,7 +52,7 @@ const About = () => {
           <div className="relative w-full aspect-[16/9] overflow-hidden mt-16">
             <Image
               src={img1}
-              alt="Chief Executive Officer of OG Winners Homes"
+              alt="A completed OG Winners Homes development"
               placeholder="blur"
               sizes="100vw"
               className="object-cover w-full h-full"

@@ -4,13 +4,7 @@ import { usePathname } from "next/navigation";
 import Link from "next/link";
 import Image from "next/image";
 import CornerNavGSAP from "./Corner";
-
-export const Navbar = [
-  { label: "About", href: "/about" },
-  { label: "Blog", href: "/blog" },
-  { label: "Properties", href: "/properties" },
-  { label: "Services", href: "/services" },
-];
+import { navLinks } from "../constants";
 
 const Header = () => {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -56,7 +50,7 @@ const Header = () => {
 
         {/* Desktop nav — plain text with a rule under the active item. */}
         <ul className="hidden lg:flex items-center gap-10">
-          {Navbar.map((link) => {
+          {navLinks.map((link) => {
             const active = pathname === link.href;
             return (
               <li key={link.href}>

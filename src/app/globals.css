@@ -76,10 +76,6 @@ body {
   font-family: "MyCustomFont", sans-serif;
 }
 
-.bb {
-  border: #0a0a0a solid 1px;
-}
-
 .btn {
   border: var(--background) solid 1px;
   color: var(--background);
@@ -91,84 +87,6 @@ body {
     border: #f4a460 1px solid;
     transition: all 500ms ease-in-out;
   }
-}
-
-.sidebar {
-  position: fixed;
-  right: 0;
-  width: 70vw;
-  height: 100vh;
-  top: 0;
-  background: var(--background);
-  font-size: 0.65em;
-}
-
-.nav {
-  position: relative;
-  margin: 0 15%;
-  text-align: left;
-  top: 15%;
-  font-weight: bold;
-  z-index: 100 !important;
-}
-
-.nav ul {
-  list-style-type: none;
-
-  li {
-    position: relative;
-    margin: 3.2em 0;
-  }
-
-  a {
-    line-height: 4em;
-    text-transform: uppercase;
-    text-decoration: none;
-    letter-spacing: 0.2em;
-    color: var(--foreground);
-    display: block;
-    transition: all ease-out 400ms;
-
-    &::after {
-      content: "";
-      position: absolute;
-      width: 100%;
-      height: 0.2em;
-      background: black;
-      left: 0;
-      bottom: 0;
-      background-image: linear-gradient(
-        to right,
-        var(--color-accent),
-        var(--color-secondary)
-      );
-    }
-    &:active {
-      color: var(--secondary);
-    }
-    &:not(:active)::after {
-      opacity: 0.2;
-      color: rgb(21, 7, 7);
-    }
-  }
-}
-
-.navanime {
-  animation: navbar 1s forwards;
-}
-
-.overlay {
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  inset: 0;
-  z-index: 10;
-}
-
-.flexcent {
-  display: flex;
-  align-items: center;
-  justify-content: center;
 }
 
 /* ==========================================================================
