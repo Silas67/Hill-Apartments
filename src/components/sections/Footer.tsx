@@ -4,7 +4,6 @@ import Link from "next/link";
 import Image from "next/image";
 import { useState } from "react";
 import { Btns, company, footerLinks } from "../constants";
-import img5 from "@/components/assets/Images/Logo.png";
 
 export default function Footer() {
   const [subscribeStatus, setSubscribeStatus] = useState<
@@ -146,11 +145,18 @@ export default function Footer() {
         {/* Base line */}
         <div className="flex flex-col md:flex-row md:items-center justify-between gap-8 pt-10">
           <Link href="/" aria-label="OG Winners Homes — home">
-            <Image
-              src={img5}
-              alt="OG Winners Homes logo"
-              className="w-[92px] h-auto object-contain brightness-0 invert"
-            />
+            <span className="flex items-center gap-3">
+              <Image
+                src="/logo-mark.png"
+                alt=""
+                width={44}
+                height={44}
+                className="w-9 h-9 object-contain"
+              />
+              <span className="text-sm tracking-[0.18em] uppercase">
+                {company.name}
+              </span>
+            </span>
           </Link>
 
           <div className="flex flex-wrap items-center gap-6">

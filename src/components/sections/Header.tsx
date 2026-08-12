@@ -43,10 +43,13 @@ const Header = () => {
             width={150}
             height={100}
             priority
-            // The source artwork is dark, so it only needs inverting when it
-            // sits on the photographic hero.
+            // Never invert: the badge is full colour, so `invert` turns the
+            // gold blue and the blue text orange. Over the photographic hero
+            // a drop shadow keeps the dark wordmark legible instead.
             className={`h-[64px] w-auto object-contain transition-[filter] duration-500 ${
-              overPhoto ? "invert" : "invert-0"
+              overPhoto
+                ? "[filter:drop-shadow(0_1px_6px_rgba(0,0,0,0.55))]"
+                : ""
             }`}
           />
         </Link>
