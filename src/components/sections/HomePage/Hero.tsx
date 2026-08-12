@@ -1,106 +1,90 @@
-// import { Btns } from "@/components/constants";
+"use client";
 import { motion } from "framer-motion";
 import Link from "next/link";
 import Image from "next/image";
-import img1 from "@/components/assets/Images/img22.jpeg";
-import React from "react";
 import { Icon } from "@iconify/react/dist/iconify.js";
+import img1 from "@/components/assets/Images/img22.jpeg";
 import AchievementStat from "../Achievement";
-// import { FaCaretDown } from "react-icons/fa";
+
+const stats = [
+  { target: 70, suffix: "+", label: "Satisfied Customers" },
+  { target: 100, suffix: "+", label: "Projects Completed" },
+  { target: 10, suffix: "+", label: "Years in Business" },
+];
 
 const Hero = () => {
   return (
-    <div className="relative w-full max-mobile:h-[70vh] md:h-[100vh] overflow-hidden">
-      <div className="absolute w-full h-full z-10">
-        <Image src={img1} alt="/" className="w-full h-full object-cover" />
-      </div>
+    <section className="relative w-full h-[92vh] min-h-[34rem] overflow-hidden">
+      <Image
+        src={img1}
+        alt="Luxury residential property by OG Winners Homes"
+        placeholder="blur"
+        priority
+        sizes="100vw"
+        className="absolute inset-0 w-full h-full object-cover"
+      />
 
-      {/* Text Content */}
-      <div className="relative flex flex-col w-full h-full items-start justify-center z-20 text-center text-white px-4 max-mobile:px-[0px]">
-        <div className="absolute lg:right-[40px] md:right-[20px] md:top-[100px] max-mobile:top-[80px] lg:top-[80px]  text-left max-mobile:px-[20px] max-w-[400px] max-mobile:max-w-[250px] max-mobile:right-[10px]">
-          <motion.h1
-            initial={{ y: 20, opacity: 0 }}
-            whileInView={{ y: 0, opacity: 1 }}
-            viewport={{ once: true }}
-            transition={{ duration: 1, ease: "easeInOut" }}
-            className="text-[30px] max-mobile:text-[20px] md:text-[35px] lg:text-4xl  text-left text-background font-sans max-mobile:text-right"
+      {/* Gradient rather than a flat wash: keeps the image readable at the
+          top and bottom without dulling the middle. */}
+      <div
+        aria-hidden="true"
+        className="absolute inset-0 z-10 bg-gradient-to-b from-black/45 via-black/15 to-black/65"
+      />
+
+      <div className="relative z-20 h-full shell flex flex-col justify-end pb-[clamp(2.5rem,6vw,5rem)] text-white">
+        <motion.p
+          initial={{ opacity: 0, y: 16 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
+          className="text-[0.7rem] uppercase tracking-[0.28em] text-white/70"
+        >
+          Abuja &amp; Lagos
+        </motion.p>
+
+        <motion.h1
+          initial={{ opacity: 0, y: 24 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.9, delay: 0.1, ease: [0.22, 1, 0.36, 1] }}
+          className="display-xl mt-6 max-w-[16ch]"
+        >
+          Where vision meets structure
+        </motion.h1>
+
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, delay: 0.25, ease: [0.22, 1, 0.36, 1] }}
+          className="mt-10"
+        >
+          <Link
+            href="/properties"
+            className="group inline-flex items-center gap-3 border border-white/60 px-9 py-4 text-[0.72rem] uppercase tracking-[0.2em] hover:bg-white hover:text-ink transition-colors duration-500"
           >
-            Where Vision Meets Structure and Dreams Becomes Purpose
-          </motion.h1>
-
-          <Link href={"/properties"}>
-            <motion.div
-              initial={{ y: 20, opacity: 0 }}
-              whileInView={{ y: 0, opacity: 1 }}
-              viewport={{ once: true }}
-              transition={{ duration: 1, ease: "easeInOut" }}
-              className="text-[16px] mt-2 text-neutral-300 flex items-center gap-[10px] group  transition-all duration-500 cursor-pointer"
-            >
-              <h1 className="max-mobile:text-right max-mobile:w-full font-bold">
-                {" "}
-                View Properties
-              </h1>
-
-              <Icon
-                icon="line-md:arrow-right"
-                className="-rotate-45 group-hover:rotate-0  transition-all duration-500 "
-              />
-            </motion.div>
+            View Properties
+            <Icon
+              icon="line-md:arrow-right"
+              className="text-base transition-transform duration-500 group-hover:translate-x-1"
+            />
           </Link>
-        </div>
+        </motion.div>
 
-        {/* Buttons */}
-        <div className="absolute md:bottom-[10vh] bottom-[7vh] md:px-[30px] max-mobile:pr-[100px] z-30 w-full flex md:justify-start md:items-start flex-col gap-[10px] scale-[0.8] max-mobile:w-full">
-          <motion.div
-            initial={{ y: 20, opacity: 0 }}
-            whileInView={{ y: 0, opacity: 1 }}
-            viewport={{ once: true }}
-            transition={{ duration: 1, ease: "easeInOut" }}
-            className="flex gap-8 max-mobile:gap-4"
-          >
-            <div className="border-r pr-8">
-              <AchievementStat target={70} suffix={"+"} />
-              <motion.p
-                initial={{ y: 20, opacity: 0 }}
-                whileInView={{ y: 0, opacity: 1 }}
-                viewport={{ once: true }}
-                transition={{ duration: 1, ease: "easeInOut", delay: 1 }}
-                className="text-[14px] max-mobile:text-[12px]"
-              >
-                Satisfied Customers
-              </motion.p>
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 0.8, delay: 0.5 }}
+          className="flex flex-wrap gap-x-12 gap-y-6 mt-14 pt-8 border-t border-white/20"
+        >
+          {stats.map((stat) => (
+            <div key={stat.label}>
+              <AchievementStat target={stat.target} suffix={stat.suffix} />
+              <p className="text-[0.7rem] uppercase tracking-[0.2em] text-white/70 mt-1">
+                {stat.label}
+              </p>
             </div>
-            <div className="border-r pr-8">
-              <AchievementStat target={100} suffix={"+"} />
-              <motion.p
-                initial={{ y: 20, opacity: 0 }}
-                whileInView={{ y: 0, opacity: 1 }}
-                viewport={{ once: true }}
-                transition={{ duration: 1, ease: "easeInOut", delay: 1 }}
-                className="text-[14px] max-mobile:text-[12px]"
-              >
-                Projects Completed
-              </motion.p>
-            </div>
-            <div>
-              <AchievementStat target={10} suffix={"+"} />
-              <motion.p
-                initial={{ y: 20, opacity: 0 }}
-                whileInView={{ y: 0, opacity: 1 }}
-                viewport={{ once: true }}
-                transition={{ duration: 1, ease: "easeInOut", delay: 1 }}
-                className="text-[14px] max-mobile:text-[12px]"
-              >
-                Years in Business
-              </motion.p>
-            </div>
-          </motion.div>
-        </div>
+          ))}
+        </motion.div>
       </div>
-
-      {/* Overlay for readability */}
-      <div className="absolute inset-0 bg-black/20 z-10" />
-    </div>
+    </section>
   );
 };
 

@@ -1,44 +1,57 @@
+"use client";
 import { motion } from "framer-motion";
-import React from "react";
-import { BiRightArrowAlt } from "react-icons/bi";
+import Link from "next/link";
 import Image from "next/image";
+import { Icon } from "@iconify/react/dist/iconify.js";
 import img1 from "@/components/assets/Images/img5.jpg";
 
 const Banner = () => {
   return (
-    <section className="w-full h-[70vh] py-12 flex items-center justify-center md:px-[100px] px-[30px]">
-      <div className="w-[90%] h-full flex flex-col-reverse md:flex-row bg-accent2 text-white rounded-[10px] font-sans overflow-hidden">
-        {/* Text Content */}
+    <section className="bg-paper">
+      <div className="shell section">
         <motion.div
-          initial={{ y: 20, opacity: 0 }}
-          whileInView={{ y: 0, opacity: 1 }}
-          transition={{ duration: 1, ease: "easeIn" }}
-          viewport={{ once: true }}
-          className="w-full md:w-1/2 h-full flex flex-col justify-center px-12 space-y-[20px] max-sm:scale-[0.9] max-sm:px-4 text-foreground"
+          initial={{ opacity: 0, y: 24 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-80px" }}
+          transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
+          className="flex flex-col lg:flex-row items-stretch gap-[clamp(2rem,5vw,4rem)]"
         >
-          <h1 className="text-3xl max-sm:text-2xl font-semibold max-w-[80%]">
-            Discover Our Finest Selection
-          </h1>
-          <p className="text-sm">
-            Step into a world where design meets comfort. Each space is
-            thoughtfully crafted to reflect timeless elegance, modern
-            functionality, and lasting quality.
-          </p>
-          <button className="p-2 flex items-center justify-center rounded-[10px] text-sm gap-1 text-white bg-foreground w-fit">
-            Discover
-            <BiRightArrowAlt className="text-lg" />
-          </button>
-        </motion.div>
+          <div className="lg:w-1/2 flex flex-col justify-center">
+            <p className="eyebrow">Featured</p>
+            <h2 className="display-lg text-ink mt-6 max-w-[14ch]">
+              Discover our finest selection
+            </h2>
+            <p className="prose-quiet mt-6">
+              Step into a world where design meets comfort. Each space is
+              thoughtfully crafted to reflect timeless elegance, modern
+              functionality and lasting quality.
+            </p>
+            <div className="mt-10">
+              <Link
+                href="/properties"
+                className="group inline-flex items-center gap-3 border border-ink px-9 py-4 text-[0.72rem] uppercase tracking-[0.2em] text-ink hover:bg-ink hover:text-background transition-colors duration-500"
+              >
+                Discover
+                <Icon
+                  icon="line-md:arrow-right"
+                  className="text-base transition-transform duration-500 group-hover:translate-x-1"
+                />
+              </Link>
+            </div>
+          </div>
 
-        {/* Image Content */}
-        <div className="w-full md:w-1/2 h-full overflow-hidden">
-          <Image
-            src={img1}
-            alt="Discover"
-            className="w-full h-full object-cover"
-            priority
-          />
-        </div>
+          <div className="lg:w-1/2">
+            <div className="relative w-full aspect-[4/3] lg:aspect-auto lg:h-full min-h-[18rem] overflow-hidden">
+              <Image
+                src={img1}
+                alt="Interior of a featured OG Winners Homes property"
+                placeholder="blur"
+                sizes="(max-width: 1024px) 100vw, 50vw"
+                className="object-cover w-full h-full"
+              />
+            </div>
+          </div>
+        </motion.div>
       </div>
     </section>
   );

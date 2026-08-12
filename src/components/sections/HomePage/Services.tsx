@@ -1,74 +1,66 @@
-import React from "react";
+"use client";
 import Image from "next/image";
-import img4 from "@/components/assets/Images/img25.jpg";
-// import { services } from "@/components/constants";
-// import Copy from "@/hooks/Copy";
-import { motion } from "framer-motion";
 import Link from "next/link";
-// import { GiStarsStack } from "react-icons/gi";
+import { motion } from "framer-motion";
 import { Icon } from "@iconify/react/dist/iconify.js";
+import img4 from "@/components/assets/Images/img25.jpg";
 
 const Services = () => {
   return (
-    <div
-      className="w-full flex justify-between items-center p-8 px-[100px] max-sm:px-[30px] py-16 gap-[30px] bg-black/10 flex-col lg:flex-row
-      "
-    >
-      <motion.div
-        initial={{ x: -20, opacity: 0 }}
-        whileInView={{ x: 0, opacity: 1 }}
-        viewport={{ once: true }}
-        transition={{
-          duration: 1,
-          ease: "easeInOut",
-        }}
-        className="lg:w-[500px] overflow-hidden rounded-[10px] lg:h-[450px]"
-      >
-        <Image src={img4} alt="/" className="object-cover w-full h-full" />
-      </motion.div>
-      <motion.div
-        initial={{ x: 20, opacity: 0 }}
-        whileInView={{ x: 0, opacity: 1 }}
-        viewport={{ once: true }}
-        transition={{
-          duration: 1,
-          ease: "easeInOut",
-        }}
-        className="flex lg:items-start max-mobile:items-center justify-center flex-col lg:text-left max-mobile:text-center flex-1 gap-[20px]"
-      >
-        <h1 className="font-sans text-3xl text-primary mt-[5px]">
-          Tailored Real Estate Experiences, Exceptionally Delivered
-        </h1>
-        <p className="text-sm text-foreground  lg:max-w-[80%] max-mobile:w-full">
-          Step into a world where your needs shape our services. Offering
-          bespoke consultations, innovative design & automation, meticulous
-          construction, and strategic project management, we make your journey
-          seamless. Plus, unlock smart investment avenues for unparalleled ROI.
-          With Mshel Homes, it&apos;s more than a home it&apos;s a lifetime
-          investment.
-        </p>
-
+    <section className="bg-paper">
+      <div className="shell section">
         <motion.div
-          initial={{ x: 20, opacity: 0 }}
-          whileInView={{ x: 0, opacity: 1 }}
-          viewport={{ once: true }}
-          transition={{ duration: 1, ease: "easeInOut", delay: 0.2 }}
-          className="w-full max-mobile:flex max-mobile:items-center max-mobile:justify-center "
+          initial={{ opacity: 0, y: 24 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-80px" }}
+          transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
+          className="flex flex-col lg:flex-row-reverse gap-[clamp(2rem,6vw,5rem)] items-start"
         >
-          {" "}
-          <div className="text-sm mt-2 text-neutral-300 flex items-center gap-[10px] group  transition-all duration-500 cursor-pointer text-primary">
-            <Link href={"/services"} className="flex items-center gap-[10px]">
-              {" "}
-              View Services
-              <Icon
-                icon="line-md:arrow-right"
-                className="-rotate-45 group-hover:rotate-0  transition-all duration-500 "
+          <div className="lg:w-1/2 w-full">
+            <p className="chapter-num">
+              <span>04</span>
+              <span className="text-ink-muted">Services</span>
+            </p>
+
+            <h2 className="display-lg text-ink mt-6 max-w-[16ch]">
+              Tailored real estate experiences, exceptionally delivered
+            </h2>
+
+            <p className="prose-quiet mt-6">
+              Your needs shape our services. Bespoke consultation, considered
+              design, meticulous construction and strategic project management
+              — we make the journey seamless, and open up investment routes
+              that keep working long after you have the keys.
+            </p>
+
+            <div className="mt-10">
+              <Link
+                href="/services"
+                className="group inline-flex items-center gap-3 text-[0.72rem] uppercase tracking-[0.2em] text-ink link-underline"
+              >
+                View Services
+                <Icon
+                  icon="line-md:arrow-right"
+                  className="text-base transition-transform duration-500 group-hover:translate-x-1"
+                />
+              </Link>
+            </div>
+          </div>
+
+          <div className="lg:w-1/2 w-full">
+            <div className="relative w-full aspect-[4/5] overflow-hidden">
+              <Image
+                src={img4}
+                alt="Interior of a finished OG Winners Homes property"
+                placeholder="blur"
+                sizes="(max-width: 1024px) 100vw, 50vw"
+                className="object-cover w-full h-full"
               />
-            </Link>
+            </div>
           </div>
         </motion.div>
-      </motion.div>
-    </div>
+      </div>
+    </section>
   );
 };
 

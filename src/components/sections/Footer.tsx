@@ -1,21 +1,16 @@
+"use client";
 import { motion } from "framer-motion";
 import Link from "next/link";
-import { IoIosArrowUp, IoIosArrowDown } from "react-icons/io";
-import { Btns, company, footerLinks } from "../constants";
 import Image from "next/image";
-import img5 from "@/components/assets/Images/Logo.png";
 import { useState } from "react";
+import { Btns, company, footerLinks } from "../constants";
+import img5 from "@/components/assets/Images/Logo.png";
 
 export default function Footer() {
-  const [openSection, setOpenSection] = useState<number | null>(null);
   const [subscribeStatus, setSubscribeStatus] = useState<
     "idle" | "sending" | "sent" | "error"
   >("idle");
   const [subscribeMessage, setSubscribeMessage] = useState("");
-
-  const toggleSection = (index: number) => {
-    setOpenSection(openSection === index ? null : index);
-  };
 
   const handleSubscribe = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
@@ -41,30 +36,139 @@ export default function Footer() {
 
       form.reset();
       setSubscribeStatus("sent");
-      setSubscribeMessage("You're on the list — thank you!");
+      setSubscribeMessage("You are on the list — thank you.");
     } catch {
       setSubscribeStatus("error");
       setSubscribeMessage("Could not reach the server. Please try again.");
     }
   };
-  return (
-    <footer className="w-full h-fit pt-16 pb-4 text-foreground flex flex-col px-12 max-sm:px-6 bg-primary gap-8 text-white">
-      <motion.div
-        initial={{ x: 20, opacity: 0 }}
-        whileInView={{ x: 0, opacity: 1 }}
-        transition={{ duration: 1, ease: "easeInOut" }}
-        viewport={{ once: true }}
-        className="lg:flex flex-col "
-      >
-        {/* Logo */}
-        <div className="flex items-center justify-between border-b-[1px]  pb-2 max-sm:flex-col max-sm:items-start ">
-          <Image
-            src={img5}
-            alt="logo"
-            className="w-[100px] h-[60px] object-cover invert-75"
-          />
 
-          <div className="flex gap-3">
+  return (
+    <footer className="bg-primary text-background">
+      <div className="shell pt-[clamp(4rem,8vw,7rem)] pb-10">
+        {/* Newsletter */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
+          className="flex flex-col lg:flex-row justify-between gap-[clamp(2rem,5vw,4rem)] pb-[clamp(3rem,6vw,5rem)]"
+        >
+          <h2 className="display-lg max-w-[13ch]">
+            Stay close to the market
+          </h2>
+
+          <form onSubmit={handleSubscribe} className="w-full lg:max-w-[26rem]">
+            <label htmlFor="newsletter-email" className="sr-only">
+              Your email
+            </label>
+            <div className="flex items-center gap-4 border-b border-white/30 focus-within:border-white transition-colors duration-300">
+              <input
+                type="email"
+                name="email"
+                id="newsletter-email"
+                autoComplete="email"
+                required
+                placeholder="Your email"
+                className="w-full bg-transparent py-3 text-background placeholder:text-white/45 focus:outline-none"
+              />
+              <button
+                type="submit"
+                disabled={subscribeStatus === "sending"}
+                className="shrink-0 text-[0.7rem] uppercase tracking-[0.2em] hover:text-accent transition-colors duration-300 disabled:opacity-50"
+              >
+                {subscribeStatus === "sending" ? "..." : "Subscribe"}
+              </button>
+            </div>
+
+            {subscribeMessage && (
+              <p
+                aria-live="polite"
+                className={`mt-3 text-sm ${
+                  subscribeStatus === "error" ? "text-red-300" : "text-accent"
+                }`}
+              >
+                {subscribeMessage}
+              </p>
+            )}
+          </form>
+        </motion.div>
+
+        <hr className="border-0 h-px bg-white/15" />
+
+        {/* Link columns */}
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-x-8 gap-y-12 py-[clamp(2.5rem,5vw,4rem)]">
+          {footerLinks.map((footer) => (
+            <div key={footer.heading}>
+              <h3 className="text-[0.7rem] uppercase tracking-[0.22em] text-white/45">
+                {footer.heading}
+              </h3>
+              <ul className="mt-6 space-y-3">
+                {footer.link.map((link) => (
+                  <li key={link.name + link.href}>
+                    {link.href.startsWith("https") ? (
+                      <a
+                        href={link.href}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="link-underline text-sm text-white/75 hover:text-background transition-colors"
+                      >
+                        {link.name}
+                      </a>
+                    ) : (
+                      <Link
+                        href={link.href}
+                        className="link-underline text-sm text-white/75 hover:text-background transition-colors"
+                      >
+                        {link.name}
+                      </Link>
+                    )}
+                  </li>
+                ))}
+              </ul>
+            </div>
+          ))}
+
+          {company.offices.map((office) => (
+            <div key={office.label}>
+              <h3 className="text-[0.7rem] uppercase tracking-[0.22em] text-white/45">
+                {office.label}
+              </h3>
+              <p className="mt-6 text-sm text-white/75 leading-relaxed">
+                {office.address}
+              </p>
+            </div>
+          ))}
+        </div>
+
+        <hr className="border-0 h-px bg-white/15" />
+
+        {/* Base line */}
+        <div className="flex flex-col md:flex-row md:items-center justify-between gap-8 pt-10">
+          <Link href="/" aria-label="OG Winners Homes — home">
+            <Image
+              src={img5}
+              alt="OG Winners Homes logo"
+              className="w-[92px] h-auto object-contain brightness-0 invert"
+            />
+          </Link>
+
+          <div className="flex flex-wrap items-center gap-6">
+            <a
+              href={`tel:${company.phoneHref}`}
+              className="link-underline text-sm text-white/75 hover:text-background transition-colors"
+            >
+              {company.phone}
+            </a>
+            <a
+              href={`mailto:${company.email}`}
+              className="link-underline text-sm text-white/75 hover:text-background transition-colors"
+            >
+              {company.email}
+            </a>
+          </div>
+
+          <div className="flex gap-5">
             {Btns.map((i, item) => (
               <a
                 key={item}
@@ -72,7 +176,7 @@ export default function Footer() {
                 aria-label={i.label}
                 target={i.href.startsWith("mailto:") ? undefined : "_blank"}
                 rel="noopener noreferrer"
-                className="btn"
+                className="text-white/60 hover:text-background transition-colors duration-300"
               >
                 {i.icon}
               </a>
@@ -80,134 +184,9 @@ export default function Footer() {
           </div>
         </div>
 
-        <div className="flex pt-4 flex-col md:flex-row max-sm:flex-col-reverse">
-          {/* Links */}
-          <div className="grid grid-row-4 lg:grid-cols-3 md:grid-cols-2 gap-4 md:gap-12 lg:px-12 md:pl-8">
-            {footerLinks.map((footer, id) => (
-              <div key={id}>
-                {/* Section Header */}
-                <button
-                  onClick={() => toggleSection(id)}
-                  className="flex justify-between items-center w-full text-lg font-sans font-bold"
-                >
-                  {footer.heading}
-                  {openSection === id ? (
-                    <IoIosArrowUp className="text-xl outline-none text-secondary lg:hidden" />
-                  ) : (
-                    <IoIosArrowDown className="text-xl outline-none text-secondary lg:hidden" />
-                  )}
-                </button>
-
-                {/* Collapsible Links */}
-                <ul
-                  className={`mt-2 space-y-2 text-neutral-400 text-sm overflow-hidden lg:overflow-visible transition-all duration-300 ease-in-out ${
-                    openSection === id ? "max-h-full p-2" : " max-h-0 p-0"
-                  }`}
-                >
-                  {footer.link.map((link, index) => (
-                    <li
-                      key={index}
-                      className="cursor-pointer hover:text-white hover:underline transition-all duration-300"
-                    >
-                      {link.href.startsWith("https") ? (
-                        <a
-                          href={link.href}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                        >
-                          {link.name}
-                        </a>
-                      ) : (
-                        <Link href={link.href}>{link.name}</Link>
-                      )}
-                    </li>
-                  ))}
-                </ul>
-              </div>
-            ))}
-            <div className="flex flex-col items-start gap-[10px]">
-              <h1 className="font-bold">Offices</h1>
-              {company.offices.map((office) => (
-                <div key={office.label} className="text-sm text-neutral-400">
-                  <p className="font-semibold text-white">{office.label}</p>
-                  <p>{office.address}</p>
-                </div>
-              ))}
-              <a
-                href={`tel:${company.phoneHref}`}
-                className="text-sm text-neutral-400 hover:text-white hover:underline transition-all duration-300"
-              >
-                {company.phone}
-              </a>
-              <a
-                href={`mailto:${company.email}`}
-                className="text-sm text-neutral-400 hover:text-white hover:underline transition-all duration-300"
-              >
-                {company.email}
-              </a>
-            </div>
-          </div>
-
-          {/* Newsletter */}
-          <div className="w-[100%] py-12 max-sm:pb-12">
-            <h1 className="font-sans font-bold text-xl ">
-              Subscribe For Updates
-            </h1>
-
-            <form
-              onSubmit={handleSubscribe}
-              className="w-full max-sm:w-full mt-8"
-            >
-              <div className="w-full flex items-center justify-center relative">
-                <label htmlFor="newsletter-email" className="sr-only">
-                  Your email
-                </label>
-                <input
-                  type="email"
-                  name="email"
-                  id="newsletter-email"
-                  autoComplete="email"
-                  required
-                  placeholder="Your email"
-                  className="w-full border-b border-white text-accent2 relative  transition-all duration-300 pb-2 "
-                />
-
-                <button
-                  type="submit"
-                  disabled={subscribeStatus === "sending"}
-                  className="absolute rounded-3xl text-primary transition-colors right-[0] bg-accent2 p-2 text-sm bottom-[0] mb-2 disabled:opacity-60"
-                >
-                  {subscribeStatus === "sending" ? "..." : "Subscribe"}
-                </button>
-              </div>
-
-              {subscribeMessage && (
-                <p
-                  aria-live="polite"
-                  className={`mt-2 text-sm ${
-                    subscribeStatus === "error"
-                      ? "text-red-300"
-                      : "text-green-300"
-                  }`}
-                >
-                  {subscribeMessage}
-                </p>
-              )}
-            </form>
-          </div>
-        </div>
-      </motion.div>
-
-      <div className="text-[12px] cursor-default w-full border-t-[1px] border-white p-4 flex justify-between max-sm:text-[10px] max-sm:gap-4 max-sm:flex-col-reverse items-center">
-        <p>
+        <p className="text-[0.7rem] tracking-wide text-white/40 pt-10">
           © {new Date().getFullYear()} {company.name}. All rights reserved.
         </p>
-        <div>
-          {company.offices.map((office) => office.label).join(" · ")} | Tel:{" "}
-          <a href={`tel:${company.phoneHref}`} className="hover:underline">
-            {company.phone}
-          </a>
-        </div>
       </div>
     </footer>
   );

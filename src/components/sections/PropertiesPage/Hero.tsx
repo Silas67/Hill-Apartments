@@ -1,28 +1,10 @@
-import React from "react";
-import Breadcrumbs from "../Breadcrumbs";
-import Image from "next/image";
-import img6 from "@/components/assets/Images/img30.jpg";
+import PageHero from "../PageHero";
 
-const Hero = () => {
-  return (
-    <section className="w-full lg:h-[50vh] text-center place-content-center relative all:h-[30vh]">
-      <div className="relative z-30 w-full flexcent flex-col h-full">
-        {" "}
-        <div className="w-full flex items-center justify-center pb-2">
-          <Breadcrumbs />
-        </div>
-        <h1 className="font-sans text-4xl text-white font-bold ">Properties</h1>
-      </div>
-
-      <div className="absolute inset-0">
-        <div className="h-full w-full">
-          <Image src={img6} alt="" className="object-cover w-full h-full" />
-        </div>
-      </div>
-
-      <div className="absolute bg-black/80 inset-0 w-full h-full"></div>
-    </section>
-  );
-};
+const Hero = () => (
+  <PageHero
+    title="Properties"
+    lede="Apartments, bungalows, duplexes and serviced plots across Abuja and Lagos — each one verified by our team before it reaches this page."
+  />
+);
 
 export default Hero;

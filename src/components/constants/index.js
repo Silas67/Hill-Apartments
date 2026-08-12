@@ -113,72 +113,96 @@ export const Recommended = [
   {
     img: img8,
     title: "3-Bedroom Apartment",
-    price: "N17,000,000",
+    price: "₦17,000,000",
     beds: 3,
     bath: 2,
-    mesuare: 120 ^ 2,
+    size: 120,
     location: "Guwzape Estate, Gwuzape",
     tag: "Rent",
   },
   {
     img: img9,
     title: "Single Apartment",
-    price: "N5,000,000",
+    price: "₦5,000,000",
     beds: 1,
     bath: 1,
-    mesuare: 100 ^ 2,
+    size: 100,
     location: "Aguyi Ironsi Estate, Wuse",
     tag: "Rent",
   },
   {
     img: img10,
     title: "3-Bedroom Bungalow",
-    price: "N27,000,000",
+    price: "₦27,000,000",
     beds: 3,
     bath: 3,
-    mesuare: 220 ^ 2,
+    size: 220,
     location: "Suniville Estate, Galadima",
     tag: "rent",
   },
   {
     img: img11,
     title: "4-Bedroom Duplex",
-    price: "N32,000,000",
+    price: "₦32,000,000",
     beds: 4,
     bath: 4,
-    mesuare: 400 ^ 2,
+    size: 400,
     location: "Ademola Street, Wuse",
     tag: "Buy",
   },
   {
     img: img12,
     title: "2-Bedroom Bungalow",
-    price: "N15,000,000",
+    price: "₦15,000,000",
     beds: 2,
     bath: 1,
-    mesuare: 150 ^ 2,
+    size: 150,
     location: "2 Florence Street, Apo",
     tag: "Rent",
   },
   {
     img: img13,
     title: "3-Bedroom Bungalow",
-    price: "N20,000,000",
+    price: "₦20,000,000",
     beds: 3,
     bath: 3,
-    mesuare: 200 ^ 2,
+    size: 200,
     location: "Hills Estate, Apo",
     tag: "rent",
   },
   {
     img: img14,
     title: "3-Bedroom Duplex",
-    price: "N23,000,000",
+    price: "₦23,000,000",
     beds: 3,
     bath: 2,
-    mesuare: 250 ^ 2,
+    size: 250,
     location: "Davison Street, Gudu",
     tag: "Buy",
+  },
+];
+
+// Placeholder wording, real structure. The homepage previously rendered the
+// same quote seven times by mapping over the property list — replace these
+// with genuine client quotes before launch.
+export const testimonials = [
+  {
+    quote:
+      "Working with OG Winners Homes was seamless. The team understood exactly what I needed and delivered well beyond my expectations.",
+    name: "Adesua O.",
+    role: "Homeowner, Abuja",
+  },
+  {
+    quote:
+      "They handled every document check before I paid a naira. That kind of diligence is rare, and it is why I have bought through them twice.",
+    name: "Chinedu A.",
+    role: "Investor, Lagos",
+  },
+  {
+    quote:
+      "I was buying from abroad and never once felt out of the loop. Virtual tours, honest advice, and the keys waiting when I landed.",
+    name: "Fatima B.",
+    role: "First-time Buyer",
   },
 ];
 
@@ -239,6 +263,12 @@ export const sidebarPosts = [
       "Location, finishing and rental yield all move the number. Here is how our team arrives at a fair asking price.",
   },
 ];
+
+// Public URL of the deployed site. Set NEXT_PUBLIC_SITE_URL in your hosting
+// provider once the real domain is live — it drives canonical URLs, the
+// sitemap, and Open Graph image paths.
+export const siteUrl =
+  process.env.NEXT_PUBLIC_SITE_URL ?? "https://hill-apartments.vercel.app";
 
 // Single source of truth for company details — update here, not in the
 // individual pages, so the footer and contact page can never disagree.

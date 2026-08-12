@@ -1,114 +1,75 @@
-import React from "react";
+"use client";
 import Image from "next/image";
 import { motion } from "framer-motion";
-import { BsQuote } from "react-icons/bs";
-import { Autoplay, Pagination, Navigation } from "swiper/modules";
+import { Autoplay, Pagination } from "swiper/modules";
 import { Swiper, SwiperSlide } from "swiper/react";
-import { Recommended } from "@/components/constants";
+import { testimonials } from "@/components/constants";
 import img1 from "@/components/assets/Images/profile.jpg";
+
+import "swiper/css";
+import "swiper/css/pagination";
 
 const Testimonials = () => {
   return (
-    <section className="bg-primary w-full py-20  relative">
-      <motion.div
-        initial={{ y: 20, opacity: 0 }}
-        whileInView={{ y: 0, opacity: 1 }}
-        viewport={{ once: true }}
-        transition={{
-          duration: 1,
-          ease: "easeInOut",
-        }}
-        className="w-full text-center text-white"
-      >
-        <div className="text-[10px] font-sans text-white underline underline-offset-2 pb-1">
-          Testimonials
-        </div>
-
-        <div className="text-4xl font-sans text-white pb-6 ">
-          What Our Customers Say
-        </div>
-      </motion.div>
-
-      <Swiper
-        breakpoints={{
-          320: {
-            slidesPerView: 1,
-            spaceBetween: 24,
-          },
-          480: {
-            slidesPerView: 1,
-            spaceBetween: 8,
-          },
-          690: { slidesPerView: 2, spaceBetween: 5 },
-          700: {
-            slidesPerView: 2,
-            spaceBetween: 5,
-          },
-          1000: {
-            slidesPerView: 2,
-            spaceBetween: 5,
-          },
-          1200: {
-            slidesPerView: 3,
-            spaceBetween: 5,
-          },
-        }}
-        modules={[Autoplay, Pagination, Navigation]}
-        navigation={{
-          nextEl: ".button-next",
-          prevEl: ".button-prev",
-        }}
-        autoplay={{
-          delay: 2500,
-          disableOnInteraction: false,
-        }}
-        pagination={{
-          clickable: true,
-        }}
-        loop={true}
-        className="w-[80%]"
-      >
+    <section className="bg-primary text-background">
+      <div className="shell section">
         <motion.div
-          initial={{ y: 20, opacity: 0 }}
-          whileInView={{ y: 0, opacity: 1 }}
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          transition={{
-            duration: 1,
-            ease: "easeInOut",
-            delay: 0.15,
-          }}
-          className="w-full flex items-center justify-center gap-[20px] py-12 px-5 "
+          transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
         >
-          {Recommended.map((id, item) => (
-            <SwiperSlide key={item}>
-              <motion.div className="w-[300px] h-[250px] rounded-[10px] ml-[5px] mt-[50px] bg-accent2 p-3 relative">
-                <div className="w-full h-full flex items-center justify-center text-sm text-foreground text-center flex-col ">
-                  <div>
-                    <BsQuote />
-                  </div>
-                  <p className="text-[12px]">
-                    {" "}
-                    Working with OG Winners Homes was seamless. The team
-                    understood exactly what I needed and delivered beyond my
-                    expectations.
-                  </p>
-                  <div className="relative -bottom-[4vh] italic">
-                    <h1 className="font-[600]">Adesua O.</h1>
-                    <p>Satisfied Homeowner</p>
-                  </div>
-                  <div className="absolute w-[80px] h-[80px] rounded-full border-[5px] border-primary -top-[5vh] overflow-hidden right-[37%]">
+          <p className="chapter-num text-white/40">
+            <span>06</span>
+            <span className="text-white/60">Testimonials</span>
+          </p>
+          <h2 className="display-lg mt-6 max-w-[14ch]">
+            What our clients say
+          </h2>
+        </motion.div>
+
+        <Swiper
+          className="w-full mt-14 !pb-16"
+          autoplay={{ delay: 5000, disableOnInteraction: true }}
+          pagination={{ clickable: true }}
+          loop
+          breakpoints={{
+            320: { slidesPerView: 1, spaceBetween: 24 },
+            768: { slidesPerView: 2, spaceBetween: 32 },
+            1200: { slidesPerView: 3, spaceBetween: 40 },
+          }}
+          modules={[Autoplay, Pagination]}
+        >
+          {testimonials.map((item) => (
+            <SwiperSlide key={item.name} className="h-auto">
+              <figure className="border-t border-white/20 pt-8 h-full">
+                <blockquote className="text-base leading-relaxed text-white/85">
+                  &ldquo;{item.quote}&rdquo;
+                </blockquote>
+                <figcaption className="flex items-center gap-4 mt-8">
+                  <span className="relative w-11 h-11 overflow-hidden rounded-full shrink-0">
                     <Image
                       src={img1}
-                      alt="/"
+                      alt=""
+                      placeholder="blur"
+                      sizes="44px"
                       className="object-cover w-full h-full"
                     />
-                  </div>
-                </div>
-              </motion.div>
+                  </span>
+                  <span>
+                    <span className="block text-sm font-medium">
+                      {item.name}
+                    </span>
+                    <span className="block text-[0.7rem] uppercase tracking-[0.2em] text-white/50 mt-1">
+                      {item.role}
+                    </span>
+                  </span>
+                </figcaption>
+              </figure>
             </SwiperSlide>
           ))}
-        </motion.div>
-      </Swiper>
+        </Swiper>
+      </div>
     </section>
   );
 };

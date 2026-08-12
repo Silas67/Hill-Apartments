@@ -7,6 +7,18 @@
   --secondary: #0e252e;
   --accent: #2088c4;
   --accent2: #fdf6ec;
+
+  /* Minimalist palette additions.
+     ink        - primary reading colour
+     ink-muted  - supporting copy, captions, breadcrumbs
+     ink-faint  - chapter numerals, hairline labels
+     line       - hairline rules and card borders
+     paper      - off-white band used to separate sections without a box */
+  --ink: #0e252e;
+  --ink-muted: #5c6b73;
+  --ink-faint: #9aa8ae;
+  --line: #e6eaec;
+  --paper: #f7f8f8;
 }
 
 @theme inline {
@@ -16,6 +28,11 @@
   --color-secondary: var(--secondary);
   --color-accent: var(--accent);
   --color-accent2: var(--accent2);
+  --color-ink: var(--ink);
+  --color-ink-muted: var(--ink-muted);
+  --color-ink-faint: var(--ink-faint);
+  --color-line: var(--line);
+  --color-paper: var(--paper);
   --font-serif: var(--font-lora);
   --font-anton: var(--font-anton);
   --breakpoint-all: 20rem;
@@ -152,4 +169,130 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
+}
+
+/* ==========================================================================
+   Editorial / minimalist system
+   One place for the page rhythm so every section lines up on the same grid.
+   ========================================================================== */
+
+/* Shared horizontal frame. Replaces the assorted px-[70px] / px-[100px]
+   values that made sections disagree with each other. */
+.shell {
+  width: 100%;
+  max-width: 82rem;
+  margin-inline: auto;
+  padding-inline: clamp(1.25rem, 5vw, 5rem);
+}
+
+/* Vertical rhythm. Sections breathe more as the viewport grows. */
+.section {
+  padding-block: clamp(4rem, 9vw, 8.5rem);
+}
+
+.section-tight {
+  padding-block: clamp(2.5rem, 5vw, 4.5rem);
+}
+
+/* Display type. clamp() means no separate mobile font sizes to maintain. */
+.display-xl {
+  font-size: clamp(2.5rem, 7vw, 5.25rem);
+  line-height: 0.98;
+  letter-spacing: -0.03em;
+  font-weight: 500;
+}
+
+.display-lg {
+  font-size: clamp(2rem, 4.6vw, 3.5rem);
+  line-height: 1.05;
+  letter-spacing: -0.025em;
+  font-weight: 500;
+}
+
+.display-md {
+  font-size: clamp(1.5rem, 2.6vw, 2.25rem);
+  line-height: 1.15;
+  letter-spacing: -0.02em;
+  font-weight: 500;
+}
+
+/* Body copy sized for comfortable reading rather than dense UI text. */
+.lede {
+  font-size: clamp(1rem, 1.35vw, 1.2rem);
+  line-height: 1.65;
+  color: var(--ink-muted);
+  max-width: 46ch;
+}
+
+.prose-quiet {
+  font-size: 0.975rem;
+  line-height: 1.75;
+  color: var(--ink-muted);
+  max-width: 62ch;
+}
+
+/* The chapter marker: "01 ————" above a section heading. */
+.chapter-num {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  color: var(--ink-faint);
+}
+
+.chapter-num::after {
+  content: "";
+  height: 1px;
+  flex: 1;
+  background: var(--line);
+}
+
+/* Small uppercase label used above headings where a numeral is too heavy. */
+.eyebrow {
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  color: var(--accent);
+}
+
+.hairline {
+  height: 1px;
+  width: 100%;
+  background: var(--line);
+  border: 0;
+}
+
+/* Text link with a rule that draws in on hover. */
+.link-underline {
+  position: relative;
+  display: inline-block;
+  padding-bottom: 2px;
+}
+
+.link-underline::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  height: 1px;
+  width: 100%;
+  background: currentColor;
+  transform: scaleX(0);
+  transform-origin: right;
+  transition: transform 450ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.link-underline:hover::after {
+  transform: scaleX(1);
+  transform-origin: left;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .link-underline::after {
+    transition: none;
+  }
 }

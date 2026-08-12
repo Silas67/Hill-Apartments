@@ -13,12 +13,8 @@ const Properties = () => {
   return (
     <main className="lg:w-full sm:w-[100vw] overflow-hidden relative ">
       <Header />
-      <section>
-        <Hero />
-      </section>
-      <section>
-        <Property />
-      </section>
+      <Hero />
+      <Property />
       <Footer />
     </main>
   );

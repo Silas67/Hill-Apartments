@@ -1,4 +1,4 @@
-import React from "react";
+"use client";
 import NumberFlow from "@number-flow/react";
 import useScrollTriggeredCountUp from "@/hooks/useScrollCount";
 
@@ -12,11 +12,11 @@ const AchievementStat = ({
   const { ref, value } = useScrollTriggeredCountUp(target);
 
   return (
-    <div ref={ref} className="text-center">
+    <div ref={ref}>
       <NumberFlow
         value={value}
         suffix={suffix}
-        className="md:text-[50px] text-[30px] "
+        className="text-[clamp(1.75rem,3.5vw,2.75rem)] leading-none tracking-tight"
       />
     </div>
   );

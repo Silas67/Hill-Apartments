@@ -18,30 +18,32 @@ const Breadcrumbs = () => {
   };
 
   return (
-    <nav className="text-sm mb-2">
-      <ul className="flex flex-wrap space-x-2 text-secondary">
-        <li>
-          <Link href="/" className="hover:underline text-secondary font-medium">
+    <nav aria-label="Breadcrumb" className="text-[0.7rem]">
+      <ul className="flex flex-wrap items-center gap-x-2 uppercase tracking-[0.22em] text-ink-faint">
+        <li className="flex items-center gap-x-2">
+          <Link href="/" className="link-underline hover:text-ink transition-colors">
             Home
           </Link>
-          <span>/</span>
+          <span aria-hidden="true">/</span>
         </li>
         {pathSegments.map((segment, index) => {
           const isLast = index === pathSegments.length - 1;
           const label = formatSegment(segment);
           return (
-            <li key={index}>
+            <li key={index} className="flex items-center gap-x-2">
               {isLast ? (
-                <span className="text-secondary">{label}</span>
+                <span aria-current="page" className="text-ink">
+                  {label}
+                </span>
               ) : (
                 <>
                   <Link
                     href={buildHref(index)}
-                    className="hover:underline text-secondary font-medium"
+                    className="link-underline hover:text-ink transition-colors"
                   >
                     {label}
                   </Link>
-                  <span>/</span>
+                  <span aria-hidden="true">/</span>
                 </>
               )}
             </li>

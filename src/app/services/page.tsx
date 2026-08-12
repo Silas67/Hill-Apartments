@@ -14,17 +14,11 @@ const Services = () => {
     <main className="lg:w-full sm:w-[100vw] overflow-hidden relative ">
       <Header />
 
-      <section>
-        <Hero />
-      </section>
+      <Hero />
 
-      <section>
-        <Ourservice />
-      </section>
+      <Ourservice />
 
-      <section>
-        <Banner />
-      </section>
+      <Banner />
 
       <Footer />
     </main>

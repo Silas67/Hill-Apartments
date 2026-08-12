@@ -118,8 +118,10 @@ export default function CornerNavGSAP() {
       <button
         aria-label="Toggle navigation"
         onClick={toggle}
-        className="z-50 flex items-center justify-center 
-                    text-white rounded-xl transition-discrete
+        // Colour is inherited so the Header can flip it between white (over
+        // the homepage photo) and dark ink (on white pages).
+        className="z-50 flex items-center justify-center
+                    text-current rounded-xl transition-discrete
                     duration-300"
       >
         {open ? (

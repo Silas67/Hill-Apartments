@@ -1,30 +1,23 @@
 "use client";
-import { company, FaQs } from "@/components/constants";
+import { company } from "@/components/constants";
 import Header from "@/components/sections/Header";
 import { motion } from "framer-motion";
 import useLenis from "@/hooks/useLenis";
-import Link from "next/link";
 import React, { useState } from "react";
 import { FaMapMarkerAlt, FaPhone } from "react-icons/fa";
-import { IoIosArrowUp, IoIosArrowDown } from "react-icons/io";
 import { MdMail } from "react-icons/md";
 import { Icon } from "@iconify/react/dist/iconify.js";
-import Copy from "@/hooks/Copy";
-import Image from "next/image";
-import img1 from "@/components/assets/Images/img30.jpg";
 import Footer from "@/components/sections/Footer";
+import PageHero from "@/components/sections/PageHero";
+import Faq from "@/components/sections/Faq";
+import FormField from "@/components/sections/FormField";
 
 type Status = "idle" | "sending" | "sent" | "error";
 
 const Contact = () => {
   useLenis();
-  const [openSection, setOpenSection] = useState<number | null>(null);
   const [status, setStatus] = useState<Status>("idle");
   const [errorMessage, setErrorMessage] = useState("");
-
-  const toggleSection = (index: number) => {
-    setOpenSection(openSection === index ? null : index);
-  };
 
   const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
@@ -68,156 +61,125 @@ const Contact = () => {
     <main className="lg:w-full sm:w-[100vw] overflow-hidden relative ">
       <Header />
 
-      {/* Getintouch */}
-      <section className="w-full flex items-center justify-center flex-col bg-white md:py-20  gap-[20px] ">
-        <div className="relative md:rounded-[20px] overflow-hidden flexcent">
-          <div className="lg:w-[90%] w-full lg:h-[100vh]  flex md:py-[30px] max-mobile:px-[10px] max-mobile:py-[100px] md:px-[30px] lg:items-start md:items-center flex-col-reverse lg:flex-row ">
-            {/* Left */}
-            <div className="w-full md:p-8 flex lg:items-start justify-between gap-4 flex-col text-white p-2 h-full md:items-center z-30">
-              <div className="w-[80%] hidden lg:block">
-                <h1 className="lg:text-[30px]  font-bold md:text-3xl">
-                  Let&apos;s discuss on something cool together
-                </h1>
-              </div>
+      <PageHero
+        title="Contact"
+        lede="Tell us what you are looking for. We usually reply within one business day."
+      />
 
-              <div className="flex flex-col lg:items-start gap-[20px] max-mobile:mt-[20px] md:items-center pb-4">
+      {/* 01 — Details + form */}
+      <section className="bg-background">
+        <div className="shell section">
+          <div className="flex flex-col lg:flex-row gap-[clamp(2.5rem,7vw,6rem)]">
+            {/* Details */}
+            <div className="lg:w-2/5">
+              <p className="chapter-num">
+                <span>01</span>
+                <span className="text-ink-muted">Where to find us</span>
+              </p>
+
+              <h2 className="display-lg text-ink mt-6 max-w-[13ch]">
+                Let&apos;s talk about your next move
+              </h2>
+
+              <div className="mt-10 space-y-8">
                 {company.offices.map((office) => (
-                  <div
-                    key={office.label}
-                    className="text-white flex gap-2 items-start text-[14px]"
-                  >
-                    <FaMapMarkerAlt className="text-xl shrink-0" />
-                    <span>
-                      <strong className="block">{office.label}</strong>
-                      {office.address}
-                    </span>
+                  <div key={office.label} className="flex gap-4">
+                    <FaMapMarkerAlt className="text-accent mt-1 shrink-0" />
+                    <div>
+                      <p className="text-[0.7rem] uppercase tracking-[0.22em] text-ink-faint">
+                        {office.label}
+                      </p>
+                      <p className="prose-quiet mt-1">{office.address}</p>
+                    </div>
                   </div>
                 ))}
 
-                <a
-                  href={`tel:${company.phoneHref}`}
-                  className="text-white hover:text-gray-500 transition-colors flex gap-2 items-center text-[14px]"
-                >
-                  <FaPhone className="text-xl" /> {company.phone}
-                </a>
+                <hr className="hairline" />
 
-                <a
-                  href={`mailto:${company.email}`}
-                  className="text-white hover:text-gray-500 transition-colors flex gap-2 items-center text-[14px]"
-                >
-                  <MdMail className="text-xl" /> {company.email}
-                </a>
-              </div>
-
-              <div className="flex gap-6 ">
-                {company.socials.map((social) => (
+                <div className="space-y-4">
                   <a
-                    key={social.name}
-                    href={social.href}
-                    aria-label={social.name}
-                    target="_blank"
-                    rel="noopener noreferrer"
+                    href={`tel:${company.phoneHref}`}
+                    className="flex gap-4 items-center text-ink hover:text-accent transition-colors"
                   >
-                    <Icon
-                      icon={`line-md:${social.name.toLowerCase()}`}
-                      width="20"
-                      height="20"
-                      className="text-white hover:scale-110 transition-all duration-300 hover:rotate-6"
-                    />
+                    <FaPhone className="text-accent shrink-0" />
+                    <span className="text-sm">{company.phone}</span>
                   </a>
-                ))}
+                  <a
+                    href={`mailto:${company.email}`}
+                    className="flex gap-4 items-center text-ink hover:text-accent transition-colors"
+                  >
+                    <MdMail className="text-accent shrink-0" />
+                    <span className="text-sm">{company.email}</span>
+                  </a>
+                </div>
+
+                <div className="flex gap-6 pt-2">
+                  {company.socials.map((social) => (
+                    <a
+                      key={social.name}
+                      href={social.href}
+                      aria-label={social.name}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-ink-faint hover:text-ink transition-colors duration-300"
+                    >
+                      <Icon
+                        icon={`line-md:${social.name.toLowerCase()}`}
+                        width="20"
+                        height="20"
+                      />
+                    </a>
+                  ))}
+                </div>
               </div>
             </div>
 
-            {/* Right */}
-            <div className="flexcent flex-col gap-6 z-30">
-              <div className="w-[80%] max-mobile:w-full text-white lg:hidden">
-                <h1 className="lg:text-[30px]  font-bold md:text-3xl text-center max-mobile:text-4xl">
-                  Let&apos;s discuss on something cool together
-                </h1>
-              </div>
+            {/* Form */}
+            <div className="lg:w-3/5">
               <motion.form
                 onSubmit={handleSubmit}
-                initial={{ opacity: 0 }}
-                whileInView={{ opacity: 1 }}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
-                transition={{ duration: 1, ease: "easeInOut" }}
-                className="flex-1 rounded-xl space-y-6 w-full bg-white p-[20px] flex flex-col justify-center"
+                transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
+                className="w-full"
               >
-                <div className="flex items-center justify-between gap-6 max-mobile:flex-col">
-                  <div className="flex flex-col max-mobile:w-full">
-                    <label
-                      htmlFor="name"
-                      className="text-neutral-800 font-bold mb-1"
-                    >
-                      Name
-                    </label>
-                    <input
-                      type="text"
-                      id="name"
-                      name="name"
-                      autoComplete="name"
-                      className="px-6 py-2 rounded-3xl bg-neutral-100  border border-neutral-300 "
-                      placeholder="Your full name"
-                      required
-                    />
-                  </div>
-                  <div className="flex flex-col max-mobile:w-full">
-                    <label
-                      htmlFor="email"
-                      className="text-neutral-800 font-bold mb-1"
-                    >
-                      Email
-                    </label>
-                    <input
-                      type="email"
-                      id="email"
-                      name="email"
-                      autoComplete="email"
-                      className="px-6 py-2 rounded-3xl bg-neutral-100  border border-neutral-300 "
-                      placeholder="you@example.com"
-                      required
-                    />
-                  </div>
+                <div className="grid md:grid-cols-2 gap-x-10">
+                  <FormField
+                    id="name"
+                    label="Name"
+                    type="text"
+                    autoComplete="name"
+                    placeholder="Your full name"
+                  />
+                  <FormField
+                    id="email"
+                    label="Email"
+                    type="email"
+                    autoComplete="email"
+                    placeholder="you@example.com"
+                  />
                 </div>
 
-                <div className="flex flex-col">
-                  <label
-                    htmlFor="phone"
-                    className="text-neutral-800 font-bold mb-1"
-                  >
-                    Phone Number
-                  </label>
-                  <input
-                    type="tel"
-                    id="phone"
-                    name="phone"
-                    autoComplete="tel"
-                    className="px-4 py-2 rounded-3xl bg-neutral-100  border border-neutral-300 "
-                    placeholder="(+234) 800 000 0000"
-                    required
-                  />
-                </div>
-                <div className="flex flex-col">
-                  <label
-                    htmlFor="subject"
-                    className="text-neutral-800 font-bold mb-1"
-                  >
-                    Subject
-                  </label>
-                  <input
-                    type="text"
-                    id="subject"
-                    name="subject"
-                    className="px-4 py-2 rounded-3xl bg-neutral-100  border border-neutral-300 "
-                    placeholder="What is this about?"
-                    required
-                  />
-                </div>
-                <div className="flex flex-col">
+                <FormField
+                  id="phone"
+                  label="Phone Number"
+                  type="tel"
+                  autoComplete="tel"
+                  placeholder="(+234) 800 000 0000"
+                />
+
+                <FormField
+                  id="subject"
+                  label="Subject"
+                  type="text"
+                  placeholder="What is this about?"
+                />
+
+                <div className="pt-8">
                   <label
                     htmlFor="message"
-                    className="text-neutral-800 font-bold mb-1"
+                    className="block text-[0.7rem] uppercase tracking-[0.22em] text-ink-faint"
                   >
                     Message
                   </label>
@@ -225,31 +187,29 @@ const Contact = () => {
                     id="message"
                     name="message"
                     rows={4}
-                    className="px-4 py-2 rounded-3xl bg-neutral-100  border border-neutral-300 "
-                    placeholder="Tell us what you need..."
                     required
-                  ></textarea>
+                    placeholder="Tell us what you need..."
+                    className="w-full bg-transparent border-0 border-b border-line py-3 text-ink placeholder:text-ink-faint focus:border-ink focus:outline-none transition-colors duration-300 resize-none"
+                  />
                 </div>
-                <div className="w-full flexcent flex-col gap-3">
+
+                <div className="pt-10 flex flex-wrap items-center gap-6">
                   <button
                     type="submit"
                     disabled={status === "sending"}
-                    className="group flex items-center gap-2 bg-primary hover:bg-white transition-all text-white font-semibold py-2 px-6 rounded-3xl outline-none hover:scale-105 hover:shadow-2xl hover:text-primary border border-primary duration-200 disabled:opacity-60 disabled:cursor-not-allowed disabled:hover:scale-100"
+                    className="group inline-flex items-center gap-3 border border-ink px-9 py-4 text-[0.72rem] uppercase tracking-[0.2em] text-ink hover:bg-ink hover:text-background transition-colors duration-400 disabled:opacity-50 disabled:cursor-not-allowed"
                   >
-                    <p className="transition-all duration-500 text-sm">
-                      {status === "sending" ? "Sending..." : "Send Message"}
-                    </p>
+                    {status === "sending" ? "Sending" : "Send Message"}
                     <Icon
                       icon="line-md:arrow-right"
-                      className="-rotate-45 group-hover:-rotate-0 text-lg transition-all duration-500"
+                      className="text-base transition-transform duration-500 group-hover:translate-x-1"
                     />
                   </button>
 
-                  <p aria-live="polite" className="text-sm text-center">
+                  <p aria-live="polite" className="text-sm">
                     {status === "sent" && (
-                      <span className="text-green-700">
-                        Thank you — your message is on its way. We usually reply
-                        within one business day.
+                      <span className="text-accent">
+                        Thank you — your message is on its way.
                       </span>
                     )}
                     {status === "error" && (
@@ -260,78 +220,10 @@ const Contact = () => {
               </motion.form>
             </div>
           </div>
-          {/* Background */}
-          <div className="absolute inset-0 w-full h-full z-10">
-            <Image src={img1} alt="/" className="object-cover w-full h-full" />
-          </div>
-          <div className="absolute bg-black/50 z-20 w-full h-full"></div>
         </div>
       </section>
 
-      {/* FAQ */}
-      <section className="w-full py-[20px] relative px-[70px] max-sm:px-[30px]">
-        <div className="w-full text-center pb-6">
-          <Copy>
-            <div className="text-2xl font-sans pt-6 font-bold  max-sm:text-xl text-nowrap">
-              Frequently Asked{" "}
-              <span className="bg-secondary p-2 text-white">Questions?</span>
-            </div>
-          </Copy>
-          <Copy>
-            <p className="pt-1 max-sm:text-sm">
-              Answers to the questions we hear most from buyers, sellers and
-              investors. If yours is not here, talk to an agent.
-            </p>
-          </Copy>
-        </div>
-        <div className="grid grid-cols-1 md:grid-cols-3 my-12 gap-8">
-          {FaQs.map((item, id) => (
-            <motion.div
-              key={id}
-              className="flex flex-col items-center justify-center gap-4 shadow p-2 rounded-[10px]"
-              initial={{ y: 20, opacity: 0 }}
-              whileInView={{ y: 0, opacity: 1 }}
-              viewport={{ once: true }}
-              transition={{
-                duration: 1,
-                ease: "easeInOut",
-                delay: 0.05 * id,
-              }}
-            >
-              <button
-                onClick={() => toggleSection(id)}
-                className="flex justify-between w-full text-left font-sans font-bold text-[12px] "
-              >
-                {item.Question}
-                {openSection === id ? (
-                  <IoIosArrowUp className="text-xl outline-none text-secondary" />
-                ) : (
-                  <IoIosArrowDown className="text-xl outline-none text-secondary" />
-                )}
-              </button>
-              <div
-                className={`space-y-2 text-white text-sm transition-all duration-500 ease-in-out overflow-hidden ${
-                  openSection === id ? "max-h-full p-2" : " max-h-0 p-0"
-                }`}
-              >
-                <p>{item.Answer}</p>
-              </div>
-            </motion.div>
-          ))}
-          <motion.div
-            initial={{ y: 20, opacity: 0 }}
-            whileInView={{ y: 0, opacity: 1 }}
-            viewport={{ once: true }}
-            transition={{
-              duration: 1,
-              ease: "easeInOut",
-            }}
-            className="flex flex-col items-center justify-center gap-4 shadow p-2 rounded-[10px] border border-dashed font-sans font-bold text-sm text-[#424242]"
-          >
-            <Link href={"/contact"}>Have A Question?</Link>
-          </motion.div>
-        </div>
-      </section>
+      <Faq index={2} />
 
       {/* Footer */}
       <Footer />

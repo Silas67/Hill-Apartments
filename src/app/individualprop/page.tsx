@@ -2,6 +2,11 @@
 import React from "react";
 import Image from "next/image";
 import Link from "next/link";
+// Static imports rather than "/Images/..." strings: these go through the
+// build-time optimizer and are served as sized WebP/AVIF, which raw public/
+// paths bypass entirely.
+import propertyImg from "@/components/assets/Images/img13.jpg";
+import tourImg from "@/components/assets/Images/img9.jpg";
 import { FaStar } from "react-icons/fa";
 import useLenis from "@/hooks/useLenis";
 import { BsPlayCircle } from "react-icons/bs";
@@ -16,41 +21,55 @@ const PropertyPage = () => {
   useLenis();
 
   return (
-    <div className="w-full py-10 ">
+    <main className="w-full">
       <Header />
       {/* Top Section */}
-      <section className="flex items-center justify-center gap-[20px] all:py-[100px] lg:py-0 lg:my-12 px-[70px] flex-col lg:flex-row">
-        <div className="w-[1/2] rounded overflow-hidden">
+      <section className="shell pt-[clamp(7rem,14vw,11rem)] pb-[clamp(3rem,6vw,5rem)] flex flex-col lg:flex-row gap-[clamp(2rem,5vw,4rem)] items-start">
+        <div className="lg:w-1/2 w-full relative aspect-[4/3] overflow-hidden">
           <Image
-            src="/Images/img13.jpg"
-            alt="Property Image"
-            width={600}
-            height={400}
+            src={propertyImg}
+            alt="3 bedroom fully detached bungalow, front elevation"
+            placeholder="blur"
+            sizes="(max-width: 1024px) 100vw, 600px"
             className="w-full h-full object-cover"
           />
         </div>
 
-        <div className="all:w-full lg:w-[70%] font-sans lg:p-8 lg:scale-[0.9]">
-          <h2 className="text-xl font-bold">
-            3 BedRoom Fully Detached Bungalow
-          </h2>
-          <p className="text-2xl font-bold py-1">17,000,000</p>
-          <p className="text-sm text-gray-600">3 Bed • 2 Bath • 1200 sqft</p>
+        <div className="lg:w-1/2 w-full">
+          <p className="text-[0.7rem] uppercase tracking-[0.22em] text-ink-faint">
+            For Sale
+          </p>
+          <h1 className="display-lg text-ink mt-4 max-w-[16ch]">
+            3 Bedroom Fully Detached Bungalow
+          </h1>
+          <p className="display-md text-ink mt-6">₦17,000,000</p>
+          <div className="flex items-center gap-6 mt-6 pt-5 border-t border-line text-[0.7rem] uppercase tracking-[0.16em] text-ink-faint">
+            <span>3 Beds</span>
+            <span>2 Baths</span>
+            <span>120 sqm</span>
+          </div>
 
-          <div className="text-gray-600 text-sm lg:w-[80%] pt-2">
+          <p className="prose-quiet mt-8">
             A well-finished family bungalow on a quiet residential street, set
             within a gated estate with 24-hour security and steady power. The
             property sits on a fully fenced plot with parking for two cars, and
             is a short drive from schools, shops and the main expressway.
-          </div>
-          <ul className="list-disc list-inside my-4 space-y-1 text-gray-700 font-mono">
-            <li>Spacious Living Room</li>
-            <li>Modern Kitchen</li>
-            <li>Balcony with a View</li>
+          </p>
+          <ul className="mt-8 border-t border-line">
+            {["Spacious Living Room", "Modern Kitchen", "Balcony with a View"].map(
+              (feature) => (
+                <li
+                  key={feature}
+                  className="py-4 border-b border-line text-sm text-ink"
+                >
+                  {feature}
+                </li>
+              )
+            )}
           </ul>
           <Link
             href="/contact"
-            className="inline-block bg-secondary text-white px-4 py-2 mt-2 rounded-md"
+            className="inline-flex items-center mt-10 border border-ink px-9 py-4 text-[0.72rem] uppercase tracking-[0.2em] text-ink hover:bg-ink hover:text-background transition-colors duration-500"
           >
             Contact An Agent
           </Link>
@@ -58,22 +77,25 @@ const PropertyPage = () => {
       </section>
 
       {/* Video Section */}
-      <section className="flex items-center justify-center gap-[20px] bg-accent2 p-8 max-sm:flex-col">
-        <div className="w-full text-5xl font-sans font-bold h-full items-center justify-center flex ">
-          Take A Tour
+      <section className="bg-paper">
+        <div className="shell section flex flex-col lg:flex-row gap-[clamp(2rem,5vw,4rem)] items-center">
+        <div className="lg:w-1/2 w-full">
+          <p className="eyebrow">Video</p>
+          <h2 className="display-lg text-ink mt-6">Take a tour</h2>
         </div>
-        <div className="w-[1/2] rounded overflow-hidden relative">
+        <div className="lg:w-1/2 w-full relative aspect-[4/3] overflow-hidden group cursor-pointer">
           <Image
-            src="/Images/img9.jpg"
-            alt="Property Image"
-            width={600}
-            height={400}
+            src={tourImg}
+            alt="Interior view from the property video tour"
+            placeholder="blur"
+            sizes="(max-width: 1024px) 100vw, 600px"
             className="w-full h-full object-cover"
           />
-          <div className="overlay bg-foreground opacity-50 z-10 flex items-center justify-center"></div>
-          <div className="absolute inset-0 z-50 flex items-center text-5xl text-background justify-center">
+          <div className="absolute inset-0 z-10 bg-black/30 transition-colors duration-500 group-hover:bg-black/40" />
+          <div className="absolute inset-0 z-20 flex items-center justify-center text-5xl text-white">
             <BsPlayCircle />
           </div>
+        </div>
         </div>
       </section>
 
@@ -85,7 +107,7 @@ const PropertyPage = () => {
           src={`https://maps.google.com/maps?q=${encodeURIComponent(
             location
           )}&z=14&output=embed`}
-          className="w-full h-[300px] border rounded-md mb-12"
+          className="w-full h-[380px] border-0"
           allowFullScreen
           loading="lazy"
           referrerPolicy="no-referrer-when-downgrade"
@@ -93,8 +115,8 @@ const PropertyPage = () => {
       </section>
 
       {/* Reviews */}
-      <section className="space-y-6 max-sm:px-[50px]">
-        <h3 className="text-xl font-semibold">Reviews</h3>
+      <section className="shell section-tight">
+        <p className="eyebrow">Reviews</p>
         {[1, 2].map((_, i) => (
           <div key={i} className="flex gap-4 items-start">
             <div className="w-12 h-12 bg-gray-300 rounded-full" />
@@ -112,26 +134,26 @@ const PropertyPage = () => {
       </section>
 
       {/* Comment Form */}
-      <section className="space-y-4 p max-sm:px-[50px]">
-        <h4 className="text-lg font-semibold">Leave a Comment</h4>
+      <section className="shell section-tight">
+        <p className="eyebrow">Leave a Comment</p>
         <form className="space-y-4">
           <input
             type="text"
             placeholder="Full Name"
-            className="w-full border px-4 py-2 rounded-md"
+            className="w-full bg-transparent border-0 border-b border-line py-3 text-ink placeholder:text-ink-faint focus:border-ink focus:outline-none transition-colors"
           />
           <input
             type="email"
             placeholder="Email"
-            className="w-full border px-4 py-2 rounded-md"
+            className="w-full bg-transparent border-0 border-b border-line py-3 text-ink placeholder:text-ink-faint focus:border-ink focus:outline-none transition-colors"
           />
           <textarea
             placeholder="Your Comment"
-            className="w-full border px-4 py-2 rounded-md h-32"
+            className="w-full bg-transparent border-0 border-b border-line py-3 h-28 resize-none text-ink placeholder:text-ink-faint focus:border-ink focus:outline-none transition-colors"
           />
           <button
             type="submit"
-            className="bg-primary text-white px-6 py-2 rounded-md"
+            className="inline-flex items-center border border-ink px-9 py-4 text-[0.72rem] uppercase tracking-[0.2em] text-ink hover:bg-ink hover:text-background transition-colors duration-500"
           >
             Submit
           </button>
@@ -140,7 +162,7 @@ const PropertyPage = () => {
 
       {/* Mini Footer */}
       <Footer />
-    </div>
+    </main>
   );
 };
 

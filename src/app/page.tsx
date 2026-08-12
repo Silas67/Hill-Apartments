@@ -19,41 +19,25 @@ export default function Home() {
     <main className="lg:w-full sm:w-[100vw] overflow-hidden relative ">
       <Header />
 
-      <section>
-        <Hero />
-      </section>
+      <Hero />
 
-      <section>
-        <About />
-      </section>
+      <About />
 
-      <section>
-        <Properties />
-      </section>
+      <Properties />
 
-      <section>
-        <Recommend />
-      </section>
+      <Recommend />
 
-      <section>
-        <Services />
-      </section>
+      <Services />
 
       {/* <section>
         <Banner />
       </section> */}
 
-      <section>
-        <WhyUs />
-      </section>
+      <WhyUs />
 
-      <section>
-        <Testimonials />
-      </section>
+      <Testimonials />
 
-      <section>
-        <Blog />
-      </section>
+      <Blog />
 
       <Footer />
     </main>

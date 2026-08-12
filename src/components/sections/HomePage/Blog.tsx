@@ -1,98 +1,103 @@
-import React from "react";
+"use client";
 import Image from "next/image";
+import Link from "next/link";
 import { motion } from "framer-motion";
-import { sidebarPosts } from "@/components/constants";
-import img1 from "@/components/assets/Images/img23.jpg";
+import { blogs } from "@/components/constants";
 
 const Blog = () => {
+  const [lead, ...rest] = blogs.slice(0, 4);
+
   return (
-    <div className="w-full px-6 py-12 px-[70px] max-sm:px-[30px]">
-      <motion.div
-        initial={{ y: 20, opacity: 0 }}
-        whileInView={{ y: 0, opacity: 1 }}
-        viewport={{ once: true }}
-        transition={{
-          duration: 1,
-          ease: "easeInOut",
-        }}
-        className="w-full items-start flex flex-col"
-      >
-        <p className="text-sm text-gray-500 mb-2">Blog</p>
-        <h1 className="text-4xl  mb-6 font-sans">Recent Articles And News</h1>
-      </motion.div>
-
-      <div className="grid grid-cols-1 lg:grid-cols-2 place-content-center items-center scale-[0.9] ">
-        {/* Main Content */}
-        <motion.div
-          initial={{ y: 20, opacity: 0 }}
-          whileInView={{ y: 0, opacity: 1 }}
-          viewport={{ once: true }}
-          transition={{
-            duration: 1,
-            ease: "easeInOut",
-            delay: 0.1,
-          }}
-          className=" space-y-4 lg:w-[90%]"
-        >
-          <div className="w-full h-64 relative">
-            <Image
-              src={img1}
-              alt="A residential development in Abuja"
-              fill
-              className="rounded object-cover"
-            />
+    <section className="bg-background">
+      <div className="shell section">
+        <div className="flex items-end justify-between gap-8 pb-12">
+          <div>
+            <p className="chapter-num">
+              <span>07</span>
+              <span className="text-ink-muted">Journal</span>
+            </p>
+            <h2 className="display-lg text-ink mt-6 max-w-[14ch]">
+              Notes from the market
+            </h2>
           </div>
-          <h2 className="text-xl font-semibold">
-            Top Neighbourhoods to Watch in Abuja
-          </h2>
-          <p className="text-gray-600 text-sm line-clamp-4">
-            Property values across the city are shifting, and a handful of
-            districts are quietly outperforming the rest. We look at where
-            demand is building, what is driving it, and which areas still offer
-            room for growth.
-          </p>
-          <p className="text-gray-600 text-sm line-clamp-4">
-            Whether you are buying your first home or adding to a portfolio,
-            knowing where the market is heading is the difference between a
-            good purchase and a great one.
-          </p>
-        </motion.div>
 
-        {/* Sidebar */}
-        <motion.div
-          initial={{ y: 20, opacity: 0 }}
-          whileInView={{ y: 0, opacity: 1 }}
-          viewport={{ once: true }}
-          transition={{
-            duration: 1,
-            ease: "easeInOut",
-            delay: 0.5,
-          }}
-          className="flex justify-center gap-[10px] all:pt-4 md:flex-col"
-        >
-          {sidebarPosts.map((post) => (
-            <div
-              key={post.id}
-              className="flex gap-4 items-center justify-around all:flex-col md:flex-row"
-            >
-              <div className="w-full h-full relative rounded overflow-hidden">
-                <Image
-                  src={post.img}
-                  alt={post.title}
-                  className="object-cover w-full h-full"
-                />
-              </div>
-              <div className="flex flex-col justify-center">
-                <p className="font-semibold text-sm">{post.title}</p>
-                <p className="text-gray-600 text-sm line-clamp-4">
-                  {post.excerpt}
-                </p>
-              </div>
+          <Link
+            href="/blog"
+            className="link-underline hidden md:inline-block text-[0.72rem] uppercase tracking-[0.2em] text-ink shrink-0"
+          >
+            All articles
+          </Link>
+        </div>
+
+        <div className="flex flex-col lg:flex-row gap-[clamp(2rem,5vw,4rem)]">
+          {/* Lead article */}
+          <motion.article
+            initial={{ opacity: 0, y: 24 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-80px" }}
+            transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
+            className="lg:w-3/5 group"
+          >
+            <div className="relative w-full aspect-[16/10] overflow-hidden bg-paper">
+              <Image
+                src={lead.image}
+                alt={lead.title}
+                placeholder="blur"
+                sizes="(max-width: 1024px) 100vw, 60vw"
+                className="object-cover w-full h-full transition-transform duration-[1200ms] ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:scale-[1.03]"
+              />
             </div>
-          ))}
-        </motion.div>
+            <h3 className="display-md text-ink mt-8 max-w-[20ch]">
+              {lead.title}
+            </h3>
+            <p className="prose-quiet mt-4">{lead.excerpt}</p>
+          </motion.article>
+
+          {/* Secondary list */}
+          <div className="lg:w-2/5 flex flex-col">
+            {rest.map((post, index) => (
+              <motion.article
+                key={post.title}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, margin: "-60px" }}
+                transition={{
+                  duration: 0.6,
+                  delay: 0.08 * index,
+                  ease: [0.22, 1, 0.36, 1],
+                }}
+                className="flex gap-6 py-7 border-b border-line first:border-t group"
+              >
+                <div className="relative w-24 h-24 shrink-0 overflow-hidden bg-paper">
+                  <Image
+                    src={post.image}
+                    alt={post.title}
+                    placeholder="blur"
+                    sizes="96px"
+                    className="object-cover w-full h-full transition-transform duration-[1200ms] ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:scale-[1.06]"
+                  />
+                </div>
+                <div>
+                  <h3 className="text-ink text-sm font-medium leading-snug">
+                    {post.title}
+                  </h3>
+                  <p className="prose-quiet text-[0.85rem] mt-2 line-clamp-2">
+                    {post.excerpt}
+                  </p>
+                </div>
+              </motion.article>
+            ))}
+
+            <Link
+              href="/blog"
+              className="link-underline md:hidden inline-block mt-8 text-[0.72rem] uppercase tracking-[0.2em] text-ink"
+            >
+              All articles
+            </Link>
+          </div>
+        </div>
       </div>
-    </div>
+    </section>
   );
 };
 
