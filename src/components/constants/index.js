@@ -64,7 +64,7 @@ export const navLinks = [
 export const heroSlides = [
   {
     image: heroImg,
-    eyebrow: "Abuja & Lagos",
+    eyebrow: "Abuja",
     title: "Where vision meets structure",
     cta: { label: "View Properties", href: "/properties" },
   },
@@ -257,7 +257,7 @@ export const testimonials = [
     quote:
       "They handled every document check before I paid a naira. That kind of diligence is rare, and it is why I have bought through them twice.",
     name: "Chinedu A.",
-    role: "Investor, Lagos",
+    role: "Investor, Abuja",
   },
   {
     quote:
@@ -343,10 +343,7 @@ export const company = {
       label: "Abuja",
       address: "7 Sanatana Close, Wuse 2, Abuja, Nigeria.",
     },
-    {
-      label: "Lagos",
-      address: "T19 Road 2, Lekki Gardens Phase 4, Lekki, Lagos, Nigeria.",
-    },
+    
   ],
   socials: [
     { name: "Instagram", href: "https://instagram.com/ogwinnershomes" },

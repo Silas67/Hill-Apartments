@@ -29,12 +29,12 @@ const manrope = Manrope({
 });
 
 const description =
-  "OG Winners Homes helps buyers, sellers and investors find and manage property across Abuja and Lagos — from first homes to income-generating portfolios.";
+  "OG Winners Homes helps buyers, sellers and investors find and manage property across Abuja — from first homes to income-generating portfolios.";
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
   title: {
-    default: "OG Winners Homes | Real Estate in Abuja & Lagos",
+    default: "OG Winners Homes | Real Estate in Abuja",
     // Child pages set only their own title; this appends the brand.
     template: "%s | OG Winners Homes",
   },
@@ -53,12 +53,12 @@ export const metadata: Metadata = {
     locale: "en_NG",
     url: siteUrl,
     siteName: company.name,
-    title: "OG Winners Homes | Real Estate in Abuja & Lagos",
+    title: "OG Winners Homes | Real Estate in Abuja",
     description,
   },
   twitter: {
     card: "summary_large_image",
-    title: "OG Winners Homes | Real Estate in Abuja & Lagos",
+    title: "OG Winners Homes | Real Estate in Abuja",
     description,
   },
   robots: {

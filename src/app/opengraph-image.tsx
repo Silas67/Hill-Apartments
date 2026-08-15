@@ -4,7 +4,7 @@ import { ImageResponse } from "next/og";
 // nothing to keep in sync by hand. Next serves this at /opengraph-image.
 export const size = { width: 1200, height: 630 };
 export const contentType = "image/png";
-export const alt = "OG Winners Homes — Real Estate in Abuja & Lagos";
+export const alt = "OG Winners Homes — Real Estate in Abuja";
 
 export default function OpengraphImage() {
   return new ImageResponse(
@@ -48,7 +48,7 @@ export default function OpengraphImage() {
             color: "#fdf6ec",
           }}
         >
-          Buy, sell and invest across Abuja &amp; Lagos
+          Buy, sell and invest across Abuja
         </div>
         <div
           style={{

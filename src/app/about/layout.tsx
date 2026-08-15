@@ -3,7 +3,7 @@ import type { Metadata } from "next";
 export const metadata: Metadata = {
   title: "About Us",
   description:
-    "Meet OG Winners Homes — a team of builders, designers and advisors creating exceptional living spaces across Abuja and Lagos.",
+    "Meet OG Winners Homes — a team of builders, designers and advisors creating exceptional living spaces across Abuja.",
   alternates: { canonical: "/about" },
 };
 

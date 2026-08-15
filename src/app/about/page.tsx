@@ -38,7 +38,7 @@ const About = () => {
 
       <PageHero
         title="About Us"
-        lede="A team of builders, designers and advisors creating exceptional living spaces across Abuja and Lagos."
+        lede="A team of builders, designers and advisors creating exceptional living spaces across Abuja."
       />
 
       {/* 01 — Who we are */}
