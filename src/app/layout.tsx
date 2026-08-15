@@ -42,7 +42,7 @@ export const metadata: Metadata = {
   applicationName: company.name,
   keywords: [
     "real estate Abuja",
-    "real estate Lagos",
+    "property for sale Abuja",
     "property for sale Nigeria",
     "houses for rent Abuja",
     "OG Winners Homes",

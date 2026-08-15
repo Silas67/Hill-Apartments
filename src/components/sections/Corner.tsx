@@ -16,16 +16,33 @@ const drawerLinks = [
   { label: "Contact", href: "/contact" },
 ];
 
+// The drawer is display:none until GSAP reveals it, so IntersectionObserver
+// (whileInView) can never fire reliably here — these are driven off `open`.
+const panel = {
+  hidden: {},
+  show: { transition: { staggerChildren: 0.06, delayChildren: 0.15 } },
+};
+
+const item = {
+  hidden: { y: 20, opacity: 0 },
+  show: { y: 0, opacity: 1, transition: { duration: 0.5, ease: "easeOut" } },
+};
+
+const FOCUSABLE =
+  'a[href], button:not([disabled]), [tabindex]:not([tabindex="-1"])';
+
 export default function CornerNavGSAP() {
   const [open, setOpen] = useState(false);
   const menuRef = useRef<HTMLDivElement>(null);
+  const buttonRef = useRef<HTMLButtonElement>(null);
   const tl = useRef<gsap.core.Timeline | null>(null);
   const pathname = usePathname();
   const [hash, setHash] = useState<string>("");
 
-  const closeMenu = () => {
+  const closeMenu = (restoreFocus = false) => {
     if (tl.current) tl.current.reverse();
     setOpen(false);
+    if (restoreFocus) buttonRef.current?.focus();
   };
 
   // Hash Changing Utility
@@ -49,8 +66,8 @@ export default function CornerNavGSAP() {
 
   // Hash Instant Changing Function
   const handleNavClick = (href: string) => {
-    setHash(href); // ✅ instantly set active
-    closeMenu(); // ✅ close the menu
+    setHash(href);
+    closeMenu();
   };
 
   // Lock Scrolling When Open. Lenis ignores `overflow: hidden`, so the
@@ -97,6 +114,49 @@ export default function CornerNavGSAP() {
     });
   }, []);
 
+  // Escape to close, Tab trapped inside the panel, focus moved in on open.
+  useEffect(() => {
+    if (!open) return;
+    const node = menuRef.current;
+    if (!node) return;
+
+    const visibleTargets = () =>
+      Array.from(node.querySelectorAll<HTMLElement>(FOCUSABLE)).filter(
+        (el) => el.offsetParent !== null
+      );
+
+    const onKeyDown = (event: KeyboardEvent) => {
+      if (event.key === "Escape") {
+        event.preventDefault();
+        closeMenu(true);
+        return;
+      }
+      if (event.key !== "Tab") return;
+
+      const targets = visibleTargets();
+      if (!targets.length) return;
+      const first = targets[0];
+      const last = targets[targets.length - 1];
+
+      if (event.shiftKey && document.activeElement === first) {
+        event.preventDefault();
+        last.focus();
+      } else if (!event.shiftKey && document.activeElement === last) {
+        event.preventDefault();
+        first.focus();
+      }
+    };
+
+    document.addEventListener("keydown", onKeyDown);
+    // Wait a frame so GSAP has flipped display before focusing.
+    const frame = requestAnimationFrame(() => visibleTargets()[0]?.focus());
+
+    return () => {
+      document.removeEventListener("keydown", onKeyDown);
+      cancelAnimationFrame(frame);
+    };
+  }, [open]);
+
   // Toggle Utility Class for Opening and Closing Menu
   const toggle = () => {
     if (!tl.current) return;
@@ -127,6 +187,7 @@ export default function CornerNavGSAP() {
     <>
       {/* toggle button */}
       <button
+        ref={buttonRef}
         aria-label={open ? "Close menu" : "Open menu"}
         aria-expanded={open}
         aria-controls="mobile-menu"
@@ -156,25 +217,25 @@ export default function CornerNavGSAP() {
           pointerEvents: "none",
           willChange: "clip-path",
         }}
-        className="absolute inset-0 bg-primary
-                   z-40 h-[100vh] md:px-[100px] px-8 flex items-center justify-between max-sm:flex-col pt-10"
+        role="dialog"
+        aria-modal="true"
+        aria-label="Site navigation"
+        className="fixed inset-0 bg-primary
+                   z-40 h-[100dvh] md:px-[100px] px-8 flex items-center justify-between max-sm:flex-col pt-10"
       >
-        <div
+        <motion.nav
+          aria-label="Primary"
+          variants={panel}
+          initial="hidden"
+          animate={open ? "show" : "hidden"}
           className="md:w-[70%] w-full h-full  flex flex-col items-start justify-center gap-5
                    text-3xl text-neutral-300"
-          onClick={closeMenu}
         >
-          {" "}
           {drawerLinks.map((txt, idx) => {
             const active = isActive(txt.href);
 
             return (
-              <motion.div
-                initial={{ y: 20, opacity: 0 }}
-                whileInView={{ y: 0, opacity: 1 }}
-                transition={{ duration: 1, ease: "anticipate" }}
-                key={idx}
-              >
+              <motion.div variants={item} key={idx}>
                 <Link
                   href={txt.href}
                   onClick={() => handleNavClick(txt.href)}
@@ -188,15 +249,17 @@ export default function CornerNavGSAP() {
               </motion.div>
             );
           })}
-        </div>
+        </motion.nav>
 
         <div className="flex flex-col items-center justify-center flex-1 w-[30%]  h-full max-sm:hidden ">
-          <div className="border-l border-primary px-[50px] space-y-8">
-            {" "}
+          <motion.div
+            variants={panel}
+            initial="hidden"
+            animate={open ? "show" : "hidden"}
+            className="border-l border-primary px-[50px] space-y-8"
+          >
             <motion.div
-              initial={{ y: 20, opacity: 0 }}
-              whileInView={{ y: 0, opacity: 1 }}
-              transition={{ duration: 1, ease: "anticipate" }}
+              variants={item}
               className="flex flex-col items-start justify-center "
             >
               <h2 className="font-semibold text-xl text-primary">Offices</h2>
@@ -210,9 +273,7 @@ export default function CornerNavGSAP() {
               </div>
             </motion.div>
             <motion.div
-              initial={{ y: 20, opacity: 0 }}
-              whileInView={{ y: 0, opacity: 1 }}
-              transition={{ duration: 1, ease: "anticipate" }}
+              variants={item}
               className="flex flex-col items-start justify-center "
             >
               <h2 className="font-semibold text-xl text-primary">Contact</h2>
@@ -236,9 +297,7 @@ export default function CornerNavGSAP() {
               </p>
             </motion.div>
             <motion.div
-              initial={{ y: 20, opacity: 0 }}
-              whileInView={{ y: 0, opacity: 1 }}
-              transition={{ duration: 1, ease: "anticipate" }}
+              variants={item}
               className="flex flex-col items-start justify-center "
             >
               <h2 className="font-semibold text-xl text-primary">Social</h2>
@@ -261,7 +320,7 @@ export default function CornerNavGSAP() {
                 ))}
               </p>
             </motion.div>
-          </div>
+          </motion.div>
         </div>
 
         <div className="w-full flex flex-col items-center gap-5 sm:mt-0 mt-8 md:hidden ">

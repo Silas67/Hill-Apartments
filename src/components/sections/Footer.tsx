@@ -3,7 +3,7 @@ import { motion } from "framer-motion";
 import Link from "next/link";
 import Image from "next/image";
 import { useState } from "react";
-import { Btns, company, footerLinks } from "../constants";
+import { Btns, builtBy, company, footerLinks } from "../constants";
 
 export default function Footer() {
   const [subscribeStatus, setSubscribeStatus] = useState<
@@ -190,9 +190,27 @@ export default function Footer() {
           </div>
         </div>
 
-        <p className="text-[0.7rem] tracking-wide text-white/40 pt-10">
-          © {new Date().getFullYear()} {company.name}. All rights reserved.
-        </p>
+        <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 pt-10 text-[0.7rem] tracking-wide text-white/40">
+          <p>
+            © {new Date().getFullYear()} {company.name}. All rights reserved.
+          </p>
+
+          <p>
+            Website by{" "}
+            {builtBy.href ? (
+              <a
+                href={builtBy.href}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="link-underline text-white/70 hover:text-background transition-colors"
+              >
+                {builtBy.name}
+              </a>
+            ) : (
+              <span className="text-white/70">{builtBy.name}</span>
+            )}
+          </p>
+        </div>
       </div>
     </footer>
   );

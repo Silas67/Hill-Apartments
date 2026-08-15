@@ -352,6 +352,13 @@ export const company = {
   ],
 };
 
+// Build credit shown in the footer. Set `href` to a real URL and it renders as
+// a link; leave it empty and it stays plain text.
+export const builtBy = {
+  name: "EKONNECT LTD",
+  href: "",
+};
+
 export const footerLinks = [
   {
     heading: "Company",
