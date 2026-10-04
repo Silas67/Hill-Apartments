@@ -6,8 +6,8 @@ export default function robots(): MetadataRoute.Robots {
     rules: {
       userAgent: "*",
       allow: "/",
-      // Account pages hold nothing useful to a crawler.
-      disallow: ["/login", "/signup", "/api/"],
+      // Account and admin pages hold nothing useful to a crawler.
+      disallow: ["/login", "/signup", "/admin", "/api/"],
     },
     sitemap: `${siteUrl}/sitemap.xml`,
   };

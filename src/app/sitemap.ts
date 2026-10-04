@@ -1,7 +1,12 @@
 import type { MetadataRoute } from "next";
-import { blogs, siteUrl } from "@/components/constants";
+import { siteUrl } from "@/components/constants";
+import { getPublishedProperties } from "@/lib/data/properties";
+import { getPublishedPosts } from "@/lib/data/blog";
 
-export default function sitemap(): MetadataRoute.Sitemap {
+// Rebuild hourly so new listings and articles reach the sitemap without a redeploy.
+export const revalidate = 3600;
+
+export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const routes = [
     { path: "", priority: 1 },
     { path: "/properties", priority: 0.9 },
@@ -18,12 +23,24 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority,
   }));
 
-  const articles = blogs.map((post) => ({
+  const [posts, properties] = await Promise.all([
+    getPublishedPosts(),
+    getPublishedProperties(),
+  ]);
+
+  const articles = posts.map((post) => ({
     url: `${siteUrl}/blog/${post.slug}`,
-    lastModified: new Date(post.date),
+    lastModified: new Date(post.updated_at),
     changeFrequency: "yearly" as const,
     priority: 0.5,
   }));
 
-  return [...pages, ...articles];
+  const listings = properties.map((p) => ({
+    url: `${siteUrl}/properties/${p.id}`,
+    lastModified: new Date(p.updated_at),
+    changeFrequency: "weekly" as const,
+    priority: 0.8,
+  }));
+
+  return [...pages, ...articles, ...listings];
 }
