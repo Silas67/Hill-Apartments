@@ -1,9 +1,10 @@
 import { NextResponse } from "next/server";
+import { createServiceClient } from "@/lib/supabase/service";
 
-// Where enquiries land. Set both in your hosting provider's env settings.
-//   RESEND_API_KEY  – from https://resend.com/api-keys
-//   CONTACT_TO      – inbox that should receive enquiries (e.g. info@ogwinners.com)
-//   CONTACT_FROM    – a verified sender on your domain (e.g. website@ogwinners.com)
+// Every enquiry is (1) saved to the database so it shows in /admin/messages
+// and (2) emailed to the office via Resend. The request only fails if BOTH
+// fail, so a lead is never lost to one broken service.
+//   RESEND_API_KEY, CONTACT_TO, CONTACT_FROM, SUPABASE_SERVICE_ROLE_KEY
 const RESEND_ENDPOINT = "https://api.resend.com/emails";
 
 type ContactPayload = {
@@ -52,6 +53,19 @@ export async function POST(request: Request) {
     );
   }
 
+  // Limits match the CHECK constraints on the contact_messages table.
+  if (
+    name.length > 200 ||
+    email.length > 320 ||
+    phone.length > 40 ||
+    subject.length > 200
+  ) {
+    return NextResponse.json(
+      { error: "One of the fields is too long." },
+      { status: 400 }
+    );
+  }
+
   if (message.length > 5000) {
     return NextResponse.json(
       { error: "That message is too long." },
@@ -59,59 +73,66 @@ export async function POST(request: Request) {
     );
   }
 
+  // 1) Save to the database
+  let saved = false;
+  try {
+    const { error } = await createServiceClient()
+      .from("contact_messages")
+      .insert({ name, email, phone, subject, message });
+    if (error) console.error("Saving contact message failed:", error.message);
+    else saved = true;
+  } catch (error) {
+    console.error("Saving contact message failed:", error);
+  }
+
+  // 2) Email the office
+  let emailed = false;
   const apiKey = process.env.RESEND_API_KEY;
   const to = process.env.CONTACT_TO;
   const from = process.env.CONTACT_FROM;
 
   if (!apiKey || !to || !from) {
-    // Never fail silently — a lost lead is worse than a visible error.
     console.error(
-      "Contact form is not configured: missing RESEND_API_KEY, CONTACT_TO or CONTACT_FROM."
+      "Contact email not configured: missing RESEND_API_KEY, CONTACT_TO or CONTACT_FROM."
     );
-    return NextResponse.json(
-      { error: "The contact form is not available right now." },
-      { status: 500 }
-    );
+  } else {
+    try {
+      const response = await fetch(RESEND_ENDPOINT, {
+        method: "POST",
+        headers: {
+          Authorization: `Bearer ${apiKey}`,
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          from,
+          to: [to],
+          reply_to: email,
+          subject: `Website enquiry: ${subject}`,
+          html: `
+            <h2>New enquiry from the OG Winners Homes website</h2>
+            <p><strong>Name:</strong> ${escapeHtml(name)}</p>
+            <p><strong>Email:</strong> ${escapeHtml(email)}</p>
+            <p><strong>Phone:</strong> ${escapeHtml(phone)}</p>
+            <p><strong>Subject:</strong> ${escapeHtml(subject)}</p>
+            <p><strong>Message:</strong></p>
+            <p>${escapeHtml(message).replace(/\n/g, "<br />")}</p>
+          `,
+        }),
+      });
+
+      if (response.ok) emailed = true;
+      else console.error("Resend rejected the message:", await response.text());
+    } catch (error) {
+      console.error("Contact email failed:", error);
+    }
   }
 
-  try {
-    const response = await fetch(RESEND_ENDPOINT, {
-      method: "POST",
-      headers: {
-        Authorization: `Bearer ${apiKey}`,
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        from,
-        to: [to],
-        reply_to: email,
-        subject: `Website enquiry: ${subject}`,
-        html: `
-          <h2>New enquiry from the OG Winners Homes website</h2>
-          <p><strong>Name:</strong> ${escapeHtml(name)}</p>
-          <p><strong>Email:</strong> ${escapeHtml(email)}</p>
-          <p><strong>Phone:</strong> ${escapeHtml(phone)}</p>
-          <p><strong>Subject:</strong> ${escapeHtml(subject)}</p>
-          <p><strong>Message:</strong></p>
-          <p>${escapeHtml(message).replace(/\n/g, "<br />")}</p>
-        `,
-      }),
-    });
-
-    if (!response.ok) {
-      console.error("Resend rejected the message:", await response.text());
-      return NextResponse.json(
-        { error: "We could not send your message. Please try again." },
-        { status: 502 }
-      );
-    }
-
-    return NextResponse.json({ ok: true });
-  } catch (error) {
-    console.error("Contact form failed:", error);
+  if (!saved && !emailed) {
     return NextResponse.json(
       { error: "We could not send your message. Please try again." },
       { status: 500 }
     );
   }
+
+  return NextResponse.json({ ok: true });
 }

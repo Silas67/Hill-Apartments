@@ -4,14 +4,20 @@ import { motion } from "framer-motion";
 import Link from "next/link";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Autoplay, Pagination, Navigation } from "swiper/modules";
-import { Recommended } from "@/components/constants/index";
 import PropertyCard from "../PropertyCard";
+import type { PropertyItem } from "@/lib/data/properties";
 
 import "swiper/css";
 import "swiper/css/pagination";
 import "swiper/css/navigation";
 
-const Recommend = () => {
+const Recommend = ({ items }: { items: PropertyItem[] }) => {
+  // Nothing featured in the admin: hide the strip instead of showing a gap.
+  if (items.length === 0) return null;
+
+  // Looping with fewer slides than the widest layout shows breaks Swiper.
+  const canLoop = items.length > 3;
+
   return (
     <section className="bg-background">
       <div className="shell section">
@@ -52,9 +58,11 @@ const Recommend = () => {
         <Swiper
           className="w-full !pb-14"
           navigation={{ nextEl: ".button-next", prevEl: ".button-prev" }}
-          autoplay={{ delay: 4500, disableOnInteraction: true }}
+          autoplay={
+            canLoop ? { delay: 4500, disableOnInteraction: true } : false
+          }
           pagination={{ clickable: true }}
-          loop
+          loop={canLoop}
           breakpoints={{
             320: { slidesPerView: 1, spaceBetween: 24 },
             690: { slidesPerView: 2, spaceBetween: 24 },
@@ -62,8 +70,8 @@ const Recommend = () => {
           }}
           modules={[Autoplay, Pagination, Navigation]}
         >
-          {Recommended.map((item, index) => (
-            <SwiperSlide key={index}>
+          {items.map((item) => (
+            <SwiperSlide key={item.id}>
               <PropertyCard item={item} />
             </SwiperSlide>
           ))}

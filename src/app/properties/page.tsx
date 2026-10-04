@@ -1,23 +1,19 @@
-"use client";
-import Header from "@/components/sections/Header";
+import type { Metadata } from "next";
+import PropertiesClient from "@/components/pages/PropertiesClient";
+import { getPublishedProperties, toCardItem } from "@/lib/data/properties";
 
-import useLenis from "@/hooks/useLenis";
-import React from "react";
-import Footer from "@/components/sections/Footer";
-import Property from "@/components/sections/PropertiesPage/Property";
-import Hero from "@/components/sections/PropertiesPage/Hero";
-
-const Properties = () => {
-  useLenis();
-
-  return (
-    <main className="lg:w-full sm:w-[100vw] overflow-hidden relative ">
-      <Header />
-      <Hero />
-      <Property />
-      <Footer />
-    </main>
-  );
+export const metadata: Metadata = {
+  title: "Properties",
+  description:
+    "Browse homes, apartments and serviced plots for rent and sale across Abuja.",
+  alternates: { canonical: "/properties" },
 };
 
-export default Properties;
+// Re-fetch at most once a minute, and instantly when the admin saves
+// (the admin actions call revalidatePath).
+export const revalidate = 60;
+
+export default async function PropertiesPage() {
+  const properties = await getPublishedProperties();
+  return <PropertiesClient items={properties.map(toCardItem)} />;
+}

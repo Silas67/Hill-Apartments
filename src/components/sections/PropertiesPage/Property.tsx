@@ -1,7 +1,7 @@
-import { Recommended } from "@/components/constants";
 import PropertyCard from "../PropertyCard";
+import type { PropertyItem } from "@/lib/data/properties";
 
-const Property = () => {
+const Property = ({ items }: { items: PropertyItem[] }) => {
   return (
     <section className="bg-background">
       <div className="shell section">
@@ -11,15 +11,22 @@ const Property = () => {
             <span className="text-ink-muted">Available Now</span>
           </p>
           <p className="text-[0.7rem] uppercase tracking-[0.22em] text-ink-faint whitespace-nowrap">
-            {Recommended.length} Listings
+            {items.length} Listing{items.length === 1 ? "" : "s"}
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-x-8 gap-y-14">
-          {Recommended.map((item, index) => (
-            <PropertyCard key={index} item={item} />
-          ))}
-        </div>
+        {items.length === 0 ? (
+          <p className="prose-quiet">
+            New listings are on the way. Contact us and we will match you with
+            something before it is advertised.
+          </p>
+        ) : (
+          <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-x-8 gap-y-14">
+            {items.map((item) => (
+              <PropertyCard key={item.id} item={item} />
+            ))}
+          </div>
+        )}
       </div>
     </section>
   );
