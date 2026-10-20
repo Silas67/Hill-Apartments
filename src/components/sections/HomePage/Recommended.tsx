@@ -41,16 +41,17 @@ const Recommend = ({ items }: { items: PropertyItem[] }) => {
           {/* Controls sit with the heading rather than floating over the cards. */}
           <div className="hidden md:flex items-center gap-3 shrink-0">
             <button
-              aria-label="Previous properties"
-              className="button-prev w-11 h-11 border border-line flex items-center justify-center text-ink hover:bg-ink hover:text-background hover:border-ink transition-colors duration-300"
-            >
-              <Icon icon="guidance:left-arrow" width="14" height="14" />
-            </button>
-            <button
               aria-label="Next properties"
               className="button-next w-11 h-11 border border-line flex items-center justify-center text-ink hover:bg-ink hover:text-background hover:border-ink transition-colors duration-300"
             >
               <Icon icon="guidance:right-arrow" width="14" height="14" />
+            </button>
+
+            <button
+              aria-label="Previous properties"
+              className="button-prev w-11 h-11 border border-line flex items-center justify-center text-ink hover:bg-ink hover:text-background hover:border-ink transition-colors duration-300"
+            >
+              <Icon icon="guidance:left-arrow" width="14" height="14" />
             </button>
           </div>
         </motion.div>
